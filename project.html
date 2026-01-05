@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>L&T Infotech | Norway Bank BFSI Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+    --primary:#0a2b5f;
+    --primary-dark:#071a3a;
+    --bg:#f4f6fb;
+    --card:#ffffff;
+    --text:#0f172a;
+    --muted:#64748b;
+    --danger:#dc2626;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Inter","Segoe UI",Arial,sans-serif;
+}
+
+html,body{
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+/* ================= HEADER ================= */
+.header{
+    background:linear-gradient(90deg,var(--primary-dark),var(--primary));
+    padding:16px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo{
+    height:70px;
+    background:#fff;
+    padding:4px;
+    border-radius:4px;
+}
+
+
+/* ================= NAV ================= */
+.nav{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.nav a{
+    color:#e5e7eb;
+    text-decoration:none;
+    font-size:14px;
+    position:relative;
+}
+
+.nav a.active,
+.nav a:hover{color:#fff;}
+
+.nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#fff;
+    transition:.3s ease;
+}
+
+.nav a.active::after,
+.nav a:hover::after{width:100%;}
+
+/* ================= HAMBURGER ================= */
+.hamburger{
+    display:none;
+    flex-direction:column;
+    gap:4px;
+    cursor:pointer;
+}
+
+.hamburger span{
+    width:26px;
+    height:3px;
+    background:#fff;
+}
+
+/* ================= MOBILE NAV ================= */
+@media(max-width:768px){
+    .hamburger{display:flex;}
+
+    .nav{
+        position:fixed;
+        top:0;
+        left:-260px;
+        width:260px;
+        height:100vh;
+        background:var(--primary);
+        flex-direction:column;
+        align-items:flex-start;
+        padding-top:80px;
+        transition:left .35s ease;
+    }
+
+    .nav.open{left:0;}
+
+    .nav a{
+        width:100%;
+        padding:14px 24px;
+        border-bottom:1px solid rgba(255,255,255,.15);
+    }
+}
+
+/* ================= CONTAINER ================= */
+.container{
+    max-width:1200px;
+    margin:32px auto;
+    padding:0 22px;
+}
+
+/* ================= CARD ================= */
+.card{
+    background:var(--card);
+    border-radius:18px;
+    padding:28px;
+    margin-bottom:28px;
+    box-shadow:0 18px 36px rgba(0,0,0,.08);
+    animation:fadeUp .6s ease both;
+}
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:none}
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 26px 50px rgba(0,0,0,.12);
+}
+
+.card h2{font-size:26px;margin-bottom:6px;}
+.card h3{font-size:19px;margin-bottom:14px;}
+
+.subtitle{
+    font-size:14px;
+    color:var(--muted);
+}
+
+/* ================= GRID ================= */
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:14px 24px;
+    font-size:14px;
+}
+
+.description{
+    margin-top:18px;
+    font-size:14px;
+    line-height:1.85;
+    color:#374151;
+}
+
+/* ================= PROGRESS ================= */
+.progress-bar{
+    width:100%;
+    height:22px;
+    background:#e5e7eb;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,var(--primary),#2563eb);
+    color:#fff;
+    font-size:12px;
+    font-weight:600;
+    text-align:right;
+    padding-right:14px;
+    line-height:22px;
+    animation:progress 1.2s ease forwards;
+}
+
+@keyframes progress{
+    to{width:42.75%}
+}
+
+.progress-text{
+    margin-top:10px;
+    font-size:13px;
+    color:#475569;
+}
+
+/* ================= TABLE ================= */
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    min-width:720px;
+    border-collapse:collapse;
+    font-size:14px;
+}
+
+th,td{
+    padding:12px;
+    border-bottom:1px solid #e5e7eb;
+    text-align:left;
+}
+
+th{background:#f1f5f9;font-weight:600;}
+
+/* ================= REMOVED ================= */
+.removed{
+    border-left:6px solid var(--danger);
+}
+
+.removed ul{
+    margin-top:10px;
+    padding-left:20px;
+    color:#991b1b;
+    font-size:14px;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+    text-align:center;
+    padding:16px;
+    font-size:12px;
+    color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<header class="header" role="banner">
+    <div class="header-left">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" class="logo">
+    </div>
+
+    <div class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </div>
+
+    <nav class="nav" role="navigation">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="attendance.html">Attendance</a>
+        <a href="profile.html">Profile</a>
+        <a href="project.html" class="active">Projects</a>
+        <a href="reports.html">Reports</a>
+        <a href="index.html">Logout</a>
+    </nav>
+</header>
+
+<div class="container">
+
+<section class="card">
+    <h2>Norway Bank Digital Attendance & Workforce Tracking Platform</h2>
+    <p class="subtitle">Banking & Financial Services | Europe | Confidential Program</p>
+</section>
+
+<section class="card">
+<h3>Project Overview</h3>
+
+<div class="info-grid">
+    <div><strong>Client:</strong> Norway Bank</div>
+    <div><strong>Project Code:</strong> LTI-NB-BFSI-2025</div>
+    <div><strong>Domain:</strong> Banking Workforce Intelligence Platform</div>
+    <div><strong>Status:</strong> Active – Development Phase</div>
+</div>
+
+<p class="description">
+Enterprise-grade BFSI platform with AI-powered anomaly detection, GDPR compliance,
+and workforce analytics built on cloud-native microservices.
+</p>
+</section>
+
+<section class="card">
+<h3>Project Progress</h3>
+<div class="progress-bar">
+    <div class="progress-fill">42.75%</div>
+</div>
+<p class="progress-text">
+Core Platform Development • AI Model Training • Secure API Integration
+</p>
+</section>
+
+<section class="card">
+<h3>Active Project Team</h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Email</th><th>Role</th></tr>
+</thead>
+<tbody>
+<tr><td>Sanjeevi</td><td>sanjeevani@lltinfotech.com</td><td>Project Lead</td></tr> <tr><td>Rohan Kumar Chaudhry</td><td>rohankumarchaudhry@lltinfotech.com</td><td>AI & Platform Lead</td></tr> <tr><td>Nagesh Kale</td><td>nageshkale@lltinfotech.com</td><td>Senior Backend Developer</td></tr> <tr><td>Sameer Khanna</td><td>sameerkhanna@lltinfotech.com</td><td>Technical Architect</td></tr> <tr><td>Meenal Patil</td><td>meenalpatil@lltinfotech.com</td><td>Frontend Developer</td></tr> <tr><td>Arjun Rao</td><td>arjunrao@lltinfotech.com</td><td>Backend Developer</td></tr> <tr><td>Kavita Joshi</td><td>kavitajoshi@lltinfotech.com</td><td>UI Engineer</td></tr> <tr><td>Rajeev Gupta</td><td>rajeevgupta@lltinfotech.com</td><td>DevOps Engineer</td></tr> <tr><td>Manish Iyer</td><td>manishiyer@lltinfotech.com</td><td>Security Engineer</td></tr> <tr><td>Aparna Deshmukh</td><td>aparnadeshmukh@lltinfotech.com</td><td>QA Automation Engineer</td></tr> </tbody> </table>
+</div>
+</section>
+
+<section class="card removed">
+<h3>Removed From Project</h3>
+<ul>
+<li>Simran Kaur</li> <li>Ritika Verma</li> <li>Ananya Sharma</li> <li>Raghav Malhotra</li> <li>Ayesha Khan</li> <li>Tanvi Desai</li> <li>Mohit Bansal</li> <li>Jyoti Pund</li>
+</ul>
+</section>
+
+</div>
+
+<footer class="footer">
+© 2026 Larsen & Toubro Infotech Limited — Internal & Confidential
+</footer>
+
+<script>
+const hamburger=document.querySelector('.hamburger');
+const nav=document.querySelector('.nav');
+const links=document.querySelectorAll('.nav a');
+
+function toggleMenu(){
+    const open=nav.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded',open);
+}
+
+hamburger.addEventListener('click',toggleMenu);
+hamburger.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' ')toggleMenu();
+});
+
+links.forEach(l=>l.addEventListener('click',()=>{
+    nav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded','false');
+}));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>L&T Infotech | Employee Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons (minimal, professional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="login-layout">
+
+    <!-- Left Branding Panel -->
+    <section class="login-brand">
+        <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" 
+            alt="L&T Infotech Logo"
+        >
+        <h1>Employee Attendance Portal</h1>
+        <p>
+            Secure access for authorized L&T Infotech employees.
+            Please sign in using your official credentials.
+        </p>
+    </section>
+
+    <!-- Login Form -->
+    <section class="login-card">
+        <h2>Sign In</h2>
+        <p class="subtitle">Use your corporate email ID</p>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="name@lltinfotech.com" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <footer>
+            © 2023 Larsen & Toubro Infotech Limited
+        </footer>
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+<style>
+    :root {
+    --primary: #0a2b5f;
+    --bg-gradient: linear-gradient(135deg, #eef2ff, #f8fafc);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --border: #e5e7eb;
+    --text: #0f172a;
+    --muted: #64748b;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Layout */
+.login-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    width: 100%;
+    max-width: 1100px;
+    background: transparent;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Branding Panel */
+.login-brand {
+    background: linear-gradient(180deg, #071a3a, #0a2b5f);
+    color: #ffffff;
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-brand img {
+    width: 200px;
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+.login-brand h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.login-brand p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #dbeafe;
+}
+
+/* Login Card */
+.login-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+.login-card h2 {
+    font-size: 26px;
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: var(--primary);
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #071a3a;
+}
+
+/* Footer */
+.login-card footer {
+    margin-top: 40px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .login-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .login-brand {
+        display: none;
+    }
+
+    .login-card {
+        border-radius: 20px;
+        margin: 20px;
+    }
+}
+
+</style>

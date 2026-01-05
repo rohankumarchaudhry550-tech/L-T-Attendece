@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>L&T Infotech | Daily Timesheet</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --primary:#0a2b5f;
+    --bg:#f4f6fb;
+    --card:#ffffff;
+    --text:#0f172a;
+    --muted:#64748b;
+}
+
+*{
+    box-sizing:border-box;
+    font-family:"Inter","Segoe UI",Arial,sans-serif;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden; /* 🔑 MOBILE OVERFLOW FIX */
+}
+
+/* ================= HEADER ================= */
+.header{
+    background:var(--primary);
+    padding:16px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#fff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo{
+    height:70px;
+    background:#fff;
+    padding:4px;
+    border-radius:4px;
+}
+
+
+
+/* ================= NAV ================= */
+.nav{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.nav a{
+    color:#e5e7eb;
+    text-decoration:none;
+    font-size:14px;
+    position:relative;
+}
+
+.nav a.active,
+.nav a:hover{color:#fff;}
+
+.nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#fff;
+    transition:.3s;
+}
+
+.nav a.active::after,
+.nav a:hover::after{width:100%;}
+
+.logout{color:#ffcccc}
+
+/* ================= HAMBURGER ================= */
+.hamburger{
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+    gap:4px;
+}
+
+.hamburger span{
+    width:26px;
+    height:3px;
+    background:#fff;
+}
+
+/* ================= MOBILE NAV ================= */
+@media(max-width:768px){
+    .hamburger{display:flex;}
+
+    .nav{
+        position:fixed;
+        top:0;
+        left:-260px;
+        width:260px;
+        height:100vh;
+        background:var(--primary);
+        flex-direction:column;
+        align-items:flex-start;
+        padding-top:80px;
+        transition:left .35s ease;
+    }
+
+    .nav.open{left:0;}
+
+    .nav a{
+        width:100%;
+        padding:14px 24px;
+        border-bottom:1px solid rgba(255,255,255,.15);
+    }
+}
+
+/* ================= CONTAINER ================= */
+.container{
+    max-width:1100px;
+    margin:26px auto;
+    padding:0 20px;
+}
+
+/* ================= TITLES ================= */
+.page-title h2{
+    font-size:26px;
+    margin-bottom:6px;
+}
+
+.page-title p{
+    font-size:14px;
+    color:var(--muted);
+    max-width:800px;
+}
+
+/* ================= CARD ================= */
+.card{
+    background:var(--card);
+    border-radius:12px;
+    padding:24px;
+    margin-top:24px;
+    box-shadow:0 16px 32px rgba(0,0,0,.08);
+}
+
+/* ================= FORM ================= */
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:18px;
+}
+
+.form-group label{
+    font-size:13px;
+    color:#475569;
+    margin-bottom:6px;
+    display:block;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    padding:11px 12px;
+    border-radius:6px;
+    border:1px solid #cbd5e1;
+    font-size:14px;
+}
+
+textarea{
+    resize:vertical;
+    grid-column:1/-1;
+}
+
+/* ================= HOURS ================= */
+.hours-box{
+    background:#f8fafc;
+    border:1px dashed #cbd5e1;
+    border-radius:8px;
+    padding:16px;
+    margin-top:14px;
+    font-size:14px;
+}
+
+/* ================= BUTTON ================= */
+button{
+    margin-top:18px;
+    padding:12px 20px;
+    font-size:14px;
+    background:var(--primary);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{background:#071a3a}
+
+/* ================= TABLE ================= */
+.table-wrapper{
+    overflow-x:auto; /* 🔑 TABLE OVERFLOW FIX */
+}
+
+table{
+    width:100%;
+    min-width:650px;
+    border-collapse:collapse;
+    font-size:14px;
+}
+
+th,td{
+    padding:12px;
+    border-bottom:1px solid #e5e7eb;
+    text-align:left;
+}
+
+th{
+    background:#f1f5f9;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+    text-align:center;
+    padding:18px;
+    background:var(--primary);
+    color:#fff;
+    margin-top:40px;
+    font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header" role="banner">
+    <div class="header-left">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" class="logo" alt="L&T Infotech Logo">
+    </div>
+
+    <div class="hamburger" role="button" aria-label="Toggle navigation" aria-expanded="false" tabindex="0">
+        <span></span><span></span><span></span>
+    </div>
+
+    <nav class="nav" role="navigation">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="attendance.html" class="active">Attendance</a>
+        <a href="profile.html">Profile</a>
+        <a href="project.html">Projects</a>
+        <a href="reports.html">Reports</a>
+        <a href="index.html" class="logout">Logout</a>
+    </nav>
+</header>
+
+<div class="container">
+
+<div class="page-title">
+    <h2>Daily Timesheet Entry</h2>
+    <p>Record your daily working hours against assigned project tasks.</p>
+</div>
+
+<div class="card">
+<h3>Enter Work Hours</h3>
+
+<form id="timesheetForm">
+<div class="form-grid">
+    <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="date" required>
+    </div>
+
+    <div class="form-group">
+        <label>Project</label>
+        <select id="project">
+            <option>Norway Bank – Digital Workforce Platform</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Start Time</label>
+        <input type="time" id="startTime" required>
+    </div>
+
+    <div class="form-group">
+        <label>End Time</label>
+        <input type="time" id="endTime" required>
+    </div>
+
+    <div class="form-group">
+        <label>Task / Work Description</label>
+        <textarea id="task" rows="3" required></textarea>
+    </div>
+</div>
+
+<div class="hours-box">
+<strong>Total Hours:</strong> <span id="totalHours">0.00</span>
+</div>
+
+<button type="submit">Submit Timesheet</button>
+</form>
+</div>
+
+<div class="card">
+<h3>Timesheet History</h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Project</th>
+<th>Task</th>
+<th>Hours</th>
+</tr>
+</thead>
+<tbody id="history"></tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<footer class="footer">
+© 2023 Larsen & Toubro Infotech Limited. All rights reserved.
+</footer>
+
+<script>
+/* NAV */
+const hamburger=document.querySelector('.hamburger');
+const nav=document.querySelector('.nav');
+const links=document.querySelectorAll('.nav a');
+
+function toggleMenu(){
+    const open=nav.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded',open);
+}
+
+hamburger.addEventListener('click',toggleMenu);
+hamburger.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' ')toggleMenu();
+});
+
+links.forEach(l=>l.addEventListener('click',()=>{
+    nav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded','false');
+}));
+
+/* HOURS */
+const startTime=document.getElementById("startTime");
+const endTime=document.getElementById("endTime");
+const totalHoursEl=document.getElementById("totalHours");
+
+function calculateHours(){
+    if(!startTime.value||!endTime.value)return;
+    const s=new Date(`1970-01-01T${startTime.value}`);
+    const e=new Date(`1970-01-01T${endTime.value}`);
+    let diff=(e-s)/36e5;
+    if(diff<0)diff+=24;
+    totalHoursEl.textContent=diff.toFixed(2);
+}
+
+startTime.addEventListener("change",calculateHours);
+endTime.addEventListener("change",calculateHours);
+
+/* STORAGE */
+const form=document.getElementById("timesheetForm");
+const history=document.getElementById("history");
+
+function loadData(){
+    const data=JSON.parse(localStorage.getItem("timesheetData"))||[];
+    history.innerHTML="";
+    data.forEach(r=>{
+        history.innerHTML+=`<tr><td>${r.date}</td><td>${r.project}</td><td>${r.task}</td><td>${r.hours}</td></tr>`;
+    });
+}
+
+form.addEventListener("submit",e=>{
+    e.preventDefault();
+    const data=JSON.parse(localStorage.getItem("timesheetData"))||[];
+    data.push({
+        date:date.value,
+        project:project.value,
+        task:task.value,
+        hours:totalHoursEl.textContent
+    });
+    localStorage.setItem("timesheetData",JSON.stringify(data));
+    form.reset();
+    totalHoursEl.textContent="0.00";
+    loadData();
+});
+
+loadData();
+</script>
+
+</body>
+</html>
