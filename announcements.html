@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Announcements | L&T Attendance</title>
+
+<style>
+:root{
+  --primary:#0a2b5f;
+  --primary-dark:#071a3a;
+  --bg:#f4f6fb;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --danger:#dc2626;
+  --success:#15803d;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,Segoe UI,Arial,sans-serif;}
+body{
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  color:var(--text);
+}
+
+/* HEADER */
+.header{
+  background:linear-gradient(90deg,var(--primary-dark),var(--primary));
+  padding:16px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+.header-left{display:flex;align-items:center;gap:14px;}
+.logo{
+  height:64px;
+  background:#fff;
+  padding:6px;
+  border-radius:4px;
+}
+.nav{display:flex;gap:22px;}
+.nav a{
+  color:#e5e7eb;
+  text-decoration:none;
+  font-size:14px;
+  position:relative;
+}
+.nav a.active,.nav a:hover{color:#fff;}
+.nav a.logout{color:#ffd1d1}
+
+/* MOBILE */
+.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;}
+.hamburger span{width:26px;height:3px;background:#fff;}
+
+@media(max-width:768px){
+  .hamburger{display:flex;}
+  .nav{
+    position:fixed;
+    top:0;left:-260px;
+    width:260px;height:100vh;
+    background:var(--primary);
+    flex-direction:column;
+    padding-top:80px;
+    transition:.35s;
+  }
+  .nav.open{left:0;}
+  .nav a{padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.15);}
+}
+
+/* CONTENT */
+.container{max-width:1200px;margin:auto;padding:32px 22px;}
+.page-title{font-size:28px;margin-bottom:6px;}
+.page-subtitle{color:var(--muted);margin-bottom:32px;}
+
+.card{
+  background:var(--card);
+  border-radius:16px;
+  padding:26px;
+  margin-bottom:28px;
+  box-shadow:0 12px 32px rgba(15,23,42,.08);
+  border-left:7px solid #e5e7eb;
+}
+.card.latest{border-left-color:var(--danger)}
+.card.upcoming{border-left-color:#2563eb}
+.card.completed{border-left-color:var(--success)}
+
+.card-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+}
+.card-header h2{font-size:20px;}
+
+.badge{
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+}
+.badge.latest{background:#fee2e2;color:#991b1b}
+.badge.upcoming{background:#e0e7ff;color:#3730a3}
+.badge.completed{background:#dcfce7;color:#166534}
+
+.card p{line-height:1.75;font-size:15.5px;color:#334155;}
+.card h3{margin-top:22px;margin-bottom:10px;font-size:17px;}
+.card ul{margin-left:20px;line-height:1.8;}
+
+.instructions{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  border-radius:12px;
+  padding:20px;
+  margin-top:24px;
+}
+.instructions h3{color:#b45309;margin-bottom:10px;}
+.instructions ul{margin-left:18px;}
+
+.cta{
+  margin-top:26px;
+  display:flex;
+  justify-content:flex-end;
+}
+.btn{
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  padding:14px 22px;
+  font-size:15px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.25s;
+}
+.btn:hover{background:var(--primary-dark);}
+
+/* FOOTER */
+footer{
+  background:#fff;
+  border-top:1px solid #e5e7eb;
+  text-align:center;
+  padding:18px;
+  font-size:13px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" class="logo" alt="L&T Infotech">
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+  <nav class="nav" id="nav">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="attendance.html">Attendance</a>
+    <a href="profile.html">Profile</a>
+    <a href="project.html">Projects</a>
+    <a href="reports.html">Reports</a>
+    <a href="announcements.html" class="active">Announcements</a>
+    <a href="index.html" class="logout">Logout</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h2 class="page-title">Official Announcements</h2>
+  <p class="page-subtitle">
+    All announcements issued here are mandatory and governed by internal compliance rules.
+  </p>
+
+  <!-- LATEST -->
+  <section class="card latest">
+    <div class="card-header">
+      <h2>Inter DC Championship — Starting 15 February</h2>
+      <span class="badge latest">Important</span>
+    </div>
+
+    <p>
+      The <strong>Inter DC Championship</strong> will commence from <strong>15 February</strong>.
+      <strong>Registration will officially started Today</strong>.
+    </p>
+
+    <h3>Eligibility & Participation</h3>
+    <ul>
+      <li>Participation is <strong>mandatory</strong> for All</li>
+      <li>Age limit: <strong>Below 35 years</strong></li>
+      <li>Maximum <strong>3–4 events</strong> per participant</li>
+      <li><strong>2 hours daily practice</strong> is compulsory</li>
+    </ul>
+
+    <div class="instructions">
+      <h3>Strict Instructions</h3>
+      <ul>
+        <li>Registration is compulsory once portal opens on Monday</li>
+        <li>No late registrations will be accepted</li>
+        <li>Absence after registration may attract disciplinary action</li>
+        <li>Practice attendance will be monitored</li>
+        <li>Final authority rests with the DC Management Team</li>
+      </ul>
+    </div>
+
+    <div class="cta">
+      <button class="btn" onclick="goToRegistration()">
+        Proceed to Registration Page
+      </button>
+    </div>
+  </section>
+<section class="card upcoming">
+  <div class="card-header">
+    <h2>1-Week Structured Technical Training — DeepLearning.AI</h2>
+    <span class="badge upcoming">Upcoming</span>
+  </div>
+
+  <p>
+    A <strong>1-week structured training program</strong> will commence next week for all team members.
+    The program will focus on <strong>DeepLearning.AI – TensorFlow Developer</strong> curriculum.
+  </p>
+
+  <h3>Training Highlights</h3>
+  <ul>
+    <li>Industry mentors with <strong>15+ years experience</strong></li>
+    <li>Hands-on TensorFlow & Keras sessions</li>
+    <li>Exposure to <strong>Google Gemini</strong> and <strong>OpenAI</strong></li>
+    <li>Live doubt-clearing & real-world use cases</li>
+  </ul>
+
+  <p>
+    Attendance is mandatory. Further instructions will be shared via official communication.
+  </p>
+</section>
+
+<section class="card completed">
+  <div class="card-header">
+    <h2>YCP — Young Coders Program (Coding Competition)</h2>
+    <span class="badge completed">Completed</span>
+  </div>
+
+  <p>
+    The <strong>Young Coders Program (YCP)</strong> was successfully completed, focusing on
+    DSA, problem-solving, and real-world coding challenges.
+  </p>
+
+  <p>
+    <strong>Top Performer:</strong><br>
+    Rohan Kumar Chaudhry<br>
+    Employee ID: <strong>LTI/EMP/2025/5831</strong>
+  </p>
+
+  <p>
+    Congratulations on the outstanding performance and technical excellence demonstrated.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  © 2026 L&T Attendance — Internal & Confidential
+</footer>
+
+<script>
+const hamburger=document.getElementById("hamburger");
+const nav=document.getElementById("nav");
+
+hamburger.onclick=()=>nav.classList.toggle("open");
+
+function goToRegistration(){
+  window.location.href="registration.html";
+}
+</script>
+
+</body>
+</html>

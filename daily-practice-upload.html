@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daily Practice Upload | Inter DC Championship</title>
+
+<style>
+:root{
+  --primary:#0b5ed7;
+  --primary-dark:#084298;
+  --bg:#f1f5f9;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --danger:#dc2626;
+  --border:#e2e8f0;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  min-height:100vh;
+  color:var(--text);
+}
+
+.container{
+  max-width:760px;
+  margin:auto;
+  padding:24px 14px 40px;
+}
+
+.card{
+  background:rgba(255,255,255,.97);
+  border-radius:22px;
+  padding:28px;
+  box-shadow:0 22px 44px rgba(15,23,42,.14);
+}
+
+/* HEADER */
+.header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:16px;
+}
+.back-btn{
+  border:none;
+  background:#000000;
+  padding:10px 16px;
+  border-radius:12px;
+  font-size:14px;
+  cursor:pointer;
+}
+.back-btn:hover{background:#222222;}
+
+h1{
+  font-size:clamp(22px,5vw,30px);
+  color:var(--primary);
+  margin-bottom:8px;
+}
+.subtitle{
+  font-size:15px;
+  color:var(--muted);
+  line-height:1.7;
+  margin-bottom:20px;
+}
+
+/* ALERT */
+.alert-danger{
+  background:#fee2e2;
+  border-left:6px solid var(--danger);
+  padding:16px;
+  border-radius:14px;
+  font-size:14.5px;
+  line-height:1.6;
+  color:#7f1d1d;
+  margin-bottom:22px;
+}
+
+/* FORM */
+.form-group{
+  margin-top:18px;
+}
+label{
+  font-size:14.5px;
+  font-weight:600;
+}
+input, textarea{
+  width:100%;
+  margin-top:6px;
+  padding:14px;
+  font-size:15px;
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+input:focus, textarea:focus{
+  outline:none;
+  border-color:var(--primary);
+}
+
+/* FILE UPLOAD */
+.file-box{
+  margin-top:10px;
+  padding:18px;
+  border-radius:16px;
+  border:2px dashed var(--border);
+  background:#f8fafc;
+  text-align:center;
+  font-size:14.5px;
+  color:var(--muted);
+}
+.file-box input{
+  margin-top:10px;
+}
+
+/* ACTION */
+button{
+  margin-top:26px;
+  width:100%;
+  padding:16px;
+  border-radius:16px;
+  font-size:16px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  transition:.25s ease;
+}
+button:hover{
+  transform:translateY(-1px);
+  box-shadow:0 14px 26px rgba(11,94,215,.25);
+}
+
+/* MOBILE */
+@media(max-width:480px){
+  .card{padding:22px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <div class="header">
+      <button class="back-btn" onclick="location.href='registration.html'">
+        ← Back
+      </button>
+    </div>
+
+    <h1>Daily Practice Upload</h1>
+    <p class="subtitle">
+      Upload your <strong>minimum 2-minute continuous practice video</strong>
+      every working day to mark attendance.
+    </p>
+
+    <div class="alert-danger">
+      <strong>Compliance Notice</strong><br>
+      Failure to upload today’s practice video will result in the day being
+      marked as <strong>NON-WORKING DAY</strong>. No exceptions.
+    </div>
+
+    <form onsubmit="submitVideo(event)">
+
+      <div class="form-group">
+        <label>Practice Date</label>
+        <input type="date" required />
+      </div>
+
+      <div class="form-group">
+        <label>Practice Video (Minimum 2 Minutes)</label>
+        <div class="file-box">
+          <strong>Upload Video File</strong><br>
+          Supported formats: MP4, MOV, AVI
+          <input type="file" accept="video/*" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Remarks (Optional)</label>
+        <textarea rows="3" placeholder="Any notes or comments (optional)"></textarea>
+      </div>
+
+      <button type="submit">
+        Upload Video & Mark Attendance
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+function submitVideo(e){
+  e.preventDefault();
+  alert("Practice video uploaded successfully. Attendance marked.");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+:root{
+  --bg:#f7fafc;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --accent:#0b5ed7;
+  --accent-2:#0a58ca;
+  --danger:#dc2626;
+  --success:#15803d;
+  --container:1200px;
+}
+*{box-sizing:border-box}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:#0f172a;margin:0}
+.container{max-width:var(--container);margin:0 auto;padding:24px}
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:#fff;border-bottom:1px solid #e6eef8;position:sticky;top:0;z-index:40}
+.site-brand{display:flex;align-items:center;gap:14px}
+.brand-logo{height:48px;border-radius:6px}
+.brand-title{font-size:18px;color:var(--accent);margin:0}
+.main-nav a{margin-left:18px;text-decoration:none;color:#334155;font-weight:600}
+.main-nav a.active{color:var(--accent)}
+.hero{background:linear-gradient(90deg,#eef2ff, #f8fafc);padding:36px 24px;border-bottom:1px solid #eef2ff}
+.hero h2{margin:0 0 8px 0;font-size:26px}
+.lead{color:var(--muted);margin:0}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding:24px}
+.card{background:var(--card);border-radius:12px;box-shadow:0 6px 24px rgba(15,23,42,0.06);padding:18px;border-left:6px solid rgba(0,0,0,0.04)}
+.card .card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.card-head h3{margin:0;font-size:18px}
+.card-body{color:#334155;font-size:15px;line-height:1.6}
+.card.highlight{border-left-color:var(--success)}
+.card.info{border-left-color:var(--accent)}
+.card.urgent{border-left-color:var(--danger)}
+.card h4{margin:12px 0 8px 0}
+.card ul{margin:8px 0 12px 20px}
+.card ol{margin:8px 0 12px 20px}
+.cta{display:inline-block;margin-top:12px;padding:8px 12px;background:var(--accent);color:#fff;border-radius:8px}
+.site-footer{background:#fff;border-top:1px solid #eef2ff;padding:18px;text-align:center;margin-top:28px}
+
+@media (max-width:900px){
+  .cards{grid-template-columns:1fr}
+  .main-nav{display:none}
+}
+
+@media (prefers-color-scheme:dark){
+  body{background:#07122a;color:#e6eef8}
+  .site-header,.card,.site-footer{background:#07122a;border-color:#0b2340}
+  .brand-title{color:#9ad0ff}
+}
