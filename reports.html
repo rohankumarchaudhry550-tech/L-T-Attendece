@@ -131,24 +131,6 @@ margin-top:40px;
 Consolidated view of attendance compliance, working hours, and workforce reliability for Norway Bank Digital Workforce Platform.
 </p>
 </div>
-<div id="flashNotice" class="flash-notice">
-  <div class="flash-content">
-    <strong>From:</strong> Rahul Sharma<br>
-    <strong>To:</strong> Rohan (AI Module), Nagesh Kale, Rajeev Gupta, Priya Mehta, Vijayalaxmi
-    <p>
-      There is an issue identified in the AI module. Please fix the module on priority.
-      Also ensure attendance is marked correctly, including the exact time you started working.
-    </p>
-
-    <div class="flash-actions">
-      <label>
-        Start Time:
-        <input type="time" id="startTime">
-      </label>
-      <button onclick="markCompleted()">Mark as Completed</button>
-    </div>
-  </div>
-</div>
 <div class="reports-grid">
 <div class="card">
 <h3>Monthly Attendance Compliance</h3>
@@ -217,63 +199,26 @@ nav.classList.toggle('open');
 });
 </script>
 <!-- ================= FLASH NOTIFICATION ================= -->
+<div id="flashNotice" class="flash-notice">
+  <div class="flash-content">
+    <strong>From:</strong> Rahul Sharma<br>
+    <strong>To:</strong> Rohan (AI Module), Nagesh Kale, Rajeev Gupta, Priya Mehta, Vijayalaxmi
+    <p>
+      There is an issue identified in the AI module. Please fix the module on priority.
+      Also ensure attendance is marked correctly, including the exact time you started working.
+    </p>
 
+    <div class="flash-actions">
+      <label>
+        Start Time:
+        <input type="time" id="startTime">
+      </label>
+      <button onclick="markCompleted()">Mark as Completed</button>
+    </div>
+  </div>
+</div>
 <style>
-    /* ================= FLASH NOTICE ================= */
-.flash-notice{
-  background:linear-gradient(90deg,#dc2626,#b91c1c);
-  color:#ffffff;
-  padding:14px 20px;
-  position:sticky;
-  top:84px; /* below header */
-  z-index:999;
-  animation:slideDown .5s ease;
-}
-
-.flash-content{
-  max-width:1300px;
-  margin:auto;
-  font-size:14px;
-  line-height:1.6;
-}
-
-.flash-content p{
-  margin-top:6px;
-}
-
-.flash-actions{
-  margin-top:10px;
-  display:flex;
-  gap:10px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-.flash-actions input{
-  padding:6px 8px;
-  border-radius:6px;
-  border:none;
-}
-
-.flash-actions button{
-  background:#ffffff;
-  color:#991b1b;
-  border:none;
-  padding:8px 14px;
-  border-radius:6px;
-  font-weight:600;
-  cursor:pointer;
-}
-
-.flash-actions button:hover{
-  background:#fee2e2;
-}
-
-@keyframes slideDown{
-  from{opacity:0; transform:translateY(-10px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
+    
 </style>
 </body>
 </html>
