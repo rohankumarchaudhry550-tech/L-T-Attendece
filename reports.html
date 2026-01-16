@@ -3,201 +3,315 @@
 <head>
 <meta charset="UTF-8">
 <title>L&T Infotech | Attendance Analytics</title>
-<link rel="icon" href="favicon.png" type="image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.png">
+
 <style>
-/* ================= GLOBAL ================= */
-*{ margin:0; padding:0; box-sizing:border-box; font-family:"Segoe UI", Arial, sans-serif; }
-html, body{ background:#f5f7fb; color:#0f172a; overflow-x:hidden; /* 🔒 NO OVERFLOW */ }
+/* ================= DESIGN TOKENS ================= */
+:root{
+  --primary:#0a2b5f;
+  --primary-dark:#081f45;
+  --bg:#f4f6fb;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --border:#e5e7eb;
+  --success:#15803d;
+  --info:#1d4ed8;
+  --accent:#6d28d9;
+  --radius:14px;
+  --shadow:0 10px 25px rgba(15,23,42,.08);
+}
+
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter, "Segoe UI", system-ui, sans-serif;
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
 /* ================= HEADER ================= */
-.header{ background:#0a2b5f; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:1000; }
-.header-left{ display:flex; align-items:center; gap:12px; }
-.logo{ height:70px; background:#fff; padding:4px; border-radius:4px; }
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:linear-gradient(90deg,var(--primary),var(--primary-dark));
+  padding:14px 26px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+.logo{
+  height:56px;
+  background:#fff;
+  padding:6px;
+  border-radius:8px;
+}
+
 /* ================= NAV ================= */
-.nav{ display:flex; gap:18px; }
-.nav a{ color:#e5e7eb; text-decoration:none; font-size:14px; }
-.nav a.active, .nav a:hover{ color:#ffffff; }
-.logout{ color:#ffd1d1; }
-/* ================= HAMBURGER ================= */
-.hamburger{ display:none; flex-direction:column; gap:4px; cursor:pointer; }
-.hamburger span{ width:24px; height:3px; background:#ffffff; }
-/* ================= MOBILE NAV ================= */
-@media(max-width:768px){
-.hamburger{display:flex;}
 .nav{
-position:fixed;
-top:0;
-left:-260px;
-width:260px;
-height:100vh;
-background:#0a2b5f;
-flex-direction:column;
-padding-top:70px;
-transition:left .3s ease;
+  display:flex;
+  gap:22px;
 }
-.nav.open{left:0;}
 .nav a{
-padding:12px 20px;
-border-bottom:1px solid rgba(255,255,255,0.15);
+  color:#dbeafe;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  position:relative;
 }
+.nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:#fff;
+  transition:.3s;
 }
+.nav a:hover::after,
+.nav a.active::after{
+  width:100%;
+}
+.logout{color:#ffd1d1}
+
+/* ================= HAMBURGER ================= */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:4px;
+  cursor:pointer;
+}
+.hamburger span{
+  width:26px;
+  height:3px;
+  background:#fff;
+  border-radius:4px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .hamburger{display:flex;}
+  .nav{
+    position:fixed;
+    top:0;
+    left:-280px;
+    height:100vh;
+    width:280px;
+    background:var(--primary);
+    flex-direction:column;
+    padding-top:90px;
+    transition:.35s ease;
+  }
+  .nav.open{left:0;}
+  .nav a{
+    padding:14px 24px;
+    border-bottom:1px solid rgba(255,255,255,.15);
+  }
+}
+
 /* ================= CONTAINER ================= */
-.container{ max-width:1300px; margin:28px auto; padding:0 20px; }
+.container{
+  max-width:1320px;
+  margin:34px auto;
+  padding:0 22px;
+}
+
 /* ================= PAGE HEADER ================= */
-.page-header{ margin-bottom:24px; }
-.page-header h2{ font-size:24px; font-weight:600; }
-.page-header p{ font-size:14px; color:#64748b; margin-top:6px; max-width:900px; }
+.page-header{
+  margin-bottom:28px;
+}
+.page-header h2{
+  font-size:26px;
+  font-weight:700;
+}
+.page-header p{
+  font-size:14px;
+  color:var(--muted);
+  margin-top:8px;
+  max-width:900px;
+}
+
 /* ================= GRID ================= */
 .reports-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:18px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
 }
+
 /* ================= CARD ================= */
 .card{
-background:#ffffff;
-border:1px solid #e5e7eb;
-border-radius:10px;
-padding:20px;
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:22px;
+  box-shadow:var(--shadow);
+  transition:.3s ease;
+}
+.card:hover{
+  transform:translateY(-4px);
 }
 .card h3{
-font-size:16px;
-margin-bottom:6px;
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:6px;
 }
 .card p{
-font-size:14px;
-color:#475569;
-line-height:1.6;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.6;
 }
+
 /* ================= KPI ================= */
 .kpi{
-font-size:32px;
-font-weight:700;
-margin:10px 0;
+  font-size:36px;
+  font-weight:800;
+  margin:12px 0;
 }
-.green{color:#15803d}
-.blue{color:#1d4ed8}
-.purple{color:#6d28d9}
+.green{color:var(--success)}
+.blue{color:var(--info)}
+.purple{color:var(--accent)}
+
 /* ================= TABLE ================= */
-.table-wrapper{ overflow-x:auto; /* ✅ TABLE SAFE */ }
-table{
-width:100%;
-min-width:720px;
-border-collapse:collapse;
-font-size:14px;
-margin-top:12px;
+.table-wrapper{
+  overflow-x:auto;
+  margin-top:14px;
 }
-th, td{
-padding:12px;
-border-bottom:1px solid #e5e7eb;
-text-align:left;
+table{
+  width:100%;
+  min-width:720px;
+  border-collapse:collapse;
+  font-size:14px;
+}
+th,td{
+  padding:14px 16px;
+  border-bottom:1px solid var(--border);
 }
 th{
-background:#f8fafc;
-font-weight:600;
+  background:#f8fafc;
+  font-weight:600;
 }
+tbody tr:hover{
+  background:#f9fafb;
+}
+
 /* ================= FOOTER ================= */
 .footer{
-background:#0a2b5f;
-color:#ffffff;
-text-align:center;
-padding:16px;
-font-size:13px;
-margin-top:40px;
+  margin-top:48px;
+  background:var(--primary);
+  color:#fff;
+  text-align:center;
+  padding:18px;
+  font-size:13px;
 }
 </style>
 </head>
+
 <body>
+
 <header class="header">
-<div class="header-left">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" class="logo">
-</div>
-<div class="hamburger" tabindex="0">
-<span></span><span></span><span></span>
-</div>
-<nav class="nav">
-<a href="dashboard.html">Dashboard</a>
-<a href="attendance.html">Attendance</a>
-<a href="profile.html">Profile</a>
-<a href="project.html">Projects</a>
-<a href="reports.html" class="active">Reports</a>
-<a href="announcements.html">Announcements</a>
-<a href="index.html" class="logout">Logout</a>
-</nav>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" class="logo">
+  <div class="hamburger" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+  <nav class="nav">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="attendance.html">Attendance</a>
+    <a href="profile.html">Profile</a>
+    <a href="project.html">Projects</a>
+    <a href="reports.html" class="active">Reports</a>
+    <a href="announcements.html">Announcements</a>
+    <a href="index.html" class="logout">Logout</a>
+  </nav>
 </header>
+
 <div class="container">
-<div class="page-header">
-<h2>Attendance Reports & Workforce Analytics</h2>
-<p>
-Consolidated view of attendance compliance, working hours, and workforce reliability for Norway Bank Digital Workforce Platform.
-</p>
+
+  <div class="page-header">
+    <h2>Attendance Reports & Workforce Analytics</h2>
+    <p>
+      Executive overview of attendance compliance, productivity metrics, and workforce reliability for the
+      Norway Bank Digital Workforce Platform.
+    </p>
+  </div>
+
+  <div class="reports-grid">
+    <div class="card">
+      <h3>Monthly Attendance Compliance</h3>
+      <div class="kpi green">100%</div>
+      <p>Complete attendance coverage across all working days.</p>
+    </div>
+
+    <div class="card">
+      <h3>Weekly Attendance Status</h3>
+      <div class="kpi green">100%</div>
+      <p>All scheduled days successfully recorded.</p>
+    </div>
+
+    <div class="card">
+      <h3>Absenteeism Rate</h3>
+      <div class="kpi blue">0%</div>
+      <p>No unplanned or unauthorized absences.</p>
+    </div>
+
+    <div class="card">
+      <h3>Overtime & Extra Hours</h3>
+      <div class="kpi purple">27.5</div>
+      <p>Additional productive effort beyond standard hours.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:30px;">
+    <h3>Individual Attendance Summary</h3>
+    <p style="font-size:14px;color:var(--muted);margin-top:6px;">
+      Attendance and productivity snapshot for active project members.
+    </p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Present Days</th>
+            <th>Leaves</th>
+            <th>Overtime Hours</th>
+            <th>Compliance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rohan Kumar Chaudhry</td>
+            <td>7</td>
+            <td>0</td>
+            <td>27.5</td>
+            <td>100%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
-<div class="reports-grid">
-<div class="card">
-<h3>Monthly Attendance Compliance</h3>
-<div class="kpi green">100%</div>
-<p>All working days recorded with complete submissions.</p>
-</div>
-<div class="card">
-<h3>Weekly Attendance Status</h3>
-<div class="kpi green">100%</div>
-<p>Attendance marked for all working days this week.</p>
-</div>
-<div class="card">
-<h3>Absenteeism Rate</h3>
-<div class="kpi blue">0%</div>
-<p>No unplanned absences recorded.</p>
-</div>
-<div class="card">
-<h3>Overtime & Extra Hours</h3>
-<div class="kpi purple">21.5</div>
-<p>Additional productive hours logged.</p>
-</div>
-</div>
-<div class="card" style="margin-top:24px;">
-<h3>Individual Attendance Summary</h3>
-<p style="font-size:14px;color:#64748b;margin-top:6px;">
-Attendance performance for active project members.
-</p>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr>
-<th>Employee Name</th>
-<th>Present Days</th>
-<th>Leaves</th>
-<th>Overtime Hours</th>
-<th>Compliance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Rohan Kumar Chaudhry</td>
-<td>6</td>
-<td>0</td>
-<td>21.5</td>
-<td>100%</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+
 <footer class="footer">
-© 2023 Larsen & Toubro Infotech Limited. Internal & Confidential.
+  © 2023 Larsen & Toubro Infotech Limited • Internal & Confidential
 </footer>
+
 <script>
-/* NAV TOGGLE */
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('.nav');
-hamburger.addEventListener('click', () => {
-nav.classList.toggle('open');
-});
-hamburger.addEventListener('keydown', e => {
-if (e.key === 'Enter' || e.key === ' ') {
-nav.classList.toggle('open');
-}
+hamburger.addEventListener('click',()=>nav.classList.toggle('open'));
+hamburger.addEventListener('keydown',e=>{
+  if(e.key==='Enter'||e.key===' ') nav.classList.toggle('open');
 });
 </script>
+
 </body>
 </html>

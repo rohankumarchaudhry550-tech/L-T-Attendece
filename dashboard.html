@@ -2,293 +2,315 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="favicon.png" type="image/x-icon">
 <title>L&T Infotech | Workforce Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.png">
+
 <style>
+/* ================= DESIGN TOKENS ================= */
 :root{
- --primary:#0a2b5f;
-  --primary-dark:#071a3a;
+  --primary:#0a2b5f;
+  --primary-dark:#081f45;
   --bg:#f4f6fb;
   --card:#ffffff;
   --text:#0f172a;
   --muted:#64748b;
-  --danger:#dc2626;
   --success:#15803d;
+  --warning:#b45309;
+  --info:#1d4ed8;
+  --accent:#6d28d9;
+  --radius:18px;
+  --shadow:0 16px 36px rgba(15,23,42,.08);
 }
+
+/* ================= RESET ================= */
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:"Inter","Segoe UI",Arial,sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,"Segoe UI",system-ui,sans-serif;
 }
-html,body{
-background:linear-gradient(135deg,#eef2ff,#f8fafc);
-color:var(--text);
-overflow-x:hidden;
+body{
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  color:var(--text);
+  overflow-x:hidden;
 }
+
 /* ================= HEADER ================= */
 .header{
-background:linear-gradient(90deg,var(--primary-dark),var(--primary));
-padding:16px 24px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-position:sticky;
-top:0;
-z-index:1000;
-}
-.header-left{
-display:flex;
-align-items:center;
-gap:14px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:linear-gradient(90deg,var(--primary-dark),var(--primary));
+  padding:14px 26px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
 }
 .logo{
-height:70px;
-background:#fff;
-padding:4px;
-border-radius:4px;
+  height:56px;
+  background:#fff;
+  padding:6px;
+  border-radius:8px;
 }
+
 /* ================= NAV ================= */
 .nav{
-display:flex;
-align-items:center;
-gap:22px;
+  display:flex;
+  gap:22px;
 }
 .nav a{
-color:#e5e7eb;
-text-decoration:none;
-font-size:14px;
-position:relative;
+  color:#dbeafe;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  position:relative;
 }
-.nav a.active, .nav a:hover{color:#fff;}
 .nav a::after{
-content:"";
-position:absolute;
-left:0;
-bottom:-6px;
-width:0;
-height:2px;
-background:#fff;
-transition:.3s ease;
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:#fff;
+  transition:.3s;
 }
-.nav a.active::after, .nav a:hover::after{width:100%;}
+.nav a:hover::after,
+.nav a.active::after{
+  width:100%;
+}
 .logout{color:#ffd1d1}
+
 /* ================= HAMBURGER ================= */
 .hamburger{
-display:none;
-flex-direction:column;
-gap:4px;
-cursor:pointer;
+  display:none;
+  flex-direction:column;
+  gap:4px;
+  cursor:pointer;
 }
 .hamburger span{
-width:26px;
-height:3px;
-background:#fff;
+  width:26px;
+  height:3px;
+  background:#fff;
+  border-radius:4px;
 }
+
 /* ================= MOBILE NAV ================= */
 @media(max-width:768px){
-.hamburger{display:flex;}
-.nav{
-position:fixed;
-top:0;
-left:-260px;
-width:260px;
-height:100vh;
-background:var(--primary);
-flex-direction:column;
-align-items:flex-start;
-padding-top:80px;
-transition:left .35s ease;
+  .hamburger{display:flex;}
+  .nav{
+    position:fixed;
+    top:0;
+    left:-280px;
+    height:100vh;
+    width:280px;
+    background:var(--primary);
+    flex-direction:column;
+    padding-top:90px;
+    transition:.35s ease;
+  }
+  .nav.open{left:0;}
+  .nav a{
+    padding:14px 24px;
+    border-bottom:1px solid rgba(255,255,255,.15);
+  }
 }
-.nav.open{left:0;}
-.nav a{
-width:100%;
-padding:14px 24px;
-border-bottom:1px solid rgba(255,255,255,.15);
-}
-}
+
 /* ================= CONTAINER ================= */
 .container{
-max-width:1280px;
-margin:36px auto;
-padding:0 24px;
+  max-width:1280px;
+  margin:40px auto;
+  padding:0 24px;
 }
-/* ================= HEADER TEXT ================= */
+
+/* ================= PAGE HEADER ================= */
 .page-header{
-margin-bottom:30px;
+  margin-bottom:34px;
 }
 .page-header h2{
-font-size:28px;
-font-weight:600;
+  font-size:30px;
+  font-weight:700;
 }
 .page-header p{
-font-size:14px;
-color:var(--muted);
-margin-top:8px;
-max-width:900px;
-line-height:1.6;
+  margin-top:8px;
+  font-size:14px;
+  color:var(--muted);
+  max-width:900px;
+  line-height:1.6;
 }
+
 /* ================= GRID ================= */
 .dashboard-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:26px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
 }
+
 /* ================= CARD ================= */
 .card{
-background:var(--card);
-border-radius:18px;
-padding:28px;
-box-shadow:0 18px 36px rgba(0,0,0,.08);
-transition:transform .25s ease, box-shadow .25s ease;
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:28px;
+  box-shadow:var(--shadow);
+  transition:.25s ease;
 }
 .card:hover{
-transform:translateY(-4px);
-box-shadow:0 24px 48px rgba(0,0,0,.12);
+  transform:translateY(-5px);
 }
+
+/* ================= CARD CONTENT ================= */
 .card h3{
-font-size:18px;
-margin-bottom:8px;
+  font-size:17px;
+  font-weight:600;
+  margin-bottom:8px;
 }
 .card p{
-font-size:14px;
-color:#475569;
-line-height:1.6;
+  font-size:14px;
+  color:#475569;
+  line-height:1.6;
 }
+
 /* ================= KPI ================= */
 .kpi{
-font-size:34px;
-font-weight:700;
-margin:14px 0;
+  font-size:34px;
+  font-weight:800;
+  margin:14px 0;
 }
-.green{color:#15803d;}
-.orange{color:#b45309;}
-.blue{color:#1d4ed8;}
-.purple{color:#6d28d9;}
+.green{color:var(--success)}
+.orange{color:var(--warning)}
+.blue{color:var(--info)}
+.purple{color:var(--accent)}
+
 /* ================= BUTTON ================= */
 .btn{
-display:inline-block;
-margin-top:16px;
-padding:11px 18px;
-font-size:13px;
-font-weight:500;
-color:#fff;
-background:var(--primary);
-border-radius:9px;
-text-decoration:none;
-transition:.25s ease;
+  display:inline-block;
+  margin-top:18px;
+  padding:12px 20px;
+  font-size:13px;
+  font-weight:500;
+  color:#fff;
+  background:var(--primary);
+  border-radius:10px;
+  text-decoration:none;
+  transition:.25s ease;
 }
 .btn:hover{
-background:var(--primary-dark);
+  background:var(--primary-dark);
 }
+
 /* ================= FOOTER ================= */
 footer{
-margin-top:50px;
-background:var(--primary-dark);
-color:#fff;
-text-align:center;
-padding:18px;
-font-size:13px;
+  margin-top:56px;
+  background:var(--primary-dark);
+  color:#fff;
+  text-align:center;
+  padding:18px;
+  font-size:13px;
 }
 </style>
 </head>
+
 <body>
-<header class="header" role="banner">
-<div class="header-left">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" class="logo" alt="L&T Infotech">
-</div>
-<div class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation" aria-expanded="false">
-<span></span><span></span><span></span>
-</div>
-<nav class="nav" role="navigation">
-<a href="dashboard.html" class="active">Dashboard</a>
-<a href="attendance.html">Attendance</a>
-<a href="profile.html">Profile</a>
-<a href="project.html">Projects</a>
-<a href="reports.html">Reports</a>
-<a href="announcements.html">Announcements</a>
-<a href="index.html" class="logout">Logout</a>
-</nav>
+
+<header class="header">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" class="logo">
+  <div class="hamburger" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+  <nav class="nav">
+    <a href="dashboard.html" class="active">Dashboard</a>
+    <a href="attendance.html">Attendance</a>
+    <a href="profile.html">Profile</a>
+    <a href="project.html">Projects</a>
+    <a href="reports.html">Reports</a>
+    <a href="announcements.html">Announcements</a>
+    <a href="index.html" class="logout">Logout</a>
+  </nav>
 </header>
+
 <div class="container">
-<div class="page-header">
-<h2>Welcome, Rohan Kumar Chaudhry</h2>
-<p>
-Real-time workforce dashboard for the Norway Bank Digital Attendance & Workforce Tracking Platform.
-</p>
+
+  <div class="page-header">
+    <h2>Welcome, Rohan Kumar Chaudhry</h2>
+    <p>
+      Executive workforce overview for the Norway Bank Digital Attendance & Workforce Intelligence Platform.
+    </p>
+  </div>
+
+  <div class="dashboard-grid">
+
+    <div class="card">
+      <h3>Today's Attendance Status</h3>
+      <div class="kpi orange" id="attendanceStatus">Checking…</div>
+      <p id="attendanceDesc"></p>
+      <a href="attendance.html" class="btn" id="attendanceBtn">Mark Attendance</a>
+    </div>
+
+    <div class="card">
+      <h3>Active Client Engagement</h3>
+      <div class="kpi blue">45.89%</div>
+      <p>Norway Bank – Digital Workforce Platform</p>
+      <p><strong>Duration:</strong> Oct 2025 – Mar 2027</p>
+      <a href="project.html" class="btn">View Project</a>
+    </div>
+
+    <div class="card">
+      <h3>Your Role</h3>
+      <div class="kpi purple">Project Lead & AI Lead</div>
+      <p>AI models, anomaly detection, workforce analytics & governance.</p>
+      <a href="profile.html" class="btn">View Profile</a>
+    </div>
+
+    <div class="card">
+      <h3>Performance Snapshot</h3>
+      <div class="kpi green">100%</div>
+      <p>Attendance compliance and delivery reliability.</p>
+    </div>
+
+  </div>
 </div>
-<div class="dashboard-grid">
-<div class="card">
-<h3>Today's Attendance Status</h3>
-<div class="kpi orange" id="attendanceStatus">Checking…</div>
-<p id="attendanceDesc"></p>
-<a href="attendance.html" class="btn" id="attendanceBtn">Mark Attendance</a>
-</div>
-<div class="card">
-<h3>Active Client Engagement</h3>
-<div class="kpi blue">45.89%</div>
-<p>Norway Bank Digital Attendance & Workforce Platform</p>
-<p class="info">Duration: 03 Oct 2025 – 03 Mar 2027</p>
-<a href="project.html" class="btn">View Project</a>
-</div>
-<div class="card">
-<h3>Your Role</h3>
-<div class="kpi purple">AI Lead</div>
-<p>AI models, anomaly detection & workforce intelligence.</p>
-<a href="profile.html" class="btn">View Profile</a>
-</div>
-<div class="card">
-<h3>Performance Snapshot</h3>
-<div class="kpi green">100%</div>
-<p>Perfect attendance compliance.</p>
-</div>
-</div>
-</div>
+
 <footer>
-© 2023 Larsen & Toubro Infotech Limited. Internal & Confidential.
+  © 2023 Larsen & Toubro Infotech Limited • Internal & Confidential
 </footer>
+
 <script>
-/* ================= NAV ================= */
+/* NAV */
 const hamburger=document.querySelector('.hamburger');
 const nav=document.querySelector('.nav');
-const links=document.querySelectorAll('.nav a');
-function toggleMenu(){
-const open=nav.classList.toggle('open');
-hamburger.setAttribute('aria-expanded',open);
-}
-hamburger.addEventListener('click',toggleMenu);
+hamburger.addEventListener('click',()=>nav.classList.toggle('open'));
 hamburger.addEventListener('keydown',e=>{
-if(e.key==='Enter'||e.key===' ')toggleMenu();
+  if(e.key==='Enter'||e.key===' ')nav.classList.toggle('open');
 });
-links.forEach(l=>l.addEventListener('click',()=>{
-nav.classList.remove('open');
-hamburger.setAttribute('aria-expanded','false');
-}));
-/* ================= ATTENDANCE AUTO CHECK ================= */
+
+/* ATTENDANCE AUTO CHECK */
 function getTodayDate(){
-return new Date().toISOString().split("T")[0];
+  return new Date().toISOString().split("T")[0];
 }
 function updateAttendanceStatus(){
-const today=getTodayDate();
-const data=JSON.parse(localStorage.getItem("timesheetData"))||[];
-const entry=data.find(d=>d.date===today);
-const status=document.getElementById("attendanceStatus");
-const desc=document.getElementById("attendanceDesc");
-const btn=document.getElementById("attendanceBtn");
-if(entry){
-status.textContent="Attendance Done";
-status.className="kpi green";
-desc.textContent=`Working hours submitted (${entry.hours}).`;
-btn.style.display="none";
-}else{
-status.textContent="Not Marked";
-status.className="kpi orange";
-desc.textContent="Please submit your daily working hours.";
-btn.style.display="inline-block";
-}
+  const today=getTodayDate();
+  const data=JSON.parse(localStorage.getItem("timesheetData"))||[];
+  const entry=data.find(d=>d.date===today);
+  const status=document.getElementById("attendanceStatus");
+  const desc=document.getElementById("attendanceDesc");
+  const btn=document.getElementById("attendanceBtn");
+
+  if(entry){
+    status.textContent="Attendance Done";
+    status.className="kpi green";
+    desc.textContent=`Working hours submitted (${entry.hours}).`;
+    btn.style.display="none";
+  }else{
+    status.textContent="Not Marked";
+    status.className="kpi orange";
+    desc.textContent="Please submit your daily working hours.";
+    btn.style.display="inline-block";
+  }
 }
 updateAttendanceStatus();
 </script>
+
 </body>
 </html>

@@ -3,227 +3,279 @@
 <head>
 <meta charset="UTF-8">
 <title>L&T Infotech | Employee Profile</title>
-<link rel="icon" href="favicon.png" type="image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-:root {
---primary:#0a2b5f;
---secondary:#2563eb;
---bg:#f4f6f9;
---card:#ffffff;
---text:#1f2937;
---muted:#6b7280;
+/* ================= DESIGN TOKENS ================= */
+:root{
+  --primary:#0a2b5f;
+  --primary-dark:#081f45;
+  --accent:#2563eb;
+  --bg:#f4f6fb;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --border:#e5e7eb;
+  --radius:18px;
+  --shadow:0 18px 40px rgba(15,23,42,.10);
 }
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Roboto,Arial,sans-serif;}
-body{background:var(--bg);color:var(--text);}
-/* ================= HEADER ================= */
+
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,"Segoe UI",system-ui,sans-serif;
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* ================= HEADER (SAME EVERYWHERE) ================= */
 .header{
-background:var(--primary);
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:14px 28px;
-position:sticky;
-top:0;
-z-index:1000;
-}
-.header-left{
-display:flex;
-align-items:center;
-gap:14px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:linear-gradient(90deg,var(--primary-dark),var(--primary));
+  padding:14px 26px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
 }
 .logo{
-height:70px;
-background:#fff;
-padding:4px;
-border-radius:4px;
+  height:56px;
+  background:#fff;
+  padding:6px;
+  border-radius:8px;
 }
+
 /* ================= NAV ================= */
 .nav{
-display:flex;
-align-items:center;
-gap:22px;
+  display:flex;
+  gap:22px;
 }
 .nav a{
-color:#fff;
-text-decoration:none;
-font-size:14px;
-font-weight:500;
-position:relative;
+  color:#dbeafe;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  position:relative;
 }
-/* Active underline animation */
 .nav a::after{
-content:"";
-position:absolute;
-left:0;
-bottom:-6px;
-width:0;
-height:2px;
-background:#fff;
-transition:width .3s ease;
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:#fff;
+  transition:.3s;
 }
-.nav a.active::after, .nav a:hover::after{
-width:100%;
+.nav a:hover::after,
+.nav a.active::after{
+  width:100%;
 }
-.logout{color:#ffcccc}
+.logout{color:#ffd1d1}
+
 /* ================= HAMBURGER ================= */
 .hamburger{
-display:none;
-flex-direction:column;
-cursor:pointer;
-gap:4px;
+  display:none;
+  flex-direction:column;
+  gap:4px;
+  cursor:pointer;
 }
 .hamburger span{
-width:26px;
-height:3px;
-background:#fff;
-transition:.3s;
+  width:26px;
+  height:3px;
+  background:#fff;
+  border-radius:4px;
 }
+
 /* ================= MOBILE NAV ================= */
 @media(max-width:768px){
-.hamburger{display:flex;}
-.nav{
-position:fixed;
-top:0;
-left:-260px;
-width:260px;
-height:100vh;
-background:var(--primary);
-flex-direction:column;
-align-items:flex-start;
-padding-top:80px;
-transition:left .35s ease;
+  .hamburger{display:flex;}
+  .nav{
+    position:fixed;
+    top:0;
+    left:-280px;
+    height:100vh;
+    width:280px;
+    background:var(--primary);
+    flex-direction:column;
+    padding-top:90px;
+    transition:.35s ease;
+  }
+  .nav.open{left:0;}
+  .nav a{
+    padding:14px 24px;
+    border-bottom:1px solid rgba(255,255,255,.15);
+  }
 }
-.nav.open{
-left:0;
-}
-.nav a{
-width:100%;
-padding:14px 24px;
-border-bottom:1px solid rgba(255,255,255,.15);
-}
-}
-/* ================= CONTENT ================= */
+
+/* ================= CONTAINER ================= */
 .container{
-max-width:1100px;
-margin:32px auto;
-padding:0 20px;
-display:grid;
-gap:28px;
+  max-width:1100px;
+  margin:40px auto;
+  padding:0 22px;
+  display:grid;
+  gap:32px;
 }
+
+/* ================= PROFILE CARD ================= */
 .profile-card{
-background:var(--card);
-border-radius:16px;
-padding:32px;
-display:grid;
-grid-template-columns:180px 1fr;
-gap:32px;
-box-shadow:0 20px 40px rgba(0,0,0,.1);
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:32px;
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:36px;
+  box-shadow:var(--shadow);
+}
+
+/* ================= PROFILE IMAGE ================= */
+.profile-image{
+  display:flex;
+  justify-content:center;
 }
 .profile-image img{
-width:160px;
-height:160px;
-border-radius:50%;
-object-fit:cover;
-border:4px solid var(--secondary);
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid var(--accent);
 }
-.profile-info h2{font-size:26px;margin-bottom:6px;}
-.designation{color:var(--secondary);font-weight:600;margin-bottom:18px;}
+
+/* ================= PROFILE INFO ================= */
+.profile-info h2{
+  font-size:28px;
+  font-weight:700;
+}
+.designation{
+  margin-top:6px;
+  color:var(--accent);
+  font-weight:600;
+}
+
+/* ================= INFO GRID ================= */
 .info-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:14px 24px;
-font-size:14px;
+  margin-top:22px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px 28px;
+  font-size:14px;
 }
+.info-grid div{
+  color:#334155;
+}
+
+/* ================= LOCATION CARD ================= */
 .location-card{
-background:var(--card);
-border-radius:16px;
-padding:28px;
-box-shadow:0 20px 40px rgba(0,0,0,.1);
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:28px;
+  box-shadow:var(--shadow);
 }
-iframe{width:100%;height:360px;border:none;border-radius:12px;}
+.location-card h3{
+  font-size:18px;
+  margin-bottom:14px;
+}
+iframe{
+  width:100%;
+  height:360px;
+  border:none;
+  border-radius:14px;
+}
+
+/* ================= FOOTER ================= */
 .footer{
-text-align:center;
-padding:18px;
-font-size:13px;
-color:var(--muted);
+  margin-top:50px;
+  text-align:center;
+  padding:18px;
+  font-size:13px;
+  background:var(--primary-dark);
+  color:#fff;
 }
+
+/* ================= RESPONSIVE ================= */
 @media(max-width:768px){
-.profile-card{grid-template-columns:1fr;text-align:center;}
-.info-grid{grid-template-columns:1fr;text-align:left;}
-iframe{height:250px;}
+  .profile-card{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .info-grid{
+    grid-template-columns:1fr;
+    text-align:left;
+  }
+  iframe{height:260px;}
 }
 </style>
 </head>
+
 <body>
-<header class="header" role="banner">
-<div class="header-left">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" class="logo" alt="L&T Infotech Logo">
-</div>
-<!-- Accessible Hamburger -->
-<div class="hamburger" role="button" aria-label="Toggle navigation" aria-expanded="false" tabindex="0">
-<span></span><span></span><span></span>
-</div>
-<!-- NAV -->
-<nav class="nav" role="navigation" aria-label="Main Navigation">
-<a href="dashboard.html">Dashboard</a>
-<a href="attendance.html">Attendance</a>
-<a href="profile.html" class="active">Profile</a>
-<a href="project.html">Projects</a>
-<a href="reports.html">Reports</a>
-<a href="announcements.html">Announcements</a>
-<a href="index.html" class="logout">Logout</a>
-</nav>
+
+<header class="header">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" class="logo">
+  <div class="hamburger" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+  <nav class="nav">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="attendance.html">Attendance</a>
+    <a href="profile.html" class="active">Profile</a>
+    <a href="project.html">Projects</a>
+    <a href="reports.html">Reports</a>
+    <a href="announcements.html">Announcements</a>
+    <a href="index.html" class="logout">Logout</a>
+  </nav>
 </header>
+
 <main class="container">
-<section class="profile-card">
-<div class="profile-image">
-<img src="profile.png" alt="Employee Photo">
-</div>
-<div class="profile-info">
-<h2>Rohan Kumar Chaudhry</h2>
-<p class="designation">AI Engineer – Information Technology</p>
-<div class="info-grid">
-<div><strong>Email:</strong> rohankumarchaudhry@lntinfotech.com</div>
-<div><strong>Employee ID:</strong> LTI/EMP/2025/5831</div>
-<div><strong>Joining Date:</strong> 15 May 2025</div>
-<div><strong>Manager:</strong> Sanjeevni</div>
-<div><strong>Contact:</strong> +91 76968 79550</div>
-<div><strong>Location:</strong> Samastipur, Bihar</div>
-</div>
-</div>
-</section>
-<section class="location-card">
-<h3>Current Work Location</h3>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28723.25961697969!2d85.76622356271157!3d25.856063866580392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed9090fb42bddd%3A0x67bcdbb585743bbd!2sSamastipur%2C%20Bihar%20848101!5e0!3m2!1sen!2sin!4v1767591518533!5m2!1sen!2sin"></iframe>
-</section>
+
+  <section class="profile-card">
+    <div class="profile-image">
+      <img src="profile.png" alt="Employee Photo">
+    </div>
+
+    <div class="profile-info">
+      <h2>Rohan Kumar Chaudhry</h2>
+      <p class="designation">Project Lead & AI Lead – Information Technology</p>
+
+      <div class="info-grid">
+        <div><strong>Email:</strong> rohankumarchaudhry@lntinfotech.com</div>
+        <div><strong>Employee ID:</strong> LTI/EMP/2025/5831</div>
+        <div><strong>Joining Date:</strong> 15 May 2025</div>
+        <div><strong>Tech Lead:</strong> Sanjeevni</div>
+        <div><strong>Contact:</strong> +91 76968 79550</div>
+        <div><strong>Location:</strong> Samastipur, Bihar</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="location-card">
+    <h3>Current Work Location</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28723.25961697969!2d85.76622356271157!3d25.856063866580392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed9090fb42bddd%3A0x67bcdbb585743bbd!2sSamastipur%2C%20Bihar%20848101!5e0!3m2!1sen!2sin!4v1767591518533!5m2!1sen!2sin"></iframe>
+  </section>
+
 </main>
+
 <footer class="footer">
-© 2023 Larsen & Toubro Infotech Limited. All rights reserved.
+  © 2023 Larsen & Toubro Infotech Limited • Internal & Confidential
 </footer>
+
 <script>
-const hamburger = document.querySelector('.hamburger');
-const nav = document.querySelector('.nav');
-const links = document.querySelectorAll('.nav a');
-function toggleMenu(){
-const isOpen = nav.classList.toggle('open');
-hamburger.setAttribute('aria-expanded', isOpen);
-}
-/* Toggle menu */
-hamburger.addEventListener('click', toggleMenu);
-/* Keyboard accessibility */
-hamburger.addEventListener('keydown', e=>{
-if(e.key === 'Enter' || e.key === ' ') toggleMenu();
-});
-/* Auto close after click */
-links.forEach(link=>{
-link.addEventListener('click', ()=>{
-nav.classList.remove('open');
-hamburger.setAttribute('aria-expanded','false');
-});
+/* NAV */
+const hamburger=document.querySelector('.hamburger');
+const nav=document.querySelector('.nav');
+hamburger.addEventListener('click',()=>nav.classList.toggle('open'));
+hamburger.addEventListener('keydown',e=>{
+  if(e.key==='Enter'||e.key===' ')nav.classList.toggle('open');
 });
 </script>
+
 </body>
 </html>
