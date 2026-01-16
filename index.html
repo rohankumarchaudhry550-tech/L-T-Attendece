@@ -6,29 +6,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="favicon.png">
 
-<!-- Font -->
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+/* ===== DESIGN TOKENS ===== */
 :root{
   --primary:#0a2b5f;
   --primary-dark:#071a3a;
-  --bg:#f4f6fb;
-  --card:#ffffff;
   --text:#0f172a;
   --muted:#64748b;
   --border:#e5e7eb;
   --radius:20px;
   --shadow:0 30px 60px rgba(15,23,42,.15);
 }
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,"Segoe UI",sans-serif;}
+
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,"Segoe UI",system-ui,sans-serif;
+}
+
 body{
   min-height:100vh;
   background:linear-gradient(135deg,#eef2ff,#f8fafc);
   display:flex;
   align-items:center;
   justify-content:center;
+  color:var(--text);
 }
+
+/* ===== LAYOUT ===== */
 .login-layout{
   display:grid;
   grid-template-columns:1.15fr 1fr;
@@ -38,6 +48,8 @@ body{
   overflow:hidden;
   box-shadow:var(--shadow);
 }
+
+/* ===== BRAND (DESKTOP) ===== */
 .login-brand{
   background:linear-gradient(180deg,var(--primary-dark),var(--primary));
   color:#fff;
@@ -50,38 +62,127 @@ body{
   border-radius:8px;
   margin-bottom:36px;
 }
+.login-brand h1{
+  font-size:30px;
+  margin-bottom:12px;
+}
+.login-brand p{
+  font-size:15px;
+  line-height:1.6;
+  color:#dbeafe;
+}
+
+/* ===== LOGIN CARD ===== */
 .login-card{
   background:rgba(255,255,255,.9);
   padding:64px 56px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
-.input-group{margin-bottom:20px;}
-.input-group label{font-size:13px;color:#475569;}
+
+/* Mobile logo */
+.mobile-logo{
+  display:none;
+  text-align:center;
+  margin-bottom:30px;
+}
+.mobile-logo img{
+  width:160px;
+  background:#fff;
+  padding:6px;
+  border-radius:8px;
+}
+
+.login-card h2{
+  font-size:26px;
+  font-weight:700;
+}
+.subtitle{
+  margin:8px 0 30px;
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* ===== FORM ===== */
+.input-group{
+  margin-bottom:22px;
+}
+.input-group label{
+  display:block;
+  font-size:13px;
+  color:#475569;
+  margin-bottom:6px;
+}
+
 .input-group input{
   width:100%;
-  padding:13px;
+  padding:13px 14px;
+  font-size:14px;
   border-radius:10px;
   border:1px solid var(--border);
 }
+.input-group input:focus{
+  outline:none;
+  border-color:var(--primary);
+}
+
+/* Password with eye */
+.password-wrapper{
+  position:relative;
+}
+.password-wrapper input{
+  padding-right:42px;
+}
+.password-wrapper span{
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
+  font-size:16px;
+  color:#64748b;
+}
+
+/* ===== BUTTON ===== */
 button{
+  margin-top:12px;
   width:100%;
   padding:14px;
   background:var(--primary);
   color:#fff;
   border:none;
   border-radius:12px;
+  font-size:15px;
   font-weight:600;
   cursor:pointer;
 }
-button:hover{background:var(--primary-dark);}
+button:hover{
+  background:var(--primary-dark);
+}
+
 .login-footer{
-  margin-top:30px;
+  margin-top:40px;
   text-align:center;
   font-size:12px;
   color:var(--muted);
 }
+
+/* ===== RESPONSIVE ===== */
 @media(max-width:900px){
-  .login-layout{grid-template-columns:1fr;margin:20px;}
-  .login-brand{display:none;}
+  .login-layout{
+    grid-template-columns:1fr;
+    margin:20px;
+  }
+  .login-brand{
+    display:none;
+  }
+  .login-card{
+    padding:48px 36px;
+  }
+  .mobile-logo{
+    display:block;
+  }
 }
 </style>
 </head>
@@ -90,29 +191,47 @@ button:hover{background:var(--primary-dark);}
 
 <div class="login-layout">
 
-  <!-- BRAND PANEL -->
+  <!-- BRAND PANEL (DESKTOP) -->
   <section class="login-brand">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" alt="L&T Infotech Logo">
     <h1>Employee Attendance Portal</h1>
     <p>Secure access for authorized L&T Infotech employees.</p>
   </section>
 
   <!-- LOGIN CARD -->
   <section class="login-card">
+
+    <!-- MOBILE LOGO -->
+    <div class="mobile-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" alt="L&T Infotech Logo">
+    </div>
+
     <h2>Sign In</h2>
-    <p style="margin-bottom:30px;color:#64748b;font-size:14px">
-      Use your corporate email ID
-    </p>
+    <p class="subtitle">Use your corporate email ID</p>
 
     <form id="loginForm">
+
       <div class="input-group">
         <label>Email Address</label>
-        <input type="email" id="email" required>
+        <input
+          type="email"
+          id="email"
+          placeholder="name@lltinfotech.com"
+          required
+        >
       </div>
 
       <div class="input-group">
         <label>Password</label>
-        <input type="password" id="password" required>
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            required
+          >
+          <span id="togglePassword">👁️</span>
+        </div>
       </div>
 
       <button type="submit">Login</button>
@@ -125,32 +244,45 @@ button:hover{background:var(--primary-dark);}
 
 </div>
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- ===== JAVASCRIPT ===== -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
+  // LOGIN LOGIC
   const loginForm = document.getElementById("loginForm");
 
   loginForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+    const emailValue = document.getElementById("email").value.trim();
+    const passwordValue = document.getElementById("password").value.trim();
 
     if (
-      email === "rohankumarchaudhry@lltinfotech.com" &&
-      password === "rohan@lltinfotech"
+      emailValue === "rohankumarchaudhry@lltinfotech.com" &&
+      passwordValue === "rohan@lltinfotech"
     ) {
-      // ✅ Direct redirect (NO popup)
       window.location.href = "dashboard.html";
     } else {
       alert("Invalid email or password");
     }
   });
 
+  // SHOW / HIDE PASSWORD
+  const toggle = document.getElementById("togglePassword");
+  const passwordInput = document.getElementById("password");
+
+  toggle.addEventListener("click", function () {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      toggle.textContent = "︶";
+    } else {
+      passwordInput.type = "password";
+      toggle.textContent = "👁";
+    }
+  });
+
 });
 </script>
-
 
 </body>
 </html>
