@@ -200,6 +200,96 @@ iframe{
   background:var(--primary-dark);
   color:#fff;
 }
+/* ================= EMPLOYEE OF THE MONTH + REWARD ================= */
+.eom-card{
+  background:linear-gradient(135deg,#eef2ff,#ffffff);
+  border-radius:var(--radius);
+  padding:32px;
+  box-shadow:var(--shadow);
+  border-left:6px solid var(--accent);
+}
+
+.eom-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  margin-bottom:18px;
+}
+
+.eom-left{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+
+.eom-badge{
+  background:var(--accent);
+  color:#fff;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.eom-title{
+  font-size:20px;
+  font-weight:700;
+  color:var(--primary);
+}
+
+.eom-month{
+  font-size:14px;
+  color:var(--muted);
+}
+
+.eom-reward-amount{
+  background:#000000;
+  color:#ffffff;
+  padding:14px 18px;
+  border-radius:14px;
+  text-align:center;
+  min-width:140px;
+}
+
+.eom-reward-amount i{
+  font-size:20px;
+  margin-bottom:6px;
+  display:block;
+  color:#ffffff;
+}
+
+.eom-reward-amount span{
+  font-size:13px;
+  opacity:.85;
+}
+
+.eom-reward-amount strong{
+  display:block;
+  margin-top:4px;
+  font-size:18px;
+}
+
+.eom-content{
+  font-size:15px;
+  line-height:1.7;
+  color:#334155;
+  margin-top:14px;
+}
+
+.eom-content strong{
+  color:var(--primary);
+}
+
+@media(max-width:768px){
+  .eom-header{
+    flex-direction:column;
+    gap:14px;
+  }
+  .eom-reward-amount{
+    width:100%;
+  }
+}
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){
@@ -255,6 +345,51 @@ iframe{
       </div>
     </div>
   </section>
+  <section class="eom-card">
+  <div class="eom-header">
+
+    <div class="eom-left">
+      <span class="eom-badge">
+        <i class="fa-solid fa-award"></i> Employee of the Month
+      </span>
+
+      <div>
+        <div class="eom-title">January 2026</div>
+        <div class="eom-month">L&T Infotech – Information Technology Division</div>
+      </div>
+    </div>
+
+    <div class="eom-reward-amount">
+      <i class="fa-solid fa-indian-rupee-sign"></i>
+      <span>Performance Reward</span>
+      <strong>₹12,500</strong>
+    </div>
+
+  </div>
+
+  <div class="eom-content">
+    <p>
+      <strong>Rohan Kumar Chaudhry</strong> has been honored as 
+      <strong>Employee of the Month – January</strong> in recognition of his
+      exceptional leadership, technical excellence, and consistent contribution
+      to high-impact enterprise and AI-driven initiatives.
+    </p>
+
+    <p>
+      His ability to proactively address complex challenges, mentor team members,
+      and ensure timely delivery of business-critical solutions has significantly
+      enhanced project efficiency and stakeholder confidence.
+    </p>
+
+    <p>
+      As part of this recognition, he has been awarded a 
+      <strong>performance reward of ₹12,500</strong>, reflecting his commitment to
+      organizational values, innovation, and delivery excellence.
+    </p>
+  </div>
+</section>
+
+
 
   <section class="location-card">
     <h3>Current Work Location</h3>
