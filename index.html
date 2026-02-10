@@ -5,20 +5,27 @@
 <title>L&T Infotech | Employee Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="favicon.png">
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ===== DESIGN TOKENS ===== */
+/* ===== MODERN DESIGN TOKENS ===== */
 :root{
-  --primary:#0a2b5f;
-  --primary-dark:#071a3a;
-  --text:#0f172a;
-  --muted:#64748b;
+  --primary:#2563eb;
+  --primary-dark:#1e40af;
+  --primary-light:#dbeafe;
+  --secondary:#7c3aed;
+  --success:#10b981;
+  --warning:#f59e0b;
+  --danger:#ef4444;
+  --text:#1f2937;
+  --text-light:#6b7280;
+  --bg:#f9fafb;
+  --bg-light:#f3f4f6;
+  --card:#ffffff;
   --border:#e5e7eb;
-  --radius:20px;
-  --shadow:0 30px 60px rgba(15,23,42,.15);
+  --radius:16px;
+  --shadow:0 20px 50px rgba(15,23,42,0.08);
+  --transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ===== RESET ===== */
@@ -26,162 +33,260 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Inter,"Segoe UI",system-ui,sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
   min-height:100vh;
-  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  background:linear-gradient(135deg, #f0f4ff 0%, #f9fafb 100%);
   display:flex;
   align-items:center;
   justify-content:center;
   color:var(--text);
+  font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding:20px;
 }
 
 /* ===== LAYOUT ===== */
 .login-layout{
   display:grid;
-  grid-template-columns:1.15fr 1fr;
+  grid-template-columns:1.2fr 1fr;
   max-width:1100px;
   width:100%;
-  border-radius:var(--radius);
+  border-radius:24px;
   overflow:hidden;
   box-shadow:var(--shadow);
+  background:var(--card);
 }
 
-/* ===== BRAND (DESKTOP) ===== */
+/* ===== BRAND SECTION ===== */
 .login-brand{
-  background:linear-gradient(180deg,var(--primary-dark),var(--primary));
+  background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color:#fff;
-  padding:64px 56px;
+  padding:80px 60px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  position:relative;
+  overflow:hidden;
 }
+
+.login-brand::before{
+  content:'';
+  position:absolute;
+  top:-50%;
+  right:-50%;
+  width:500px;
+  height:500px;
+  background:rgba(255,255,255,0.1);
+  border-radius:50%;
+  animation:float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(30px); }
+}
+
+.brand-content{
+  position:relative;
+  z-index:2;
+}
+
 .login-brand img{
   width:200px;
+  height:auto;
   background:#fff;
-  padding:8px;
-  border-radius:8px;
-  margin-bottom:36px;
+  padding:10px;
+  border-radius:14px;
+  margin-bottom:40px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
+
 .login-brand h1{
-  font-size:30px;
-  margin-bottom:12px;
+  font-size:32px;
+  font-weight:700;
+  margin-bottom:16px;
+  letter-spacing:-0.5px;
 }
+
 .login-brand p{
   font-size:15px;
-  line-height:1.6;
-  color:#dbeafe;
+  line-height:1.8;
+  color:rgba(255,255,255,0.9);
+  margin:0;
+}
+
+.brand-features{
+  margin-top:60px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.brand-feature{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  font-size:13px;
+  color:rgba(255,255,255,0.85);
+}
+
+.brand-feature::before{
+  content:'✓';
+  font-weight:700;
+  font-size:18px;
+  flex-shrink:0;
+  margin-top:-2px;
 }
 
 /* ===== LOGIN CARD ===== */
 .login-card{
-  background:rgba(255,255,255,.9);
-  padding:64px 56px;
+  background:var(--card);
+  padding:80px 60px;
   display:flex;
   flex-direction:column;
   justify-content:center;
+  position:relative;
 }
 
 /* Mobile logo */
 .mobile-logo{
   display:none;
   text-align:center;
-  margin-bottom:30px;
+  margin-bottom:40px;
 }
+
 .mobile-logo img{
   width:160px;
-  background:#fff;
-  padding:6px;
-  border-radius:8px;
+  height:auto;
+  background:var(--bg-light);
+  padding:8px;
+  border-radius:12px;
 }
 
 .login-card h2{
-  font-size:26px;
+  font-size:28px;
   font-weight:700;
+  margin-bottom:8px;
+  letter-spacing:-0.5px;
 }
 .subtitle{
-  margin:8px 0 30px;
+  margin:6px 0 32px;
   font-size:14px;
-  color:var(--muted);
+  color:var(--text-light);
 }
 
 /* ===== FORM ===== */
 .input-group{
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
+
 .input-group label{
   display:block;
   font-size:13px;
-  color:#475569;
-  margin-bottom:6px;
+  font-weight:500;
+  color:var(--text);
+  margin-bottom:8px;
 }
 
 .input-group input{
   width:100%;
-  padding:13px 14px;
+  padding:12px 14px;
   font-size:14px;
   border-radius:10px;
-  border:1px solid var(--border);
+  border:1.5px solid var(--border);
+  background:var(--bg-light);
+  color:var(--text);
+  transition:var(--transition);
 }
+
 .input-group input:focus{
   outline:none;
   border-color:var(--primary);
+  background:var(--card);
+  box-shadow:0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-/* Password with eye */
-.password-wrapper{
-  position:relative;
-}
-.password-wrapper input{
-  padding-right:42px;
-}
-.password-wrapper span{
-  position:absolute;
-  right:12px;
-  top:50%;
-  transform:translateY(-50%);
-  cursor:pointer;
-  font-size:16px;
-  color:#64748b;
+.input-group input::placeholder{
+  color:var(--text-light);
 }
 
 /* ===== BUTTON ===== */
-button{
-  margin-top:12px;
+.btn-login{
+  margin-top:24px;
   width:100%;
-  padding:14px;
-  background:var(--primary);
+  padding:13px;
+  background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color:#fff;
   border:none;
-  border-radius:12px;
+  border-radius:10px;
   font-size:15px;
   font-weight:600;
   cursor:pointer;
+  transition:var(--transition);
+  box-shadow:0 10px 25px rgba(37, 99, 235, 0.2);
 }
-button:hover{
-  background:var(--primary-dark);
+
+.btn-login:hover{
+  transform:translateY(-2px);
+  box-shadow:0 15px 35px rgba(37, 99, 235, 0.3);
+}
+
+.btn-login:active{
+  transform:translateY(0);
 }
 
 .login-footer{
-  margin-top:40px;
+  margin-top:24px;
   text-align:center;
   font-size:12px;
-  color:var(--muted);
+  color:var(--text-light);
+}
+
+.demo-creds{
+  background:var(--bg-light);
+  border-left:4px solid var(--primary);
+  padding:12px 14px;
+  border-radius:8px;
+  font-size:12px;
+  color:var(--text);
+  margin-top:20px;
+  line-height:1.6;
+}
+
+.demo-creds strong{
+  color:var(--primary);
 }
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:900px){
   .login-layout{
     grid-template-columns:1fr;
-    margin:20px;
   }
   .login-brand{
     display:none;
   }
   .login-card{
-    padding:48px 36px;
+    padding:60px 32px;
   }
   .mobile-logo{
     display:block;
+  }
+  body{
+    padding:16px;
+  }
+}
+
+@media(max-width:480px){
+  .login-card{
+    padding:40px 20px;
+  }
+  .login-card h2{
+    font-size:24px;
   }
 }
 </style>
@@ -193,9 +298,17 @@ button:hover{
 
   <!-- BRAND PANEL (DESKTOP) -->
   <section class="login-brand">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" alt="L&T Infotech Logo">
-    <h1>Employee Attendance Portal</h1>
-    <p>Secure access for authorized L&T Infotech employees.</p>
+    <div class="brand-content">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" alt="L&T Infotech Logo">
+      <h1>Workforce Attendance Portal</h1>
+      <p>Streamlined attendance tracking and timesheet management for L&T Infotech employees.</p>
+      
+      <div class="brand-features">
+        <div class="brand-feature">Real-time attendance tracking</div>
+        <div class="brand-feature">Automated timesheet reporting</div>
+        <div class="brand-feature">Project-based work logging</div>
+      </div>
+    </div>
   </section>
 
   <!-- LOGIN CARD -->
@@ -206,8 +319,8 @@ button:hover{
       <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" alt="L&T Infotech Logo">
     </div>
 
-    <h2>Sign In</h2>
-    <p class="subtitle">Use your corporate email ID</p>
+    <h2>Welcome Back</h2>
+    <p class="subtitle">Sign in to your account</p>
 
     <form id="loginForm">
 
@@ -223,22 +336,19 @@ button:hover{
 
       <div class="input-group">
         <label>Password</label>
-        <div class="password-wrapper">
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter password"
-            required
-          >
-          <span id="togglePassword">👁️</span>
-        </div>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          required
+        >
       </div>
 
-      <button type="submit">Login</button>
+      <button type="submit" class="btn-login">Sign In</button>
     </form>
 
     <div class="login-footer">
-      © 2023 Larsen & Toubro Infotech Limited
+      © 2024 Larsen & Toubro Infotech Limited | All Rights Reserved
     </div>
   </section>
 
