@@ -259,108 +259,134 @@ footer{
   <p class="page-subtitle">
     All announcements published here are mandatory and governed by internal compliance policies.
   </p>
+<section id="urgentPopup" class="popup-overlay">
+  <div class="popup-box">
+    <h3>⚠️ Urgent Notification</h3>
 
+    <p>
+      We would like to inform all employees that a number of 
+      <strong>bank-related issues</strong> are currently being observed, 
+      due to which some <strong>salary payments are temporarily on hold</strong>.
+    </p>
+
+    <p>
+      All cases are under active review and are being processed in a 
+      <strong>systematic, sequence-based order</strong> as per internal protocols.
+    </p>
+
+    <p>
+      Please note that, as per banking timelines, the verification process 
+      may take approximately <strong>3–5 working days</strong>.
+    </p>
+
+    <p>
+      We request all employees to <strong>remain patient and cooperative</strong>. 
+      Each case will be resolved accordingly.
+    </p>
+
+    <button class="popup-close" onclick="closePopup()">OK</button>
+  </div>
+  <style>
+  /* POPUP BACKDROP */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  /* POPUP BOX */
+  .popup-box {
+    background: #dc2626;
+    color: #ffffff;
+    width: 90%;
+    max-width: 480px;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    font-family: Arial, sans-serif;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .popup-box h3 {
+    margin-bottom: 12px;
+    font-size: 20px;
+  }
+
+  .popup-box p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 8px 0;
+  }
+
+  .popup-close {
+    margin-top: 15px;
+    background: #ffffff;
+    color: #dc2626;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .popup-close:hover {
+    background: #f1f5f9;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
+<script>
+  function closePopup() {
+    document.getElementById("urgentPopup").style.display = "none";
+  }
+
+  // Auto show on page load
+  window.onload = function () {
+    document.getElementById("urgentPopup").style.display = "flex";
+  };
+</script>
+</section>
+  
   <!-- URGENT -->
   <section class="card latest">
+    
   <div class="card-header">
-    <h2>Work Location Status — Valid Till End of March</h2>
+    <h2>Work Location Status — Till March End</h2>
     <span class="badge latest">Official Notice</span>
   </div>
 
   <p>
-    This is to formally inform all employees that there will be
-    <strong>no change in work location</strong> for any employee
-    until the end of <strong>March</strong>.
+    There will be <strong>no change in work location</strong> for any employee until the end of <strong>March</strong>.
   </p>
 
-  <p style="margin-top:14px;">
-    Employees currently working under
-    <strong>Work From Home (WFH)</strong> arrangements must continue
-    working from their <strong>approved and registered work location</strong>.
+  <p>
+    <strong>WFH employees</strong> must continue working from their approved location, and 
+    <strong>WFO employees</strong> must report to their assigned office as per company policy.
   </p>
 
-  <p style="margin-top:14px;">
-    Employees assigned to
-    <strong>Work From Office (WFO)</strong> are required to
-    <strong>continue reporting to their designated office</strong>
-    as per existing company policies and instructions.
-  </p>
+  <p style="margin-top:12px;font-weight:600;">WFH Benefits:</p>
 
-  <!-- WFH Facilities -->
-  <p style="margin-top:16px;font-weight:600;">
-    Additional Facilities for WFH Employees:
-  </p>
-
-  <ul style="margin-top:8px;padding-left:18px;color:#475569;line-height:1.6;">
-
-    <li>
-      <strong>Rent Reimbursement:</strong> Effective from 
-      <strong>1st March</strong>, eligible employees may claim rent 
-      reimbursement as per company policy. Valid monthly rent payment 
-      proof must be submitted to HR for verification and processing.
-    </li>
-
-    <li>
-      <strong>Daily Food Order Facility:</strong> Starting 
-      <strong>7th March</strong>, employees will be eligible to place 
-      daily food orders through their official company email ID with 
-      a <strong>maximum limit of ₹300 per day</strong>. Any amount exceeding 
-      this limit will be borne by the employee.
-    </li>
-
-    <li>
-      <strong>Food Delivery Availability Notice:</strong> In certain 
-      locations where food delivery platforms such as 
-      <strong>Zomato</strong> or <strong>Swiggy</strong> have limited or 
-      no service availability, employees may face difficulty placing 
-      food orders through these platforms.
-
-      <br><br>
-
-      Some of the locations currently experiencing such limitations include 
-      <strong>Hajipur, Samastipur, Muzaffarpur outskirts, Begusarai rural areas, 
-      Darbhanga outskirts, and nearby semi-urban regions of Bihar</strong>.
-
-      <br><br>
-
-      In such cases, employees may arrange meals locally. Employees are requested 
-      to submit their <strong>grocery bills or average monthly food expense details</strong> 
-      to the HR department. HR will review and process the request, and the approved 
-      reimbursement amount will be credited during the 
-      <strong>end-of-month payment cycle</strong>.
-    </li>
-
-    <li>
-      <strong>Internet Bill Reimbursement:</strong> Effective from 
-      <strong>1st March</strong>, employees may submit their monthly 
-      internet bills required for official work. Valid bill copies must 
-      be provided to HR for approval and reimbursement processing.
-    </li>
-
-    <li>
-      <strong>Approval & Compliance:</strong> All reimbursements will be 
-      processed subject to verification, approval, and compliance with 
-      company financial policies.
-    </li>
-
-    <li>
-      <strong>Review Clause:</strong> The above facilities are subject to 
-      periodic review by management and may be revised depending on 
-      operational requirements.
-    </li>
-
+  <ul style="padding-left:18px;line-height:1.6;color:#475569;">
+    <li><strong>Rent:</strong> Reimbursement from 1st March with valid proof.</li>
+    <li><strong>Food:</strong> ₹300/day from 7th March via official email.</li>
+    <li><strong>Limited Delivery Areas:</strong> Submit grocery/food expenses for reimbursement.</li>
+    <li><strong>Internet:</strong> Monthly bill reimbursement with proof.</li>
+    <li><strong>Note:</strong> All claims subject to approval & policy.</li>
   </ul>
 
-  <p style="margin-top:14px;color:#475569;">
-    These facilities are applicable <strong>only to employees working under WFH arrangements</strong>
-    and are subject to internal company policies and approvals.
+  <p style="margin-top:12px;color:#475569;">
+    Benefits apply only to WFH employees. Any unauthorized location change may lead to disciplinary action.
   </p>
-
-  <p style="margin-top:14px;color:#475569;">
-    Any deviation from the approved work location without prior approval
-    will be treated as a compliance violation and may lead to disciplinary action.
-  </p>
-
 </section>
 <section class="card latest">
   <div class="card-header">
@@ -377,7 +403,7 @@ footer{
     Salary credits for employees associated during the period
     <strong>2016 to 2025</strong> are being processed in phases.
     A significant portion has already been successfully credited,
-    while approximately <strong>1959 records from the 2025 batch(Completed till 7 May)</strong>
+    while approximately <strong>229 records from the 2025 batch(Completed till 22 May)</strong>
     are still pending and under review.
   </p>
 
