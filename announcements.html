@@ -355,6 +355,49 @@ footer{
     document.getElementById("urgentPopup").style.display = "flex";
   };
 </script>
+<section id="serverPopup" class="popup-overlay" style="display:none;">
+  <div class="popup-box">
+    <h3>⚠️ System Update Notification</h3>
+
+    <p>
+      We would like to inform all employees that 
+      <strong>server data uploading is currently in progress</strong>.
+    </p>
+
+    <p>
+      Due to this ongoing activity, 
+      <strong>all system functionalities are temporarily unavailable</strong>.
+    </p>
+
+    <p>
+      Kindly note that 
+      <strong>no payment processing or verification activities will be conducted today</strong>.
+      These operations will <strong>resume from tomorrow</strong>.
+    </p>
+
+    <p>
+      Employees are advised that they may 
+      <strong>log out for the day after 3:00 PM</strong>.
+    </p>
+
+    <p>
+      We appreciate your cooperation and patience during this time.
+    </p>
+
+    <button class="popup-close" onclick="closeServerPopup()">OK</button>
+  </div>
+</section>
+
+<script>
+  function closeServerPopup() {
+    document.getElementById("serverPopup").style.display = "none";
+  }
+
+  // Optional: show after first popup closes OR delay
+  setTimeout(() => {
+    document.getElementById("serverPopup").style.display = "flex";
+  }, 2000); // 2 sec delay after page load
+</script>
 </section>
   
   <!-- URGENT -->
