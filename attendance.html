@@ -18,8 +18,12 @@
   --border:#e5e7eb;
   --success:#15803d;
   --danger:#dc2626;
-  --radius:14px;
-  --shadow:0 10px 28px rgba(15,23,42,.10);
+  --radius:16px;
+  --shadow:0 14px 34px rgba(15,23,42,.08);
+  --shadow-hover:0 20px 40px rgba(15,23,42,.12);
+  --gradient-primary:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  --glass-bg:rgba(255,255,255,0.95);
+  --glass-border:rgba(255,255,255,0.2);
 }
 
 /* ================= RESET ================= */
@@ -30,9 +34,12 @@
   font-family:Inter,"Segoe UI",system-ui,sans-serif;
 }
 body{
-  background:var(--bg);
+  background:linear-gradient(135deg,#f8fafc,#f1f5f9);
   color:var(--text);
   overflow-x:hidden;
+  font-feature-settings:"kern" 1,"liga" 1;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
 /* ================= HEADER (SAME AS REPORTS) ================= */
@@ -40,24 +47,32 @@ body{
   position:sticky;
   top:0;
   z-index:1000;
-  background:linear-gradient(90deg,var(--primary),var(--primary-dark));
-  padding:14px 26px;
+  background:var(--gradient-primary);
+  padding:16px 28px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  box-shadow:0 8px 32px rgba(10,43,95,.15);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.1);
 }
 .logo{
-  height:56px;
-  background:#fff;
-  padding:6px;
-  border-radius:8px;
+  height:60px;
+  background:var(--glass-bg);
+  padding:8px;
+  border-radius:12px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.1);
+  transition:transform 0.3s ease;
+}
+.logo:hover{
+  transform:scale(1.05);
 }
 
 /* ================= NAV ================= */
 .nav{
   display:flex;
-  gap:22px;
+  gap:20px;
+  align-items: center;
 }
 .nav a{
   color:#dbeafe;
@@ -65,35 +80,73 @@ body{
   font-size:14px;
   font-weight:500;
   position:relative;
+  padding:10px 18px;
+  border-radius:12px;
+  transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+  background: transparent;
 }
 .nav a::after{
   content:"";
   position:absolute;
   left:0;
-  bottom:-6px;
+  bottom:0;
   width:0;
   height:2px;
-  background:#fff;
   transition:.3s;
+}
+.nav a:hover{
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(0,0,0,0.3);
+  color: #fff;
 }
 .nav a:hover::after,
 .nav a.active::after{
   width:100%;
 }
-.logout{color:#ffd1d1}
+.nav a.active{
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  box-shadow:0 8px 25px rgba(0,0,0,0.3);
+  color: #fff;
+}
+.logout{
+  color:#ffd1d1;
+  background:rgba(255,255,255,0.1);
+}
+.logout:hover{
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15));
+  color: #fff;
+}
 
 /* ================= HAMBURGER ================= */
 .hamburger{
   display:none;
   flex-direction:column;
-  gap:4px;
+  gap:5px;
   cursor:pointer;
+  padding:8px;
+  border-radius:8px;
+  transition:background 0.3s ease;
+}
+.hamburger:hover{
+  background:rgba(255,255,255,0.1);
 }
 .hamburger span{
-  width:26px;
+  width:24px;
   height:3px;
   background:#fff;
-  border-radius:4px;
+  border-radius:2px;
+  transition:all 0.3s ease;
+  transform-origin:center;
+}
+.hamburger.open span:nth-child(1){
+  transform:rotate(45deg) translate(6px,6px);
+}
+.hamburger.open span:nth-child(2){
+  opacity:0;
+}
+.hamburger.open span:nth-child(3){
+  transform:rotate(-45deg) translate(6px,-6px);
 }
 
 /* ================= MOBILE NAV ================= */
@@ -102,144 +155,328 @@ body{
   .nav{
     position:fixed;
     top:0;
-    left:-280px;
+    left:-300px;
     height:100vh;
-    width:280px;
-    background:var(--primary);
+    width:300px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
     flex-direction:column;
-    padding-top:90px;
-    transition:.35s ease;
+    padding-top:100px;
+    transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+    box-shadow:0 0 0 100vw rgba(0,0,0,0.5);
+    backdrop-filter:blur(10px);
   }
-  .nav.open{left:0;}
+  .nav.open{
+    left:0;
+  }
   .nav a{
-    padding:14px 24px;
-    border-bottom:1px solid rgba(255,255,255,.15);
+    padding:16px 24px;
+    margin:4px 16px;
+    border-radius:12px;
+    border-bottom:none;
+    transition:all 0.3s ease;
+  }
+  .nav a:hover{
+    background:rgba(255,255,255,0.15);
+    transform:translateX(8px);
   }
 }
 
 /* ================= CONTAINER ================= */
 .container{
-  max-width:1100px;
-  margin:34px auto;
-  padding:0 22px;
+  max-width:1200px;
+  margin:40px auto;
+  padding:0 24px;
 }
 
 /* ================= PAGE HEADER ================= */
 .page-title{
-  margin-bottom:22px;
+  margin-bottom:32px;
+  text-align:center;
 }
 .page-title h2{
-  font-size:26px;
+  font-size:32px;
   font-weight:700;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:12px;
 }
 .page-title p{
-  font-size:14px;
+  font-size:16px;
   color:var(--muted);
-  margin-top:6px;
-  max-width:800px;
+  margin-top:8px;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.6;
 }
 
 /* ================= CARD ================= */
 .card{
-  background:var(--card);
+  background:var(--glass-bg);
   border-radius:var(--radius);
-  padding:26px;
-  margin-top:24px;
+  padding:32px;
+  margin-top:32px;
   box-shadow:var(--shadow);
+  transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(20px);
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:4px;
+  background:linear-gradient(90deg,var(--success),var(--info),var(--accent));
+  opacity:0;
+  transition:opacity 0.3s ease;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-hover);
+}
+.card:hover::before{
+  opacity:1;
 }
 .card h3{
-  font-size:16px;
+  font-size:20px;
   font-weight:600;
-  margin-bottom:12px;
+  margin-bottom:20px;
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.card h3::before{
+  content:"📝";
+  font-size:24px;
 }
 
 /* ================= FORM ================= */
 .form-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
 }
 .form-group label{
-  font-size:13px;
-  color:#475569;
-  margin-bottom:6px;
+  font-size:14px;
+  color:var(--text);
+  font-weight:600;
+  margin-bottom:8px;
   display:block;
 }
 .form-group input,
 .form-group select,
 .form-group textarea{
   width:100%;
-  padding:11px 12px;
-  border-radius:8px;
-  border:1px solid #cbd5e1;
-  font-size:14px;
+  padding:14px 16px;
+  border-radius:12px;
+  border:2px solid #e2e8f0;
+  font-size:15px;
+  transition:all 0.3s ease;
+  background:var(--glass-bg);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  outline:none;
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(10,43,95,0.1);
+  transform:translateY(-1px);
 }
 textarea{
   resize:vertical;
   grid-column:1/-1;
+  min-height:100px;
 }
 
 /* ================= HOURS SUMMARY ================= */
 .hours-box{
-  background:#f8fafc;
-  border:1px dashed #cbd5e1;
-  border-radius:10px;
-  padding:16px;
-  margin-top:16px;
-  font-size:14px;
+  background:linear-gradient(135deg,#f8fafc,#f1f5f9);
+  border:2px dashed #cbd5e1;
+  border-radius:14px;
+  padding:20px;
+  margin-top:24px;
+  font-size:16px;
+  text-align:center;
+  transition:all 0.3s ease;
+}
+.hours-box:hover{
+  border-color:var(--primary);
+  background:linear-gradient(135deg,#f0f4f8,#e8f2ff);
 }
 .hours-box span{
-  font-weight:700;
+  font-weight:800;
   color:var(--success);
+  font-size:20px;
 }
 
 /* ================= BUTTON ================= */
 button{
-  margin-top:20px;
-  padding:12px 24px;
-  font-size:14px;
-  background:var(--primary);
+  margin-top:28px;
+  padding:16px 32px;
+  font-size:16px;
+  font-weight:600;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
   color:#fff;
   border:none;
-  border-radius:8px;
+  border-radius:12px;
   cursor:pointer;
-  transition:.25s;
+  transition:all 0.3s ease;
+  box-shadow:0 4px 16px rgba(10,43,95,0.3);
+  position:relative;
+  overflow:hidden;
+}
+button::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
+  transition:left 0.5s ease;
 }
 button:hover{
-  background:var(--primary-dark);
-  transform:translateY(-1px);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(10,43,95,0.4);
+}
+button:hover::before{
+  left:100%;
+}
+button:active{
+  transform:translateY(0);
 }
 
 /* ================= TABLE ================= */
 .table-wrapper{
   overflow-x:auto;
+  margin-top:20px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  background:var(--glass-bg);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--glass-border);
 }
 table{
   width:100%;
-  min-width:650px;
+  min-width:700px;
   border-collapse:collapse;
-  font-size:14px;
+  font-size:15px;
 }
 th,td{
-  padding:14px 16px;
+  padding:18px 20px;
   border-bottom:1px solid var(--border);
+  text-align:left;
 }
 th{
-  background:#f8fafc;
+  background:linear-gradient(135deg,#f8fafc,#f1f5f9);
   font-weight:600;
+  color:var(--text);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+tbody tr{
+  transition:all 0.3s ease;
 }
 tbody tr:hover{
-  background:#f9fafb;
+  background:linear-gradient(135deg,#f9fafb,#f0f4f8);
+  transform:scale(1.01);
+}
+tbody tr:last-child td{
+  border-bottom:none;
 }
 
 /* ================= FOOTER ================= */
 .footer{
-  margin-top:48px;
-  background:var(--primary);
+  margin-top:60px;
+  background:var(--gradient-primary);
   color:#fff;
   text-align:center;
-  padding:18px;
-  font-size:13px;
+  padding:24px;
+  font-size:14px;
+  position:relative;
+}
+.footer::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeInUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.card{
+  animation:fadeInUp 0.6s ease-out;
+  animation-fill-mode:both;
+}
+
+.card:nth-child(1){animation-delay:0.1s;}
+.card:nth-child(2){animation-delay:0.2s;}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media(max-width:768px){
+  .container{
+    padding:0 16px;
+    margin:24px auto;
+  }
+  .page-title h2{
+    font-size:24px;
+  }
+  .page-title p{
+    font-size:14px;
+  }
+  .card{
+    padding:20px;
+    margin-top:20px;
+  }
+  .card h3{
+    font-size:18px;
+  }
+  .form-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea{
+    padding:12px 14px;
+    font-size:16px;
+  }
+  .hours-box{
+    padding:16px;
+    font-size:15px;
+  }
+  .hours-box span{
+    font-size:18px;
+  }
+  button{
+    width:100%;
+    padding:14px;
+  }
+  th,td{
+    padding:12px 14px;
+    font-size:14px;
+  }
 }
 </style>
 </head>
@@ -276,54 +513,54 @@ tbody tr:hover{
       <div class="form-grid">
 
         <div class="form-group">
-          <label>Date</label>
+          <label>📅 Date</label>
           <input type="date" id="date" required>
         </div>
 
         <div class="form-group">
-          <label>Project</label>
+          <label>🏢 Project</label>
           <select id="project">
             <option>Norway Bank – Digital Workforce Platform</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label>Start Time</label>
+          <label>🕐 Start Time</label>
           <input type="time" id="startTime" required>
         </div>
 
         <div class="form-group">
-          <label>End Time</label>
+          <label>🕐 End Time</label>
           <input type="time" id="endTime" required>
         </div>
 
         <div class="form-group">
-          <label>Task / Work Description</label>
-          <textarea id="task" rows="3" required></textarea>
+          <label>📝 Task / Work Description</label>
+          <textarea id="task" rows="3" placeholder="Describe the work completed today..." required></textarea>
         </div>
 
       </div>
 
       <div class="hours-box">
-        <strong>Total Hours:</strong>
+        <strong>⏱️ Total Hours:</strong>
         <span id="totalHours">0.00</span>
       </div>
 
-      <button type="submit">Submit Timesheet</button>
+      <button type="submit">✅ Submit Timesheet</button>
     </form>
   </div>
 
   <div class="card">
-    <h3>Timesheet History</h3>
+    <h3>📊 Timesheet History</h3>
 
     <div class="table-wrapper">
       <table>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Project</th>
-            <th>Task</th>
-            <th>Hours</th>
+            <th>📅 Date</th>
+            <th>🏢 Project</th>
+            <th>📝 Task</th>
+            <th>⏱️ Hours</th>
           </tr>
         </thead>
         <tbody id="history"></tbody>

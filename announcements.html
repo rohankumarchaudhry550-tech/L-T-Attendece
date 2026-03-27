@@ -11,15 +11,22 @@
 :root{
   --primary:#0a2b5f;
   --primary-dark:#081f45;
-  --bg:#f4f6fb;
-  --card:#ffffff;
+  --accent:#2563eb;
+  --glass-bg:linear-gradient(135deg,rgba(255,255,255,0.95),rgba(248,250,252,0.9));
+  --glass-border:rgba(255,255,255,0.2);
   --text:#0f172a;
   --muted:#64748b;
   --danger:#dc2626;
   --success:#15803d;
+  --warning:#d97706;
   --info:#2563eb;
-  --radius:16px;
-  --shadow:0 14px 34px rgba(15,23,42,.08);
+  --bg:#f4f6fb;
+  --card:#ffffff;
+  --border:#e5e7eb;
+  --radius:20px;
+  --shadow:0 20px 45px rgba(15,23,42,.12);
+  --shadow-hover:0 30px 60px rgba(15,23,42,.18);
+  --transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
 }
 
 /* ================= RESET ================= */
@@ -33,6 +40,7 @@ body{
   background:linear-gradient(135deg,#eef2ff,#f8fafc);
   color:var(--text);
   overflow-x:hidden;
+  min-height:100vh;
 }
 
 /* ================= HEADER ================= */
@@ -45,7 +53,9 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.1);
 }
 .logo{
   height:56px;
@@ -57,7 +67,8 @@ body{
 /* ================= NAV ================= */
 .nav{
   display:flex;
-  gap:22px;
+  gap:20px;
+  align-items: center;
 }
 .nav a{
   color:#dbeafe;
@@ -65,35 +76,73 @@ body{
   font-size:14px;
   font-weight:500;
   position:relative;
+  padding:10px 18px;
+  border-radius:12px;
+  transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+  background: transparent;
 }
 .nav a::after{
   content:"";
   position:absolute;
   left:0;
-  bottom:-6px;
+  bottom:0;
   width:0;
   height:2px;
-  background:#fff;
   transition:.3s;
+}
+.nav a:hover{
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(0,0,0,0.3);
+  color: #fff;
 }
 .nav a:hover::after,
 .nav a.active::after{
   width:100%;
 }
-.logout{color:#ffd1d1}
+.nav a.active{
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  box-shadow:0 8px 25px rgba(0,0,0,0.3);
+  color: #fff;
+}
+.logout{
+  color:#ffd1d1;
+  background:rgba(255,255,255,0.1);
+}
+.logout:hover{
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15));
+  color: #fff;
+}
 
 /* ================= HAMBURGER ================= */
 .hamburger{
   display:none;
   flex-direction:column;
-  gap:4px;
+  gap:5px;
   cursor:pointer;
+  padding:8px;
+  border-radius:8px;
+  transition:background 0.3s ease;
+}
+.hamburger:hover{
+  background:rgba(255,255,255,0.1);
 }
 .hamburger span{
-  width:26px;
+  width:24px;
   height:3px;
   background:#fff;
-  border-radius:4px;
+  border-radius:2px;
+  transition:all 0.3s ease;
+  transform-origin:center;
+}
+.hamburger.open span:nth-child(1){
+  transform:rotate(45deg) translate(6px,6px);
+}
+.hamburger.open span:nth-child(2){
+  opacity:0;
+}
+.hamburger.open span:nth-child(3){
+  transform:rotate(-45deg) translate(6px,-6px);
 }
 
 /* ================= MOBILE NAV ================= */
@@ -105,51 +154,52 @@ body{
     left:-280px;
     height:100vh;
     width:280px;
-    background:var(--primary);
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
     flex-direction:column;
     padding-top:90px;
-    transition:.35s ease;
+    transition:.35s cubic-bezier(0.4,0,0.2,1);
+    backdrop-filter:blur(20px);
+    border-right:1px solid rgba(255,255,255,0.1);
   }
   .nav.open{left:0;}
   .nav a{
-    padding:14px 24px;
+    padding:16px 24px;
     border-bottom:1px solid rgba(255,255,255,.15);
+    margin:4px 16px;
+    border-radius:12px;
   }
 }
 
-/* ================= MOBILE RESPONSIVE ================= */
-@media(max-width:600px){
-  .header{
-    padding:10px 16px;
-  }
-  .logo{
-    height:40px;
-    max-width:120px;
-  }
-  .container{
-    margin:20px auto;
-    padding:0 16px;
-  }
-  .page-title{
-    font-size:24px;
-  }
-  .card{
-    padding:20px;
-    margin-bottom:20px;
-  }
-  .card-header{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:8px;
-  }
-  .card-header h2{
-    font-size:18px;
-  }
-  .urgent-alert{
-    padding:16px 20px;
-    flex-direction:column;
-    gap:12px;
-  }
+/* ================= CONTAINER ================= */
+.container{
+  max-width:1400px;
+  margin:40px auto;
+  padding:0 24px;
+}
+
+/* ================= PAGE HEADER ================= */
+.page-title{
+  font-size:36px;
+  font-weight:700;
+  color:var(--primary);
+  margin-bottom:12px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  text-align:center;
+}
+.page-subtitle{
+  font-size:18px;
+  color:var(--muted);
+  text-align:center;
+  margin-bottom:40px;
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.6;
+}
+  
   .urgent-alert h3{
     font-size:18px;
   }
@@ -167,7 +217,7 @@ body{
   .cta{
     justify-content:center;
   }
-}
+
 
 /* ================= CONTAINER ================= */
 .container{
@@ -203,89 +253,262 @@ body{
 
 /* ================= CARD ================= */
 .card{
-  background:var(--card);
+  background:var(--glass-bg);
   border-radius:var(--radius);
-  padding:28px;
-  margin-bottom:30px;
+  padding:40px;
+  margin-bottom:32px;
   box-shadow:var(--shadow);
-  border-left:6px solid #e5e7eb;
+  transition:var(--transition);
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(20px);
+  position:relative;
+  overflow:hidden;
 }
-.card.latest{border-left-color:var(--danger);}
-.card.upcoming{border-left-color:var(--info);}
-.card.completed{border-left-color:var(--success);}
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:4px;
+  background:linear-gradient(90deg,var(--accent),#60a5fa);
+  opacity:0;
+  transition:opacity 0.3s ease;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-hover);
+}
+.card:hover::before{
+  opacity:1;
+}
+.card.latest{
+  border-left:6px solid var(--danger);
+  background:linear-gradient(135deg,rgba(220,38,38,0.02),rgba(239,68,68,0.02));
+}
+.card.upcoming{
+  border-left:6px solid var(--info);
+  background:linear-gradient(135deg,rgba(37,99,235,0.02),rgba(96,165,250,0.02));
+}
+.card.completed{
+  border-left:6px solid var(--success);
+  background:linear-gradient(135deg,rgba(21,128,61,0.02),rgba(34,197,94,0.02));
+}
 
 .card-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:14px;
+  margin-bottom:20px;
 }
 .card-header h2{
+  font-size:24px;
+  font-weight:600;
+  color:var(--primary);
+  margin:0;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.card-header h2::before{
+  content:"📢";
   font-size:20px;
 }
 
 /* ================= BADGE ================= */
 .badge{
-  padding:6px 14px;
-  border-radius:999px;
+  padding:8px 16px;
+  border-radius:20px;
   font-size:12px;
-  font-weight:700;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
-.badge.latest{background:#fee2e2;color:#991b1b;}
-.badge.upcoming{background:#e0e7ff;color:#3730a3;}
-.badge.completed{background:#dcfce7;color:#166534;}
+.badge.latest{
+  background:linear-gradient(135deg,#fee2e2,#fecaca);
+  color:#991b1b;
+}
+.badge.upcoming{
+  background:linear-gradient(135deg,#e0e7ff,#c7d2fe);
+  color:#3730a3;
+}
+.badge.completed{
+  background:linear-gradient(135deg,#dcfce7,#bbf7d0);
+  color:#166534;
+}
 
 .card p{
-  font-size:15px;
-  line-height:1.75;
+  font-size:16px;
+  line-height:1.7;
   color:#334155;
+  margin-bottom:16px;
 }
 .card h3{
-  margin-top:22px;
-  margin-bottom:10px;
-  font-size:17px;
+  margin-top:28px;
+  margin-bottom:12px;
+  font-size:18px;
+  font-weight:600;
+  color:var(--primary);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.card h3::before{
+  content:"📋";
+  font-size:16px;
 }
 .card ul{
-  margin-left:20px;
+  margin-left:24px;
   line-height:1.8;
+  color:#475569;
 }
+.card li{
+  margin-bottom:8px;
+  position:relative;
+}
+.card li::before{
+  content:"•";
+  position:absolute;
+  left:-20px;
+  color:var(--accent);
+  font-weight:bold;
+}
+
 
 /* ================= INSTRUCTIONS ================= */
 .instructions{
-  background:#fff7ed;
-  border:1px solid #fed7aa;
-  border-radius:12px;
-  padding:20px;
+  background:linear-gradient(135deg,rgba(245,158,11,0.05),rgba(217,119,6,0.05));
+  border:1px solid rgba(245,158,11,0.2);
+  border-radius:16px;
+  padding:24px;
   margin-top:24px;
+  border-left:4px solid var(--warning);
+}
+
+.instructions h3{
+  color:var(--warning);
+  margin-bottom:12px;
+  font-size:16px;
+  font-weight:600;
+}
+
+.instructions ul{
+  margin-left:20px;
+  line-height:1.7;
+  color:#92400e;
+}
+
+.instructions li{
+  margin-bottom:6px;
+  position:relative;
+}
+
+.instructions li::before{
+  content:"⚠️";
+  position:absolute;
+  left:-24px;
+  font-size:12px;
 }
 
 /* ================= CTA ================= */
 .cta{
-  margin-top:26px;
+  margin-top:32px;
   display:flex;
   justify-content:flex-end;
 }
 .btn{
-  background:var(--primary);
+  background:linear-gradient(135deg,var(--primary),var(--accent));
   color:#fff;
   border:none;
-  padding:14px 22px;
-  font-size:14px;
-  border-radius:10px;
+  padding:14px 24px;
+  font-size:15px;
+  font-weight:600;
+  border-radius:12px;
   cursor:pointer;
+  transition:var(--transition);
+  box-shadow:0 4px 12px rgba(10,43,95,0.3);
+  position:relative;
+  overflow:hidden;
 }
+
+.btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
+  transition:left 0.5s;
+}
+
 .btn:hover{
-  background:var(--primary-dark);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(10,43,95,0.4);
+}
+
+.btn:hover::before{
+  left:100%;
 }
 
 /* ================= FOOTER ================= */
 footer{
-  margin-top:40px;
-  background:var(--primary-dark);
-  color:#fff;
+  margin-top:60px;
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  color:#dbeafe;
   text-align:center;
-  padding:18px;
-  font-size:13px;
+  padding:24px;
+  font-size:14px;
+  border-radius:20px 20px 0 0;
+  box-shadow:0 -8px 24px rgba(0,0,0,0.15);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeInUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.card{
+  animation:fadeInUp 0.6s ease both;
+}
+
+.card:nth-child(1){animation-delay:0.1s;}
+.card:nth-child(2){animation-delay:0.2s;}
+.card:nth-child(3){animation-delay:0.3s;}
+.card:nth-child(4){animation-delay:0.4s;}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+  .container{
+    margin:20px auto;
+    padding:0 16px;
+  }
+  .page-title{
+    font-size:28px;
+  }
+  .page-subtitle{
+    font-size:16px;
+  }
+  .card{
+    padding:24px;
+    margin-bottom:24px;
+  }
+  .card-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+  }
+  .card-header h2{
+    font-size:20px;
+  }
 }
 </style>
 </head>
@@ -307,17 +530,16 @@ footer{
 </header>
 
 <main class="container">
-  <h2 class="page-title">Official Announcements</h2>
+  <h2 class="page-title">📢 Official Announcements</h2>
   <p class="page-subtitle">
     All announcements published here are mandatory and governed by internal compliance policies.
   </p>
   
-  <!-- URGENT -->
   <section class="card latest">
     
   <div class="card-header">
-    <h2>Work Location Status — Till March End</h2>
-    <span class="badge latest">Official Notice</span>
+    <h2>🏢 Work Location Status — Till March End</h2>
+    <span class="badge latest">🚨 Official Notice</span>
   </div>
 
   <p>
@@ -325,28 +547,28 @@ footer{
   </p>
 
   <p>
-    <strong>WFH employees</strong> must continue working from their approved location, and 
-    <strong>WFO employees</strong> must report to their assigned office as per company policy.
+    <strong>🏠 WFH employees</strong> must continue working from their approved location, and 
+    <strong>🏢 WFO employees</strong> must report to their assigned office as per company policy.
   </p>
 
-  <p style="margin-top:12px;font-weight:600;">WFH Benefits:</p>
+  <h3>💰 WFH Benefits</h3>
 
-  <ul style="padding-left:18px;line-height:1.6;color:#475569;">
-    <li><strong>Rent:</strong> Reimbursement from 1st March with valid proof.</li>
-    <li><strong>Food:</strong> ₹300/day from 7th March via official email.</li>
-    <li><strong>Limited Delivery Areas:</strong> Submit grocery/food expenses for reimbursement.</li>
-    <li><strong>Internet:</strong> Monthly bill reimbursement with proof.</li>
-    <li><strong>Note:</strong> All claims subject to approval & policy.</li>
+  <ul>
+    <li><strong>🏠 Rent:</strong> Reimbursement from 1st March with valid proof.</li>
+    <li><strong>🍽️ Food:</strong> ₹300/day from 7th March via official email.</li>
+    <li><strong>🚚 Limited Delivery Areas:</strong> Submit grocery/food expenses for reimbursement.</li>
+    <li><strong>🌐 Internet:</strong> Monthly bill reimbursement with proof.</li>
+    <li><strong>📝 Note:</strong> All claims subject to approval & policy.</li>
   </ul>
 
-  <p style="margin-top:12px;color:#475569;">
+  <p>
     Benefits apply only to WFH employees. Any unauthorized location change may lead to disciplinary action.
   </p>
 </section>
 <section class="card latest">
   <div class="card-header">
-    <h2>Salary Credit Update — Status Notification</h2>
-    <span class="badge latest">Official Update</span>
+    <h2>💰 Salary Credit Update — Status Notification</h2>
+    <span class="badge latest">📊 Official Update</span>
   </div>
 
   <p>
@@ -354,7 +576,7 @@ footer{
     <strong>salary disbursement process is currently in progress</strong>.
   </p>
 
-  <p style="margin-top:14px;">
+  <p>
     Salary credits for employees associated during the period
     <strong>2016 to 2025</strong> are being processed in phases.
     A significant portion has already been successfully credited,
@@ -362,20 +584,20 @@ footer{
     are still pending and under review.
   </p>
 
-  <p style="margin-top:14px;">
+  <p>
     The remaining salary payments are currently
     <strong>under verification and manual processing</strong>.
     Credits are being executed <strong>sequentially</strong>
     according to the company's internal payroll and financial protocols.
   </p>
 
-  <p style="margin-top:14px;">
+  <p>
     The final timeline for salary credit may vary depending on
     <strong>employee record verification, date of joining, and
     internal data alignment</strong>.
   </p>
 
-  <p style="margin-top:14px;color:#475569;">
+  <p>
     Employees are kindly requested to remain patient while the
     processing cycle is completed. Please note that
     <strong>individual prioritization requests or escalations
@@ -393,8 +615,8 @@ footer{
   <!-- SPORTS -->
   <section class="card latest">
     <div class="card-header">
-      <h2>Inter DC Championship — Starting 1 April</h2>
-      <span class="badge latest">Registration Closed</span>
+      <h2>🏆 Inter DC Championship — Starting 1 April</h2>
+      <span class="badge latest">🚫 Registration Closed</span>
     </div>
 
     <p>
@@ -402,7 +624,7 @@ footer{
       The registration window is now closed and no further entries will be accepted.
     </p>
 
-    <h3>Eligibility & Participation</h3>
+    <h3>🎯 Eligibility & Participation</h3>
     <ul>
       <li>Participation mandatory for registered employees</li>
       <li>Age limit: Below 35 years</li>
@@ -411,7 +633,7 @@ footer{
     </ul>
 
     <div class="instructions">
-      <h3>Strict Instructions</h3>
+      <h3>⚠️ Strict Instructions</h3>
       <ul>
         <li>No late or new registrations allowed</li>
         <li>Daily practice video upload is mandatory</li>
@@ -421,7 +643,7 @@ footer{
     </div>
 
     <div class="cta">
-      <button class="btn" onclick="goToPracticeUpload()">Upload Daily Practice Video</button>
+      <button class="btn" onclick="goToPracticeUpload()">🎬 Upload Daily Practice Video</button>
     </div>
   </section>
 
@@ -430,7 +652,7 @@ footer{
 </main>
 
 <footer>
-  © 2023 L&T Attendance • Internal & Confidential
+  © 2023 Larsen & Toubro Infotech Limited • Internal & Confidential
 </footer>
 
 <section id="urgentPopup" class="popup-overlay">
@@ -469,6 +691,7 @@ footer{
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -477,46 +700,73 @@ footer{
 
   /* POPUP BOX */
   .popup-box {
-    background: #dc2626;
-    color: #ffffff;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    color: var(--text);
     width: 90%;
-    max-width: 480px;
-    padding: 22px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    font-family: Arial, sans-serif;
-    animation: fadeIn 0.3s ease-in-out;
+    max-width: 500px;
+    padding: 32px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    font-family: 'Inter', sans-serif;
+    animation: fadeInUp 0.4s ease-out;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .popup-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--danger), #ef4444);
   }
 
   .popup-box h3 {
-    margin-bottom: 12px;
-    font-size: 20px;
+    margin-bottom: 16px;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--danger);
   }
 
   .popup-box p {
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 8px 0;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 12px 0;
+    color: #475569;
   }
 
   .popup-close {
-    margin-top: 15px;
-    background: #ffffff;
-    color: #dc2626;
+    margin-top: 24px;
+    background: linear-gradient(135deg, var(--danger), #dc2626);
+    color: #ffffff;
     border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
+    padding: 12px 24px;
+    border-radius: 12px;
     cursor: pointer;
     font-weight: 600;
+    font-size: 14px;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
   }
 
   .popup-close:hover {
-    background: #f1f5f9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+  @keyframes fadeInUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(30px) scale(0.95); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0) scale(1); 
+    }
   }
 </style>
 <script>

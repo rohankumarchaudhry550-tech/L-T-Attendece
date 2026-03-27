@@ -8,14 +8,23 @@
 
 <style>
 :root{
- --primary:#0a2b5f;
-  --primary-dark:#071a3a;
-  --bg:#f4f6fb;
-  --card:#ffffff;
+  --primary:#0a2b5f;
+  --primary-dark:#081f45;
+  --accent:#2563eb;
+  --glass-bg:linear-gradient(135deg,rgba(255,255,255,0.95),rgba(248,250,252,0.9));
+  --glass-border:rgba(255,255,255,0.2);
   --text:#0f172a;
   --muted:#64748b;
   --danger:#dc2626;
   --success:#15803d;
+  --warning:#d97706;
+  --bg:#f4f6fb;
+  --card:#ffffff;
+  --border:#e5e7eb;
+  --radius:20px;
+  --shadow:0 20px 45px rgba(15,23,42,.12);
+  --shadow-hover:0 30px 60px rgba(15,23,42,.18);
+  --transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
 }
 
 *{
@@ -29,119 +38,245 @@ body{
   background:linear-gradient(135deg,#eef2ff,#f8fafc);
   min-height:100vh;
   color:var(--text);
+  overflow-x:hidden;
 }
 
 .container{
-  max-width:760px;
-  margin:auto;
-  padding:24px 14px 40px;
+  max-width:800px;
+  margin:40px auto;
+  padding:0 24px;
 }
 
 .card{
-  background:rgba(255,255,255,.97);
-  border-radius:22px;
-  padding:28px;
-  box-shadow:0 22px 44px rgba(15,23,42,.14);
+  background:var(--glass-bg);
+  border-radius:var(--radius);
+  padding:40px;
+  box-shadow:var(--shadow);
+  transition:var(--transition);
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(20px);
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:4px;
+  background:linear-gradient(90deg,var(--accent),#60a5fa);
+  opacity:0;
+  transition:opacity 0.3s ease;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-hover);
+}
+.card:hover::before{
+  opacity:1;
 }
 
 /* HEADER */
 .header{
   display:flex;
   align-items:center;
-  gap:12px;
-  margin-bottom:16px;
+  gap:16px;
+  margin-bottom:24px;
 }
 .back-btn{
   border:none;
-  background:#000000;
-  padding:10px 16px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  padding:12px 20px;
   border-radius:12px;
   font-size:14px;
+  font-weight:500;
   cursor:pointer;
+  transition:var(--transition);
+  box-shadow:0 4px 12px rgba(10,43,95,0.2);
 }
-.back-btn:hover{background:#222222;}
+.back-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(10,43,95,0.3);
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+}
 
 h1{
-  font-size:clamp(22px,5vw,30px);
+  font-size:clamp(24px,5vw,32px);
+  font-weight:700;
   color:var(--primary);
-  margin-bottom:8px;
+  margin-bottom:12px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
 }
 .subtitle{
-  font-size:15px;
+  font-size:16px;
   color:var(--muted);
   line-height:1.7;
-  margin-bottom:20px;
+  margin-bottom:24px;
 }
 
 /* ALERT */
 .alert-danger{
-  background:#fee2e2;
+  background:linear-gradient(135deg,rgba(220,38,38,0.05),rgba(239,68,68,0.05));
   border-left:6px solid var(--danger);
-  padding:16px;
-  border-radius:14px;
-  font-size:14.5px;
+  padding:20px;
+  border-radius:16px;
+  font-size:15px;
   line-height:1.6;
   color:#7f1d1d;
-  margin-bottom:22px;
+  margin-bottom:32px;
+  border:1px solid rgba(220,38,38,0.1);
+  position:relative;
+}
+.alert-danger::before{
+  content:"⚠️";
+  position:absolute;
+  top:20px;
+  right:20px;
+  font-size:20px;
 }
 
 /* FORM */
 .form-group{
-  margin-top:18px;
+  margin-top:24px;
 }
 label{
-  font-size:14.5px;
+  font-size:15px;
   font-weight:600;
+  color:var(--text);
+  margin-bottom:8px;
+  display:block;
 }
 input, textarea{
   width:100%;
-  margin-top:6px;
-  padding:14px;
+  margin-top:8px;
+  padding:16px 18px;
   font-size:15px;
   border-radius:12px;
-  border:1px solid var(--border);
+  border:2px solid rgba(255,255,255,0.3);
+  background:linear-gradient(135deg,rgba(255,255,255,0.8),rgba(248,250,252,0.9));
+  color:var(--text);
+  transition:var(--transition);
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 input:focus, textarea:focus{
   outline:none;
-  border-color:var(--primary);
+  border-color:var(--accent);
+  background:var(--card);
+  box-shadow:0 0 0 4px rgba(37,99,235,0.1), 0 8px 20px rgba(0,0,0,0.1);
+  transform:translateY(-2px);
 }
 
 /* FILE UPLOAD */
 .file-box{
-  margin-top:10px;
-  padding:18px;
+  margin-top:12px;
+  padding:24px;
   border-radius:16px;
-  border:2px dashed var(--border);
-  background:#f8fafc;
+  border:2px dashed rgba(37,99,235,0.3);
+  background:linear-gradient(135deg,rgba(37,99,235,0.02),rgba(96,165,250,0.02));
   text-align:center;
-  font-size:14.5px;
+  font-size:15px;
   color:var(--muted);
+  transition:var(--transition);
+  position:relative;
+  overflow:hidden;
+}
+.file-box::before{
+  content:"📹";
+  font-size:32px;
+  display:block;
+  margin-bottom:8px;
+  color:var(--accent);
+}
+.file-box:hover{
+  border-color:var(--accent);
+  background:linear-gradient(135deg,rgba(37,99,235,0.05),rgba(96,165,250,0.05));
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(37,99,235,0.1);
 }
 .file-box input{
-  margin-top:10px;
+  margin-top:12px;
+  opacity:0;
+  position:absolute;
+  width:100%;
+  height:100%;
+  cursor:pointer;
 }
 
 /* ACTION */
-button{
-  margin-top:26px;
+button[type="submit"]{
+  margin-top:32px;
   width:100%;
-  padding:16px;
+  padding:18px;
   border-radius:16px;
   font-size:16px;
-  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  font-weight:600;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
   color:#fff;
   border:none;
   cursor:pointer;
-  transition:.25s ease;
+  transition:var(--transition);
+  box-shadow:0 10px 25px rgba(10,43,95,0.3);
+  position:relative;
+  overflow:hidden;
 }
-button:hover{
+
+button[type="submit"]::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
+  transition:left 0.5s;
+}
+
+button[type="submit"]:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 35px rgba(10,43,95,0.4);
+}
+
+button[type="submit"]:hover::before{
+  left:100%;
+}
+
+button[type="submit"]:active{
   transform:translateY(-1px);
-  box-shadow:0 14px 26px rgba(11,94,215,.25);
+}
+
+/* ANIMATIONS */
+@keyframes fadeInUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.card{
+  animation:fadeInUp 0.6s ease both;
 }
 
 /* MOBILE */
 @media(max-width:480px){
-  .card{padding:22px;}
+  .container{
+    margin:20px auto;
+    padding:0 16px;
+  }
+  .card{
+    padding:24px;
+  }
+  h1{
+    font-size:24px;
+  }
 }
 </style>
 </head>
@@ -157,14 +292,14 @@ button:hover{
       </button>
     </div>
 
-    <h1>Daily Practice Upload</h1>
+    <h1>🎥 Daily Practice Upload</h1>
     <p class="subtitle">
       Upload your <strong>minimum 2-minute continuous practice video</strong>
       every working day to mark attendance.
     </p>
 
     <div class="alert-danger">
-      <strong>Compliance Notice</strong><br>
+      <strong>🚨 Compliance Notice</strong><br>
       Failure to upload today’s practice video will result in the day being
       marked as <strong>NON-WORKING DAY</strong>. No exceptions.
     </div>
@@ -172,12 +307,12 @@ button:hover{
     <form onsubmit="submitVideo(event)">
 
       <div class="form-group">
-        <label>Practice Date</label>
+        <label>📅 Practice Date</label>
         <input type="date" required />
       </div>
 
       <div class="form-group">
-        <label>Practice Video (Minimum 2 Minutes)</label>
+        <label>🎬 Practice Video (Minimum 2 Minutes)</label>
         <div class="file-box">
           <strong>Upload Video File</strong><br>
           Supported formats: MP4, MOV, AVI
@@ -186,12 +321,12 @@ button:hover{
       </div>
 
       <div class="form-group">
-        <label>Remarks (Optional)</label>
+        <label>💬 Remarks (Optional)</label>
         <textarea rows="3" placeholder="Any notes or comments (optional)"></textarea>
       </div>
 
       <button type="submit">
-        Upload Video & Mark Attendance
+        🚀 Upload Video & Mark Attendance
       </button>
 
     </form>
