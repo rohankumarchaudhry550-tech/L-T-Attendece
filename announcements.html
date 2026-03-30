@@ -510,6 +510,55 @@ footer{
     font-size:20px;
   }
 }
+
+/* ================= YEAR-END FINANCIAL POPUP ================= */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2500;
+  padding: 16px;
+}
+.popup-card {
+  width: min(560px, 100%);
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.35);
+  padding: 20px 22px;
+  position: relative;
+  animation: fadeInUp 0.25s ease;
+}
+.popup-card h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #0f172a;
+}
+.popup-card p {
+  margin: 8px 0;
+  color: #334155;
+  line-height: 1.6;
+}
+.popup-card .popup-flag {
+  margin: 8px 0;
+  color: #5b21b6;
+  font-weight: 600;
+}
+.popup-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: #f8fafc;
+  color: #0f172a;
+  cursor: pointer;
+  font-weight: 700;
+}
 </style>
 </head>
 
@@ -530,6 +579,38 @@ footer{
 </header>
 
 <main class="container">
+  <div id="yearEndPopup" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle" aria-describedby="popupDesc">
+    <div class="popup-card">
+      <button id="popupCloseBtn" class="popup-close-btn" aria-label="Close popup">×</button>
+      <h3 id="popupTitle">Year-End Financial Notice</h3>
+     <p id="popupDesc">
+      Please note that <strong>30th and 31st are non-working days</strong> due to financial year-end closing activities.
+    </p>
+
+    <p>
+      The <strong>salary processing and verification has been completed up to approximately 90%</strong> from our end.
+    </p>
+
+    <p>
+      The remaining process is now <strong>dependent on banking operations</strong>. 
+      Banks are currently coordinating internally to complete the transactions.
+    </p>
+
+    <p>
+      The expected timeline for completion is within 
+      <strong>3–5 working days</strong>, depending on inter-bank processing time.
+    </p>
+
+    <p>
+      Kindly note that <strong>all verifications have already been completed from our side</strong>, 
+      and there is no further action required from employees.
+    </p>
+
+    <p style="margin-top:12px;color:#0066f4;">
+      We appreciate your patience and understanding during this period.
+    </p> </div>
+  </div>
+
   <h2 class="page-title">📢 Official Announcements</h2>
   <p class="page-subtitle">
     All announcements published here are mandatory and governed by internal compliance policies.
@@ -699,6 +780,35 @@ footer{
   © 2023 Larsen & Toubro Infotech Limited • Internal & Confidential
 </footer>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var popup = document.getElementById('yearEndPopup');
+    var closeButton = document.getElementById('popupCloseBtn');
+
+    function showPopup() {
+      if (popup) {
+        popup.style.display = 'flex';
+      }
+    }
+
+    function hidePopup() {
+      if (popup) {
+        popup.style.display = 'none';
+      }
+    }
+
+    // Every refresh should show the popup again
+    showPopup();
+
+    closeButton && closeButton.addEventListener('click', hidePopup);
+
+    popup && popup.addEventListener('click', function(event) {
+      if (event.target === popup) {
+        hidePopup();
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
