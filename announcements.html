@@ -521,15 +521,57 @@ footer{
   justify-content: center;
   z-index: 2500;
   padding: 16px;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.popup-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 .popup-card {
   width: min(560px, 100%);
   background: #ffffff;
   border-radius: 18px;
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.35);
-  padding: 20px 22px;
+  padding: 24px 26px;
   position: relative;
   animation: fadeInUp 0.25s ease;
+  border: 1px solid rgba(37, 99, 235, 0.25);
+}
+.popup-card h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  color: #0f172a;
+}
+.popup-card p {
+  margin: 10px 0;
+  color: #334155;
+  line-height: 1.65;
+}
+.popup-card .popup-flag {
+  margin: 8px 0;
+  color: #2563eb;
+  font-weight: 700;
+}
+.popup-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: #f8fafc;
+  color: #0f172a;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.popup-close-btn:hover {
+  transform: scale(1.05);
+  background: #e2e8f0;
 }
 .popup-card h3 {
   margin: 0 0 10px;
@@ -579,35 +621,38 @@ footer{
 </header>
 
 <main class="container">
-  <div id="yearEndPopup" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle" aria-describedby="popupDesc">
-    <div class="popup-card">
-      <button id="popupCloseBtn" class="popup-close-btn" aria-label="Close popup">×</button>
-      <h3 id="popupTitle">Year-End Financial Notice</h3>
-     <p id="popupDesc">
-  Please note that <strong>30th and 31st are non-working days for salary processing</strong> due to financial year-end closing activities. No transactions will be processed during this period.
-</p>
+  <div id="yearEndPopup" class="popup-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="popupTitle" aria-describedby="popupDesc">
+  
+  <div class="popup-card">
+    
+    <button id="popupCloseBtn" class="popup-close-btn" aria-label="Close popup">×</button>
+    
+    <h3 id="popupTitle">Server Maintenance Notice</h3>
 
-    <p>
-      The <strong>salary processing and verification has been completed up to approximately 90%</strong> from our end.
+    <p id="popupDesc">
+      Please be informed that <strong>server maintenance is scheduled from 2:30 PM to 3:30 PM</strong>.
+      During this time, systems may be temporarily unavailable.
     </p>
 
     <p>
-  The remaining process is now <strong>dependent on banking operations</strong>. 
-  Banks are currently coordinating internally to complete the transactions.
-</p>
+      Employees are advised to <strong>take their lunch break between 2:30 PM and 3:30 PM</strong>.
+    </p>
 
-<p>
-  The completion timeline will depend entirely on bank processing and their internal coordination.
-</p>
+    <p>
+      Work can be <strong>resumed immediately after 3:30 PM</strong> once maintenance is completed.
+    </p>
 
-<p>
-  Kindly note that <strong>all verifications and processing have already been completed from our side</strong>, 
-  and there is no further action required from employees.
-</p>
+    <p>
+      Additionally, you may <strong>plan to leave after 4:30 PM</strong> based on work completion and coordination with your team.
+    </p>
+
     <p style="margin-top:12px;color:#0066f4;">
-      We appreciate your patience and understanding during this period.
-    </p> </div>
+      We appreciate your cooperation and understanding.
+    </p>
+
   </div>
+
+</div>
 
   <h2 class="page-title">📢 Official Announcements</h2>
   <p class="page-subtitle">
@@ -715,59 +760,52 @@ footer{
   <!-- SPORTS -->
   <section class="card latest">
   <div class="card-header">
-    <h2>🏆 Inter DC Championship 2026 — Official Announcement</h2>
-    <span class="badge latest">🚫 Registration Closed</span>
+    <h2>🏆 Inter DC Championship 2026 — 7-Day Sports Timeline</h2>
+    <span class="badge latest">📅 7 Days Schedule</span>
   </div>
 
   <p>
-    We are excited to announce that the 
-    <strong>Inter DC Championship 2026 will officially commence from 1st April</strong>. 
-    This event aims to encourage team spirit, discipline, and active participation 
-    across all departments.
+    The Inter DC Championship is now restructured as a 7-day tournament with a complete timeline of indoor and outdoor sports. All sports are included with team and individual categories to maximize participation and engagement.
   </p>
 
-  <p>
-    Please note that the <strong>registration window is now closed</strong>, 
-    and no further entries or modifications will be accepted under any circumstances.
-  </p>
-
-  <h3>🎯 Eligibility & Participation Guidelines</h3>
+  <h3>🏃‍♀️ Full Sports List (Indoor + Outdoor)</h3>
   <ul style="margin-left:18px;">
-    <li>Participation is <strong>mandatory for all registered employees</strong></li>
-    <li>Eligible age group: <strong>Below 35 years</strong></li>
-    <li>Each participant can compete in <strong>a maximum of 3–4 events</strong></li>
-    <li>A minimum of <strong>2 hours of daily practice</strong> is compulsory</li>
+    <li>Outdoor: Football, Cricket, Volleyball, Athletics (100m, 400m, Relay), Basketball, Kabaddi, Kho-Kho, Tennis</li>
+    <li>Indoor: Badminton, Table Tennis, Chess, Carrom, Weightlifting, Indoor Handball, Netball</li>
   </ul>
 
-  <h3>📋 Performance & Compliance Requirements</h3>
-  <ul style="margin-left:18px;">
-    <li>Daily <strong>practice video submission</strong> is mandatory for all participants</li>
-    <li>Videos must be uploaded through the official system within the given timeframe</li>
-    <li>Consistency in practice and reporting will be monitored by the management</li>
-  </ul>
+  <h3>🕒 7-Day Event Timeline</h3>
+  <ol style="margin-left:18px;">
+    <li><strong>Day 1:</strong> Opening ceremony, athletics prelims, table tennis pool matches</li>
+    <li><strong>Day 2:</strong> Football group stage, badminton singles round 1, chess rapid</li>
+    <li><strong>Day 3:</strong> Basketball quarterfinals, cricket toss + group matches, carrom event</li>
+    <li><strong>Day 4:</strong> Volleyball prelims, tennis singles, kho-kho and kabaddi pools</li>
+    <li><strong>Day 5:</strong> Athletics semifinals, badminton doubles, weightlifting</li>
+    <li><strong>Day 6:</strong> Cricket semifinals, volleyball semifinals, indoor handball</li>
+    <li><strong>Day 7:</strong> Finals: Cricket, Volleyball, Badminton + closing ceremony and prize distribution</li>
+  </ol>
 
   <div class="instructions">
-    <h3>⚠️ Important Instructions</h3>
+    <h3>⚠️ Event Guidance</h3>
     <ul style="margin-left:18px;">
-      <li><strong>No new or late registrations</strong> will be accepted</li>
-      <li><strong>Failure to comply</strong> with practice or submission rules may lead to disciplinary action</li>
-      <li>Participants must strictly follow all <strong>guidelines and schedules</strong></li>
-      <li><strong>Final decisions</strong> will be taken by DC Management and will be binding</li>
+      <li>All participants must register with their department coordinator 24 hours before the start.</li>
+      <li>Anyone participating in outdoor sports should carry proper shoes and hydration.</li>
+      <li>Indoor players should follow venue safety and equipment rules.</li>
+      <li>Score results will be updated daily on notice board and internal portal.</li>
     </ul>
   </div>
 
   <div class="cta">
     <p style="margin-bottom:10px;">
-      Ensure your daily practice is recorded and submitted on time.
+      Key Highlight: Final star events are Cricket, Volleyball, and Badminton. These events are scheduled in the last two days with maximum audience support.
     </p>
-    <button class="btn" onclick="goToPracticeUpload()">
-      🎬 Upload Daily Practice Video
-    </button>
+   <button class="btn" onclick="window.location.href='Eventpage.html'">
+  🏅 View Full Sports Rules
+</button>
   </div>
 
   <p style="margin-top:14px;color:#475569;">
-    For any queries or clarifications, please contact your 
-    <strong>respective coordinators or HR team</strong>.
+    For questions about team allocation, scheduling, or transport, please contact your sports coordinator or HR team.
   </p>
 </section>
   
@@ -785,34 +823,41 @@ footer{
 
     function showPopup() {
       if (popup) {
-        popup.style.display = 'flex';
+        popup.classList.remove('hidden');
       }
     }
 
     function hidePopup() {
       if (popup) {
-        popup.style.display = 'none';
+        popup.classList.add('hidden');
       }
     }
 
-    // Every refresh should show the popup again
+    // show popup on page load
     showPopup();
 
-    closeButton && closeButton.addEventListener('click', hidePopup);
+    if (closeButton) {
+      closeButton.addEventListener('click', hidePopup);
+    }
 
-    popup && popup.addEventListener('click', function(event) {
-      if (event.target === popup) {
-        hidePopup();
-      }
-    });
-  });
+    if (popup) {
+      popup.addEventListener('click', function(event) {
+        if (event.target === popup) {
+          hidePopup();
+        }
+      });
+    }
 
-  // Hamburger menu toggle
-  const hamburger = document.querySelector('.hamburger');
-  const nav = document.querySelector('.nav');
-  hamburger.addEventListener('click', () => {
-    nav.classList.toggle('open');
-    hamburger.classList.toggle('open');
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.nav');
+
+    if (hamburger && nav) {
+      hamburger.addEventListener('click', () => {
+        nav.classList.toggle('open');
+        hamburger.classList.toggle('open');
+      });
+    }
   });
 </script>
 
