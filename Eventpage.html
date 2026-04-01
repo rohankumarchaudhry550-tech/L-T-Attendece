@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <link rel="icon" href="favicon.png" type="image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Daily Practice Upload | Inter DC Championship</title>
+<title>L and T Infotech - Inter DC Championship</title>
 
 <style>
 :root{
@@ -31,14 +31,49 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  font-family: 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, system-ui, Arial, sans-serif;
 }
 
 body{
-  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%),
+    linear-gradient(135deg, #eef2ff 0%, #f8fafc 50%, #e0e7ff 100%);
   min-height:100vh;
   color:var(--text);
   overflow-x:hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+  animation: backgroundFloat 20s ease-in-out infinite;
+}
+
+@keyframes backgroundFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-20px) rotate(1deg); }
+  66% { transform: translateY(10px) rotate(-1deg); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
 }
 
 .container{
@@ -48,16 +83,22 @@ body{
 }
 
 .card{
-  background:var(--glass-bg);
-  border-radius:var(--radius);
+  background: 
+    linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.9) 100%),
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2) 0%, transparent 70%);
+  border-radius: var(--radius);
   padding:40px;
-  box-shadow:var(--shadow);
-  transition:var(--transition);
-  border:1px solid var(--glass-border);
-  backdrop-filter:blur(20px);
+  box-shadow: 
+    0 20px 45px rgba(15,23,42,.12),
+    0 10px 25px rgba(15,23,42,.08),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  transition: var(--transition);
+  border: 1px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(20px);
   position:relative;
   overflow:hidden;
 }
+
 .card::before{
   content:"";
   position:absolute;
@@ -65,16 +106,44 @@ body{
   left:0;
   right:0;
   height:4px;
-  background:linear-gradient(90deg,var(--accent),#60a5fa);
+  background:linear-gradient(90deg,var(--accent),#60a5fa, #a78bfa);
   opacity:0;
   transition:opacity 0.3s ease;
 }
-.card:hover{
-  transform:translateY(-4px);
-  box-shadow:var(--shadow-hover);
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
 }
+
+.card:hover{
+  transform:translateY(-8px) rotateX(2deg);
+  box-shadow: 
+    0 30px 60px rgba(15,23,42,.18),
+    0 15px 35px rgba(15,23,42,.12),
+    0 5px 15px rgba(15,23,42,.08);
+}
+
 .card:hover::before{
   opacity:1;
+}
+
+.card:hover::after {
+  opacity: 1;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* HEADER */
@@ -89,39 +158,73 @@ body{
   background:linear-gradient(135deg,var(--primary),var(--primary-dark));
   color:#fff;
   padding:12px 20px;
-  border-radius:12px;
+  border-radius:50px;
   font-size:14px;
   font-weight:500;
   cursor:pointer;
-  transition:var(--transition);
+  transition: var(--transition);
   box-shadow:0 4px 12px rgba(10,43,95,0.2);
+  position: relative;
+  overflow: hidden;
 }
+
+.back-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.back-btn:hover::before {
+  left: 100%;
+}
+
 .back-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(10,43,95,0.3);
-  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  transform:translateY(-3px) scale(1.06);
+  box-shadow: 0 10px 30px rgba(10,43,95,0.35);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
 }
 
 h1{
-  font-size:clamp(24px,5vw,32px);
-  font-weight:700;
-  color:var(--primary);
-  margin-bottom:12px;
-  background:linear-gradient(135deg,var(--primary),var(--accent));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
+  font-size: clamp(32px, 7vw, 48px);
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #0a2b5f 0%, #2563eb 50%, #0a2b5f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleGlow 3s ease-in-out infinite;
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+@keyframes titleGlow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(37,99,235,0.3)); }
+  50% { filter: drop-shadow(0 0 15px rgba(37,99,235,0.5)); }
 }
 .subtitle{
-  font-size:16px;
-  color:var(--muted);
-  line-height:1.7;
-  margin-bottom:24px;
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 32px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  background: linear-gradient(135deg, var(--muted), var(--text));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 /* ALERT */
 .alert-danger{
-  background:linear-gradient(135deg,rgba(220,38,38,0.05),rgba(239,68,68,0.05));
+  background: 
+    linear-gradient(135deg, rgba(220,38,38,0.05) 0%, rgba(239,68,68,0.05) 100%),
+    radial-gradient(circle at 20% 20%, rgba(220,38,38,0.1) 0%, transparent 70%);
   border-left:6px solid var(--danger);
   padding:20px;
   border-radius:16px;
@@ -131,13 +234,21 @@ h1{
   margin-bottom:32px;
   border:1px solid rgba(220,38,38,0.1);
   position:relative;
+  box-shadow: 0 4px 15px rgba(220,38,38,0.1);
 }
+
 .alert-danger::before{
   content:"⚠️";
   position:absolute;
   top:20px;
   right:20px;
   font-size:20px;
+  animation: alertPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes alertPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 
 /* FORM */
@@ -145,23 +256,27 @@ h1{
   margin-top:24px;
 }
 label{
-  font-size:15px;
-  font-weight:600;
-  color:var(--text);
-  margin-bottom:8px;
-  display:block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  display: block;
+  letter-spacing: 0.3px;
+  font-family: 'Segoe UI', sans-serif;
 }
+
 input, textarea{
   width:100%;
   margin-top:8px;
   padding:16px 18px;
-  font-size:15px;
+  font-size: 15px;
   border-radius:12px;
   border:2px solid rgba(255,255,255,0.3);
   background:linear-gradient(135deg,rgba(255,255,255,0.8),rgba(248,250,252,0.9));
   color:var(--text);
   transition:var(--transition);
   box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  font-family: 'Segoe UI', sans-serif;
 }
 input:focus, textarea:focus{
   outline:none;
@@ -212,17 +327,19 @@ button[type="submit"]{
   margin-top:32px;
   width:100%;
   padding:18px;
-  border-radius:16px;
+  border-radius:50px;
   font-size:16px;
   font-weight:600;
   background:linear-gradient(135deg,var(--primary),var(--accent));
   color:#fff;
   border:none;
   cursor:pointer;
-  transition:var(--transition);
+  transition: var(--transition);
   box-shadow:0 10px 25px rgba(10,43,95,0.3);
   position:relative;
   overflow:hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 button[type="submit"]::before{
@@ -234,6 +351,24 @@ button[type="submit"]::before{
   height:100%;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
   transition:left 0.5s;
+}
+
+button[type="submit"]::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button[type="submit"]:hover::after {
+  width: 300px;
+  height: 300px;
 }
 
 button[type="submit"]:hover{
@@ -261,21 +396,477 @@ button[type="submit"]:active{
   }
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .card{
   animation:fadeInUp 0.6s ease both;
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.section-title {
+  animation: bounceIn 0.8s ease both, float 3s ease-in-out infinite;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 800;
+  padding: 1.8rem 2.2rem;
+  margin-bottom: 3rem;
+  border-radius: 1.5rem;
+  position: relative;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  letter-spacing: -0.3px;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: inherit;
+  opacity: 0.9;
+  z-index: -1;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+  filter: blur(1px);
+}
+
+.section-title:hover::before {
+  transform: scale(1.02);
+  filter: blur(0px);
+}
+
+.section-title:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+.section-title:nth-of-type(1) { animation-delay: 0s; }
+.section-title:nth-of-type(2) { animation-delay: 0.2s; }
+.section-title:nth-of-type(3) { animation-delay: 0.4s; }
+.section-title:nth-of-type(4) { animation-delay: 0.6s; }
+.section-title:nth-of-type(5) { animation-delay: 0.8s; }
+.section-title:nth-of-type(6) { animation-delay: 1s; }
+
+.day-block {
+  animation: fadeInUp 0.6s ease both;
+}
+
+.day-block:nth-child(odd) .day-card {
+  background: linear-gradient(135deg, #f9fafb, #f1f5f9);
+}
+
+.day-block:nth-child(even) .day-card {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+}
+
+/* Enhanced UI */
+.day-card {
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.2rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 
+    0 4px 15px rgba(0,0,0,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  background-size: 200% 200%;
+}
+
+.day-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  transition: left 0.6s ease;
+}
+
+.day-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.1), transparent 80%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.day-card:hover::before {
+  left: 100%;
+}
+
+.day-card:hover::after {
+  opacity: 1;
+}
+
+.day-card:hover {
+  transform: translateY(-10px) scale(1.04) rotateX(6deg);
+  box-shadow: 
+    0 25px 50px rgba(0,0,0,0.2),
+    0 15px 30px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+  background-color: rgba(255,255,255,0.95);
+}
+
+.day-card li {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  padding: 0.8rem 0;
+  font-weight: 500;
+  line-height: 1.8;
+  font-size: 15px;
+  font-family: 'Segoe UI', sans-serif;
+  letter-spacing: 0.2px;
+}
+
+.day-card:hover li {
+  color: var(--primary);
+  transform: translateX(12px);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.day-card li::before {
+  content: '✦';
+  color: var(--accent);
+  margin-right: 0.8rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transform: scale(0.8);
+}
+
+.day-card:hover li::before {
+  opacity: 1;
+  transform: scale(1) rotate(90deg);
+}
+
+.final-week {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 30%, #fcd34d 60%, #f59e0b 100%),
+              radial-gradient(circle at 30% 30%, rgba(251, 191, 36, 0.15) 0%, transparent 60%);
+  border: 2.5px solid #f59e0b;
+  border-radius: 1.5rem;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(245, 158, 11, 0.35),
+              0 0 40px rgba(251, 191, 36, 0.25) inset,
+              0 0 0 1px rgba(255,255,255,0.4) inset;
+  position: relative;
+  animation: fadeInUp 1s ease both, pulse 2s infinite;
+  animation-delay: 0.5s;
+}
+
+.final-week::after {
+  content: '✨';
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  opacity: 0.8;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4), 0 20px 50px rgba(245, 158, 11, 0.35), 0 0 40px rgba(251, 191, 36, 0.25) inset;
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(245, 158, 11, 0), 0 20px 50px rgba(245, 158, 11, 0.35), 0 0 40px rgba(251, 191, 36, 0.25) inset;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0), 0 20px 50px rgba(245, 158, 11, 0.35), 0 0 40px rgba(251, 191, 36, 0.25) inset;
+  }
+}
+
+/* Sport specific colors */
+.soccer {
+  border-left: 4px solid #2563eb;
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.1), transparent);
+}
+
+.basketball {
+  border-left: 4px solid #ea580c;
+  background: linear-gradient(90deg, rgba(234, 88, 12, 0.1), transparent);
+}
+
+.table-tennis {
+  border-left: 4px solid #7c3aed;
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.1), transparent);
+}
+
+.badminton {
+  border-left: 4px solid #fbbf24;
+  background: linear-gradient(90deg, rgba(251, 191, 36, 0.1), transparent);
+}
+
+.cricket {
+  border-left: 4px solid #16a34a;
+  background: linear-gradient(90deg, rgba(22, 163, 74, 0.1), transparent);
+}
+
+.volleyball {
+  border-left: 4px solid #dc2626;
+  background: linear-gradient(90deg, rgba(220, 38, 38, 0.1), transparent);
+}
+
+/* Final Week Timeline Nodes */
+.final-week .day-block::before {
+  background: #f59e0b !important;
+  border: 3px solid #fbbf24 !important;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.8) !important;
+  animation: nodePulseFinal 1.5s ease-in-out infinite !important;
+}
+
+@keyframes nodePulseFinal {
+  0%, 100% { 
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.8), 0 0 0 0 rgba(245, 158, 11, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 25px rgba(245, 158, 11, 1), 0 0 0 8px rgba(245, 158, 11, 0);
+  }
+}
+
+/* Better representation */
+.day-card strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.day-card ul {
+  padding-left: 20px;
+}
+
+.day-card li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
 /* MOBILE */
-@media(max-width:480px){
+@media(max-width:768px){
   .container{
     margin:20px auto;
     padding:0 16px;
   }
   .card{
-    padding:24px;
+    padding:20px;
+  }
+  .section-title {
+    font-size: 1.5rem;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+    letter-spacing: 0px;
+  }
+  .event-wrapper {
+    padding: 18px;
+    margin: 20px 0;
+  }
+  .event-wrapper::before {
+    left: 35px;
+  }
+  .day-block {
+    margin-left: 60px;
+  }
+  .day-block::before {
+    left: -28px;
+    width: 18px;
+    height: 18px;
+  }
+  .day-block::after {
+    left: -23px;
+  }
+  .final-week .day-block::before {
+    width: 18px;
+    height: 18px;
+  }
+  .final-week::after {
+    font-size: 20px;
+    top: 12px;
+    right: 15px;
   }
   h1{
-    font-size:24px;
+    font-size:28px;
+  }
+  .event-back-btn {
+    padding: 11px 20px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+  .event-title {
+    font-size: 20px;
+  }
+  .event-subtitle {
+    font-size: 13px;
+  }
+  .day-card {
+    padding: 14px;
+  }
+  .day-card li {
+    font-size: 14px;
+    padding: 0.6rem 0;
+  }
+  .day-card:hover {
+    transform: translateY(-6px) scale(1.02);
+  }
+  .day-date {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  .final-week {
+    padding: 20px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 30%, #fcd34d 60%, #f59e0b 100%);
+  }
+  
+  .final-week::after {
+    font-size: 20px;
+    top: 12px;
+    right: 15px;
+  }
+  
+  .final-week .day-block::before {
+    width: 18px;
+    height: 18px;
+  }
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+}
+
+@media(max-width:480px){
+  .section-title {
+    font-size: 1.25rem;
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .event-wrapper {
+    padding: 14px;
+  }
+  .event-wrapper::before {
+    left: 25px;
+  }
+  .day-block {
+    margin-left: 45px;
+  }
+  .day-block::before {
+    left: -23px;
+    width: 14px;
+    height: 14px;
+    border-width: 3px;
+  }
+  .day-block::after {
+    left: -18px;
+    width: 6px;
+  }
+  .card {
+    padding: 14px;
+  }
+  .day-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+  .section-title:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+  .day-card li::before {
+    margin-right: 0.4rem;
+  }
+  .event-topbar {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+  .event-back-btn {
+    width: 100%;
+    text-align: center;
+    padding: 13px 14px;
+    font-size: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    max-width: 100%;
+  }
+  .event-title {
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.4rem;
+  }
+  .event-subtitle {
+    font-size: 11px;
+    text-align: center;
+    margin-top: 0.2rem;
+  }
+  h1{
+    font-size: 22px;
+  }
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .day-card li {
+    font-size: 13px;
+    padding: 0.5rem 0;
+  }
+  .container {
+    max-width: 100%;
+  }
+  .final-week {
+    padding: 16px;
+    margin-top: 1.5rem;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 30%, #fcd34d 60%, #f59e0b 100%);
+  }
+  .final-week .day-block::before {
+    width: 14px;
+    height: 14px;
+    background: #f59e0b !important;
+    border: 2px solid #fbbf24 !important;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.8) !important;
+  }
+  .final-week::after {
+    font-size: 18px;
+    top: 10px;
+    right: 12px;
   }
 }
 </style>
@@ -285,53 +876,259 @@ button[type="submit"]:active{
 
 <style>
 .event-wrapper {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 24px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  background: 
+    linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.97)),
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2), transparent 50%);
+  border-radius: 2rem;
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 
+    0 20px 60px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.5);
   font-family: "Segoe UI", sans-serif;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.event-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 50px;
+  top: 100px;
+  bottom: 100px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--primary), var(--accent));
+  z-index: 0;
+  animation: timelineGlow 3s ease-in-out infinite;
+}
+
+@keyframes timelineGlow {
+  0%, 100% { opacity: 0.5; box-shadow: 0 0 10px rgba(37, 99, 235, 0.3); }
+  50% { opacity: 1; box-shadow: 0 0 20px rgba(37, 99, 235, 0.6); }
+}
+
+.day-block {
+  position: relative;
+  margin-left: 80px;
+  margin-bottom: 2rem;
+}
+
+.day-block::before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+  z-index: 1;
+}
+
+.day-block::after {
+  content: '';
+  position: absolute;
+  left: -35px;
+  top: 35px;
+  width: 10px;
+  height: 2px;
+  background: var(--accent);
+  z-index: 1;
 }
 
 .event-topbar {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 16px;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+  gap: 1rem;
 }
 
 .event-back-btn {
-  background: #2563eb;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
   color: white;
   border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 50px;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.event-back-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.event-back-btn:hover::before {
+  left: 100%;
+}
+
+.event-back-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5);
 }
 
 .event-title {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: clamp(22px, 6vw, 32px);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.7px;
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  line-height: 1.2;
+}
+
+.event-subtitle {
+  font-size: clamp(13px, 3vw, 16px);
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: 0.5rem;
+  font-family: 'Segoe UI', sans-serif;
+  text-transform: uppercase;
 }
 
 /* SECTION */
 .section-title {
-  margin-top: 18px;
-  margin-bottom: 10px;
-  font-weight: 700;
-  font-size: 16px;
-  color: #0f172a;
+  animation: bounceIn 0.8s ease both, float 3s ease-in-out infinite;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 800;
+  padding: 1.8rem 2.2rem;
+  margin-bottom: 3rem;
+  border-radius: 1.5rem;
+  position: relative;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  letter-spacing: -0.3px;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: inherit;
+  opacity: 0.9;
+  z-index: -1;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+  filter: blur(1px);
+}
+
+.section-title:hover::before {
+  transform: scale(1.02);
+  filter: blur(0px);
+}
+
+.section-title:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.4);
 }
 
 /* DAY */
 .day-block {
-  margin-bottom: 12px;
+  position: relative;
+  margin-left: 80px;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.day-block::before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+  z-index: 1;
+  animation: nodePulse 2s ease-in-out infinite;
+}
+
+@keyframes nodePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2); }
+  50% { transform: scale(1.2); box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+}
+
+.day-block::after {
+  content: '';
+  position: absolute;
+  left: -35px;
+  top: 35px;
+  width: 10px;
+  height: 2px;
+  background: var(--accent);
+  z-index: 1;
+}
+
+.final-week .day-block::before {
+  background: #f59e0b;
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2);
+}
+
+@keyframes nodePulseFinal {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.3); }
+  50% { transform: scale(1.3); box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+}
+
+.final-week .day-block::before {
+  animation: nodePulseFinal 1.5s ease-in-out infinite;
 }
 
 .day-date {
-  font-size: 13px;
-  font-weight: 600;
+  font-size: clamp(12px, 3vw, 13px);
+  font-weight: 700;
   color: #2563eb;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  padding-bottom: 4px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.day-date::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #2563eb, transparent);
+  border-radius: 1px;
 }
 
 .day-card {
@@ -348,24 +1145,56 @@ button[type="submit"]:active{
 
 /* FINAL WEEK */
 .final-week {
-  background: #f0fdf4;
-  border: 2px solid #22c55e;
-  border-radius: 12px;
-  padding: 12px;
+  background: 
+    linear-gradient(135deg, #fef3c7 0%, #fde68a 30%, #fcd34d 60%, #f59e0b 100%),
+    radial-gradient(circle at 30% 30%, rgba(251, 191, 36, 0.15) 0%, transparent 60%);
+  border: 2.5px solid #f59e0b;
+  border-radius: 1.5rem;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 50px rgba(245, 158, 11, 0.35),
+    0 0 40px rgba(251, 191, 36, 0.25) inset,
+    0 0 0 1px rgba(255,255,255,0.4) inset;
+  background-attachment: fixed;
+}
+
+.final-week::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706, #b45309, #fbbf24);
+  border-radius: 1.5rem;
+  z-index: -1;
+  animation: borderGlow 2.5s ease-in-out infinite alternate;
+}
+
+.final-week::after {
+  content: '✨';
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  opacity: 0.8;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes borderGlow {
+  0% { opacity: 0.6; filter: blur(0px); }
+  50% { opacity: 1; filter: blur(0.5px); }
+  100% { opacity: 0.6; filter: blur(0px); }
 }
 
 /* BUTTON */
-.event-btn {
-  margin-top: 20px;
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  background: linear-gradient(135deg,#16a34a,#22c55e);
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-}
 </style>
 
 
@@ -373,109 +1202,207 @@ button[type="submit"]:active{
 
  <div class="event-topbar">
   <button class="event-back-btn" onclick="window.location.href='announcements.html'">← Back</button>
-  <div class="event-title">📅 Complete Championship Plan</div>
+  <div class="event-title">🏆 L and T Infotech Inter DC Championship 2026</div>
+  <div class="event-subtitle">Complete Championship Schedule & Events</div>
 </div>
 
   <!-- APRIL START -->
-  <div class="section-title">🏁 Phase 1 (April 1–3)</div>
+  <div class="section-title soccer">⚽ Phase 1: Soccer Championship (April 1–3)</div>
 
   <div class="day-block">
-    <div class="day-date">April 1</div>
+    <div class="day-date">April 1: League Stage Day 1</div>
     <div class="day-card">
       <ul>
-        <li>Opening Ceremony (10:00 AM)</li>
-        <li>Team Registration Verification</li>
-        <li>Soccer Match 1 (Group A)</li>
-        <li>Soccer Match 2 (Group B)</li>
+        <li><strong>Opening Ceremony:</strong> 10:00 AM - Welcome speech, team introductions, and flag hoisting.</li>
+        <li><strong>Format:</strong> Round-robin group stage with 4 teams per group.</li>
+        <li><strong>Rules:</strong> 90 minutes match time, standard FIFA rules, 3 points for win, 1 for draw.</li>
+        <li><strong>Matches:</strong> Group A: Team 1 vs Team 2 (11:00 AM), Team 3 vs Team 4 (2:00 PM); Group B: Team 5 vs Team 6 (4:00 PM).</li>
+        <li><strong>Team Registration:</strong> Verification of players and equipment.</li>
       </ul>
     </div>
   </div>
 
   <div class="day-block">
-    <div class="day-date">April 2</div>
+    <div class="day-date">April 2: League Stage Day 2</div>
     <div class="day-card">
       <ul>
-        <li>Soccer Match 3 (Group A)</li>
-        <li>Soccer Match 4 (Group B)</li>
-        <li>Fitness & Referee Review Session</li>
+        <li><strong>Matches:</strong> Group A: Team 1 vs Team 3 (10:00 AM), Team 2 vs Team 4 (12:00 PM); Group B: Team 5 vs Team 7 (2:00 PM), Team 6 vs Team 8 (4:00 PM).</li>
+        <li><strong>Fitness Session:</strong> 5:00 PM - Referee training and player fitness checks.</li>
+        <li><strong>Qualification:</strong> Top 2 from each group advance to knockout.</li>
       </ul>
     </div>
   </div>
 
   <div class="day-block">
-    <div class="day-date">April 3</div>
+    <div class="day-date">April 3: Knockout Stage</div>
     <div class="day-card">
       <ul>
-        <li>Soccer Final Group Matches</li>
-        <li>Top Teams Qualification Announcement</li>
+        <li><strong>Semifinals:</strong> Group A Winner vs Group B Runner-up (10:00 AM), Group B Winner vs Group A Runner-up (12:00 PM).</li>
+        <li><strong>Final:</strong> Winners of semifinals (3:00 PM).</li>
+        <li><strong>Announcement:</strong> Top teams qualify for inter-college championship.</li>
+        <li><strong>Rules:</strong> Extra time and penalties if needed.</li>
       </ul>
     </div>
   </div>
 
   <!-- PHASE 2 -->
-  <div class="section-title">🏀 Phase 2 (April 9–11)</div>
+  <div class="section-title basketball">🏀 Phase 2: Basketball & Tennis Championship (April 9–11)</div>
 
   <div class="day-block">
-    <div class="day-date">April 9</div>
+    <div class="day-date">April 9: Basketball Quarterfinals & Tennis Round 1</div>
     <div class="day-card">
       <ul>
-        <li>Basketball Quarterfinal 1</li>
-        <li>Basketball Quarterfinal 2</li>
-        <li>Tennis Singles Round 1</li>
+        <li><strong>Basketball Format:</strong> Single-elimination quarterfinals, 4 x 10-minute quarters.</li>
+        <li><strong>Basketball Rules:</strong> FIBA rules, 5 players per team, 24-second shot clock.</li>
+        <li><strong>Basketball Matches:</strong> Quarterfinal 1 (9:00 AM), Quarterfinal 2 (11:00 AM).</li>
+        <li><strong>Tennis Format:</strong> Round-robin singles matches.</li>
+        <li><strong>Tennis Rules:</strong> Best of 3 sets, 6 games per set, tiebreak at 6-6.</li>
+        <li><strong>Tennis Matches:</strong> Match 1 (1:00 PM), Match 2 (3:00 PM).</li>
       </ul>
     </div>
   </div>
 
   <div class="day-block">
-    <div class="day-date">April 10</div>
+    <div class="day-date">April 10: Basketball Quarterfinals & Tennis Round 2</div>
     <div class="day-card">
       <ul>
-        <li>Basketball Quarterfinal 3</li>
-        <li>Basketball Quarterfinal 4</li>
-        <li>Tennis Round 2</li>
+        <li><strong>Basketball Matches:</strong> Quarterfinal 3 (9:00 AM), Quarterfinal 4 (11:00 AM).</li>
+        <li><strong>Tennis Matches:</strong> Match 3 (1:00 PM), Match 4 (3:00 PM).</li>
+        <li><strong>Scoring:</strong> Basketball - points for baskets; Tennis - games and sets.</li>
+        <li><strong>Qualification:</strong> Winners advance to next round.</li>
       </ul>
     </div>
   </div>
 
   <div class="day-block">
-    <div class="day-date">April 11</div>
+    <div class="day-date">April 11: Basketball Semifinals & Tennis Quarterfinals</div>
     <div class="day-card">
       <ul>
-        <li>Basketball Semifinals</li>
-        <li>Tennis Quarterfinals</li>
+        <li><strong>Basketball Semifinals:</strong> Winner QF1 vs Winner QF4 (9:00 AM), Winner QF2 vs Winner QF3 (11:00 AM).</li>
+        <li><strong>Tennis Quarterfinals:</strong> Top players from round 2 (1:00 PM onwards).</li>
+        <li><strong>Explanation:</strong> Intense matches with crowd support and live commentary.</li>
       </ul>
     </div>
   </div>
 
   <!-- PHASE 3 -->
-  <div class="section-title">🏓 Phase 3 (April 17–19)</div>
+  <div class="section-title table-tennis">🏓 Phase 3: Table Tennis Championship (April 17–19)</div>
 
   <div class="day-block">
-    <div class="day-date">April 17</div>
+    <div class="day-date">April 17: Round 1 & Practice</div>
     <div class="day-card">
       <ul>
-        <li>Table Tennis Round 1</li>
-        <li>Practice Matches</li>
+        <li><strong>Format:</strong> Round-robin group stage with 4 players per group.</li>
+        <li><strong>Rules:</strong> Best of 5 games, each game to 11 points, win by 2.</li>
+        <li><strong>Matches:</strong> Group A: Player 1 vs 2 (9:00 AM), 3 vs 4 (10:00 AM); Group B similar (11:00 AM onwards).</li>
+        <li><strong>Practice Sessions:</strong> 2:00 PM - Warm-up and skill drills.</li>
+        <li><strong>Equipment:</strong> Standard table tennis balls and paddles provided.</li>
       </ul>
     </div>
   </div>
 
   <div class="day-block">
-    <div class="day-date">April 18</div>
+    <div class="day-date">April 18: Round 2 & Review</div>
     <div class="day-card">
       <ul>
-        <li>Table Tennis Round 2</li>
-        <li>Performance Review Session</li>
+        <li><strong>Matches:</strong> Cross-group matches and second round games.</li>
+        <li><strong>Performance Review:</strong> 3:00 PM - Coaches analyze matches and provide feedback.</li>
+        <li><strong>Scoring:</strong> Points awarded based on wins; tiebreakers for equal points.</li>
+        <li><strong>Qualification:</strong> Top 2 from each group advance.</li>
       </ul>
     </div>
   </div>
 
   <div class="day-block">
-    <div class="day-date">April 19</div>
+    <div class="day-date">April 19: Quarterfinals & Preparation</div>
     <div class="day-card">
       <ul>
-        <li>Table Tennis Quarterfinals</li>
-        <li>Final Team Preparation Begins</li>
+        <li><strong>Quarterfinals:</strong> Knockout matches between group winners and runners-up.</li>
+        <li><strong>Schedule:</strong> Match 1 (9:00 AM), Match 2 (10:30 AM), etc.</li>
+        <li><strong>Final Team Prep:</strong> 2:00 PM - Strategy sessions for upcoming phases.</li>
+        <li><strong>Explanation:</strong> Focus on precision and speed in this fast-paced sport.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="section-title badminton">🏸 Phase 4: Badminton Championship (April 25–May 2)</div>
+
+  <div class="day-block">
+    <div class="day-date">April 25-27: League Stage (Group Matches)</div>
+    <div class="day-card">
+      <ul>
+        <li><strong>Format:</strong> Round-robin tournament where each team plays every other team in their group.</li>
+        <li><strong>Rules:</strong> Best of 3 sets, each set to 21 points. Deuce at 20-20, win by 2 points.</li>
+        <li><strong>Matches:</strong> Group A: Team 1 vs Team 2, Team 3 vs Team 4; Group B: Team 5 vs Team 6, Team 7 vs Team 8.</li>
+        <li><strong>Scoring:</strong> Win = 2 points, Draw = 1 point, Loss = 0 points.</li>
+        <li><strong>Qualification:</strong> Top 2 teams from each group advance to knockout rounds.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day-block">
+    <div class="day-date">April 28-30: Knockout Rounds</div>
+    <div class="day-card">
+      <ul>
+        <li><strong>April 28:</strong> Quarterfinals - Winners of Group A vs Runners-up of Group B, etc.</li>
+        <li><strong>April 29:</strong> Semifinals - Winners of Quarterfinals.</li>
+        <li><strong>April 30:</strong> Third Place Match and Final.</li>
+        <li><strong>Explanation:</strong> Single-elimination tournament with same rules as league stage.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PHASE 5 -->
+  <div class="section-title cricket">🏏 Phase 5: Cricket Championship (May 3–8)</div>
+
+  <div class="day-block">
+    <div class="day-date">May 3-5: League Stage (Round Robin)</div>
+    <div class="day-card">
+      <ul>
+        <li><strong>Format:</strong> T20 cricket matches, each team plays every other team once.</li>
+        <li><strong>Rules:</strong> 20 overs per side, standard cricket laws apply. Super Over in case of tie.</li>
+        <li><strong>Matches:</strong> Daily fixtures with 2-3 matches per day.</li>
+        <li><strong>Scoring:</strong> Win = 2 points, Tie/No Result = 1 point, Loss = 0 points.</li>
+        <li><strong>Qualification:</strong> Top 4 teams advance to semifinals based on points, NRR.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day-block">
+    <div class="day-date">May 6-7: Semifinals</div>
+    <div class="day-card">
+      <ul>
+        <li><strong>May 6:</strong> Semifinal 1 - 1st vs 4th placed team.</li>
+        <li><strong>May 7:</strong> Semifinal 2 - 2nd vs 3rd placed team.</li>
+        <li><strong>Explanation:</strong> Winners advance to final in the final week.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PHASE 6 -->
+  <div class="section-title volleyball">🏐 Phase 6: Volleyball Championship (May 9–10)</div>
+
+  <div class="day-block">
+    <div class="day-date">May 9: League Stage (Group Play)</div>
+    <div class="day-card">
+      <ul>
+        <li><strong>Format:</strong> Teams divided into groups, round-robin within groups.</li>
+        <li><strong>Rules:</strong> Best of 3 sets, each set to 25 points (win by 2). Rally scoring.</li>
+        <li><strong>Matches:</strong> Group A and B matches throughout the day.</li>
+        <li><strong>Scoring:</strong> Win = 3 points, Loss = 0 points (unless 3-0 or 3-1).</li>
+        <li><strong>Qualification:</strong> Top teams from each group advance to semifinals.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day-block">
+    <div class="day-date">May 10: Knockout Stage</div>
+    <div class="day-card">
+      <ul>
+        <li><strong>Morning:</strong> Semifinals.</li>
+        <li><strong>Afternoon:</strong> Third Place Match and Final.</li>
+        <li><strong>Explanation:</strong> Same rules as league stage, single-elimination.</li>
       </ul>
     </div>
   </div>
@@ -496,60 +1423,68 @@ button[type="submit"]:active{
   </div>
 
   <!-- FINAL WEEK -->
-  <div class="section-title">🏆 FINAL WEEK (May 11–15)</div>
+  <div class="section-title">🏆 FINAL WEEK - CHAMPIONSHIP FINALS (May 11–15)</div>
 
   <div class="final-week">
 
     <div class="day-block">
-      <div class="day-date">May 11</div>
+      <div class="day-date">May 11: Quarterfinals Round</div>
       <div class="day-card">
         <ul>
-          <li>🏸 Badminton Quarterfinals (Morning)</li>
-          <li>🏐 Volleyball Quarterfinals (Afternoon)</li>
-          <li>🏏 Cricket Quarterfinal 1 & 2 (Evening)</li>
+          <li><strong>🏸 Badminton Quarterfinals (Morning):</strong> Top 8 players compete in singles and doubles categories. Best of 3 matches, each match best of 3 games (21 points).</li>
+          <li><strong>🏐 Volleyball Quarterfinals (Afternoon):</strong> Top 4 teams enter quarterfinals. Best of 3 sets, 25 points per set. Winners directly advance to semifinals (May 12).</li>
+          <li><strong>🏏 Cricket Quarterfinal 1 & 2 (Evening):</strong> First two quarterfinal matches played. Each match 20 overs per side. Highest-ranked team vs lowest-ranked in QF1; 2nd vs 7th in QF2. Winners advance to semifinals.</li>
+          <li><strong>Timing:</strong> 09:00-12:00 (Badminton), 14:00-17:30 (Volleyball), 18:00-21:30 (Cricket)</li>
         </ul>
       </div>
     </div>
 
     <div class="day-block">
-      <div class="day-date">May 12</div>
+      <div class="day-date">May 12: Semifinal Marathon</div>
       <div class="day-card">
         <ul>
-          <li>🏸 Badminton Semifinals</li>
-          <li>🏐 Volleyball Semifinals</li>
-          <li>🏏 Cricket Quarterfinal 3 & 4</li>
+          <li><strong>🏸 Badminton Semifinals:</strong> 4 remaining players/pairs compete. Winners secure medals and qualify for final. Format: Best of 3 games (21 points each).</li>
+          <li><strong>🏐 Volleyball Semifinals:</strong> Top 2 teams from QF compete. Semifinals are at 2:00 PM and 4:30 PM slots. Winners play final on May 13 (Gold medal match).</li>
+          <li><strong>🏏 Cricket Quarterfinal 3 & 4:</strong> Remaining two quarterfinal matches. Same 20-overs format. Winners join top 2 seeds already in semifinals scheduled for May 13-14.</li>
+          <li><strong>Key Details:</strong> All semifinal winners get guaranteed medals. Losers compete for bronze medal match.</li>
         </ul>
       </div>
     </div>
 
     <div class="day-block">
-      <div class="day-date">May 13</div>
+      <div class="day-date">May 13: Finals Extravaganza - Day 1</div>
       <div class="day-card">
         <ul>
-          <li>🏸 Badminton Final</li>
-          <li>🏐 Volleyball Final</li>
-          <li>🏏 Cricket Semifinal 1</li>
+          <li><strong>🏸 Badminton Final:</strong> Championship decider at 10:00 AM. Best of 3 games for Gold medal. Loser receives Silver medal. Bronze matches held simultaneously on different courts.</li>
+          <li><strong>Bronze Medal Matches (Badminton):</strong> 3rd vs 4th place play-off for Bronze at 11:30 AM.</li>
+          <li><strong>🏐 Volleyball Final:</strong> Grand championship match at 3:00 PM. Best of 3 sets. High-energy match with full commentary and live streaming. Loser awarded Silver medal.</li>
+          <li><strong>🏏 Cricket Semifinal 1:</strong> First cricket semifinal at 6:00 PM. 50 overs per side. Winner advances to Grand Final (May 14).</li>
+          <li><strong>Medal Presentation:</strong> Badminton and Volleyball medal ceremonies with National Anthem performance at 4:30 PM.</li>
         </ul>
       </div>
     </div>
 
     <div class="day-block">
-      <div class="day-date">May 14</div>
+      <div class="day-date">May 14: Finals Extravaganza - Day 2</div>
       <div class="day-card">
         <ul>
-          <li>🏏 Cricket Semifinal 2</li>
-          <li>🏆 Cricket Grand Final (Evening Prime Slot)</li>
+          <li><strong>🏏 Cricket Semifinal 2:</strong> Second cricket semifinal at 10:00 AM. 50 overs per side. Winner qualifies for Grand Final in evening. Loser gets second chance in Bronze Medal Match at 3:00 PM (50 overs).</li>
+          <li><strong>🏆 Cricket Grand Final (Evening Prime Slot - 6:30 PM):</strong> Championship match of the tournament! Best teams compete for ultimate glory. 50 overs per side with 15-minute break after powerplay. Full media coverage, commentary in multiple languages, live streaming on all platforms.</li>
+          <li><strong>Match Highlights:</strong> Top batsmen, aggressive bowling, strategic timeouts. Winner crowned Champion of L and T Infotech Inter DC Championship 2026!</li>
+          <li><strong>Duration:</strong> Approx 4-5 hours including pre-match ceremonies and trophy lifting.</li>
         </ul>
       </div>
     </div>
 
     <div class="day-block">
-      <div class="day-date">May 15</div>
+      <div class="day-date">May 15: Grand Celebrations & Awards</div>
       <div class="day-card">
         <ul>
-          <li>🏆 Award Distribution Ceremony</li>
-          <li>🎤 Closing Speech & Highlights</li>
-          <li>🎉 Celebration & Media Coverage</li>
+          <li><strong>🏆 Award Distribution Ceremony (4:00 PM - 6:00 PM):</strong> All medal winners (Gold, Silver, Bronze) from all 6 sports felicitated. Chief Guest presents trophies. Each winner receives certificate and prize money - Gold ₹50,000, Silver ₹30,000, Bronze ₹15,000 per sport.</li>
+          <li><strong>🎤 Closing Speech & Highlights (6:00 PM - 6:45 PM):</strong> Director addresses the crowd. Highlights reel of best moments, spectacular catches, match-winning sixes, unbeatable serves shown on giant screen. "Player of the Tournament" awards for standout performers in each sport.</li>
+          <li><strong>🎉 Celebration & Media Coverage (6:45 PM - 8:00 PM):</strong> Photo sessions with champions, media interviews, press conference. Light refreshments and networking. Group photos with Chief Guest, organizing committee, and participants. Virtual coverage on social media with live hashtags.</li>
+          <li><strong>Special Recognition:</strong> Most Disciplined Team, Best Sportsman Spirit, Fan Favorite Award, Technical Excellence Award presented.</li>
+          <li><strong>Closing Note:</strong> Special performance and announcement for next year's championship. Thank you speech to sponsors, partners, volunteers, and participants.</li>
         </ul>
       </div>
     </div>
