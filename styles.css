@@ -44,3 +44,9 @@ body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:#0f1
   .site-header,.card,.site-footer{background:#07122a;border-color:#0b2340}
   .brand-title{color:#9ad0ff}
 }
+
+@media(max-width:768px){
+  html{overflow-x:hidden}
+  body{width:100vw;overflow-x:hidden;position:relative}
+  .site-header{box-shadow:none !important;border-bottom:1px solid #ddd}
+}
