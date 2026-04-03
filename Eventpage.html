@@ -67,6 +67,17 @@ body::before {
   66% { transform: translateY(10px) rotate(-1deg); }
 }
 
+/* ================= MOBILE FIX ================= */
+@media(max-width:768px){
+  body::before{
+    display:none;
+  }
+  .container{
+    margin:20px auto;
+    padding:0 16px;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
