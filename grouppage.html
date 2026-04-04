@@ -1,0 +1,2734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L&T Sports Championship 2026 - Ultimate Portal</title>
+    <style>
+       /* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================= VARIABLES ================= */
+:root {
+    --bg: #f5f7fb;
+    --card: rgba(255, 255, 255, 0.75);
+    --accent: #4f46e5;
+    --accent2: #06b6d4;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --border: rgba(0, 0, 0, 0.08);
+    --success: #22c55e;
+    --warning: #f59e0b;
+}
+
+/* ================= BODY ================= */
+body {
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+    max-width: 1500px;
+    margin: auto;
+    padding: 25px;
+}
+
+/* ================= HEADER ================= */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 25px;
+    border-radius: 16px;
+    background: var(--card);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+    animation: fadeDown 0.6s ease;
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= BACK BUTTON ================= */
+.back-btn {
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.back-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(79,70,229,0.4);
+}
+
+/* ================= TITLE ================= */
+.header-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    flex: 1;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ================= SPORT SECTION ================= */
+.sport-section {
+    margin-bottom: 60px;
+}
+
+/* ================= SPORT HEADER ================= */
+.sport-header {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding: 16px 25px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(79,70,229,0.1), rgba(6,182,212,0.1));
+    color: var(--accent);
+    animation: fadeIn 0.8s ease;
+}
+
+/* ================= GRID ================= */
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 25px;
+}
+
+/* ================= CARD ================= */
+.team-card {
+    background: var(--card);
+    border-radius: 18px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    transition: all 0.35s ease;
+    animation: fadeUp 0.6s ease;
+    position: relative;
+}
+
+/* subtle shine effect */
+.team-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.team-card:hover::before {
+    opacity: 1;
+}
+
+/* hover */
+.team-card:hover {
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+/* ================= CARD HEADER ================= */
+.team-card-header {
+    padding: 18px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+}
+
+.team-card-header h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.captain {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* ================= CARD BODY ================= */
+.team-card-body {
+    padding: 18px;
+}
+
+/* ================= ROHAN TAG ================= */
+.rohan-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+/* ================= STATS ================= */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.stat-box {
+    background: rgba(79,70,229,0.08);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.stat-value {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+/* ================= LABEL ================= */
+.info-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 10px 0;
+    text-transform: uppercase;
+}
+
+/* ================= PLAYERS ================= */
+.players-list {
+    max-height: 200px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+}
+
+/* scrollbar */
+.players-list::-webkit-scrollbar {
+    width: 6px;
+}
+.players-list::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.player-item {
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: rgba(6,182,212,0.08);
+    font-size: 0.8rem;
+    text-align: center;
+    transition: 0.2s ease;
+}
+
+.player-item:hover {
+    background: var(--accent);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* ================= MATCH ================= */
+.match-section {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(245, 158, 11, 0.08);
+    border-left: 4px solid var(--warning);
+}
+
+.match-date {
+    font-weight: 600;
+    color: var(--warning);
+    margin-bottom: 5px;
+}
+
+.match-opponent {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.vs-badge {
+    background: var(--accent);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    margin-right: 5px;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1);}
+    50% { transform: scale(1.05);}
+    100% { transform: scale(1);}
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+    .teams-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .teams-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .top-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .header-title {
+        font-size: 1.4rem;
+    }
+
+    .players-list {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-nav">
+            <a href="dashboard.html" class="back-btn">← BACK</a>
+            <div class="header-title">🏆 L&T SPORTS CHAMPIONSHIP 2026</div>
+            <div></div>
+        </div>
+
+        <!-- SOCCER -->
+        <div class="sport-section">
+            <div class="sport-header">⚽ SOCCER CHAMPIONSHIP (April 1–3)</div>
+            <div class="teams-grid">
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Dragon Strikers</h3>
+                        <p class="captain">Captain: Aman Gupta</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">11</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">90</span><div class="stat-label">Min</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Matches</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Aman Gupta</div>
+                            <div class="player-item">Aditya Mehta</div>
+                            <div class="player-item">Arun Singh</div>
+                            <div class="player-item">Vikas Sharma</div>
+                            <div class="player-item">Suraj Patel</div>
+                            <div class="player-item">Hemant Roy</div>
+                            <div class="player-item">Kailash Negi</div>
+                            <div class="player-item">Ravi Kumar</div>
+                            <div class="player-item">Sushant Tomar</div>
+                            <div class="player-item">Gaurav Saxena</div>
+                            <div class="player-item">Anand Verma</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 1 - 10:00 AM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Thunder Warriors</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Thunder Warriors</h3>
+                        <p class="captain">Captain: Rakesh Kumar</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">11</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">90</span><div class="stat-label">Min</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Matches</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Rakesh Kumar</div>
+                            <div class="player-item">Abhishek Nair</div>
+                            <div class="player-item">Nitin Reddy</div>
+                            <div class="player-item">Sandeep Pandey</div>
+                            <div class="player-item">Aditya Desai</div>
+                            <div class="player-item">Mayank Singh</div>
+                            <div class="player-item">Dhiraj Sharma</div>
+                            <div class="player-item">Tarun Sharma</div>
+                            <div class="player-item">Aryan Mishra</div>
+                            <div class="player-item">Vivek Nair</div>
+                            <div class="player-item">Karan Singh</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 1 - 2:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Phoenix Arsenal</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Phoenix Arsenal</h3>
+                        <p class="captain">Captain: Vishal Tiwari</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">11</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">90</span><div class="stat-label">Min</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Matches</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Vishal Tiwari</div>
+                            <div class="player-item">Ajay Verma</div>
+                            <div class="player-item">Sarthak Dey</div>
+                            <div class="player-item">Bhavik Jain</div>
+                            <div class="player-item">Charan Singh</div>
+                            <div class="player-item">Darshan Mehta</div>
+                            <div class="player-item">Eshan Roy</div>
+                            <div class="player-item">Fahim Khan</div>
+                            <div class="player-item">Girish Rao</div>
+                            <div class="player-item">Harish Kumar</div>
+                            <div class="player-item">Imran Ahmed</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 1 - 4:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Victory Force</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Victory Force</h3>
+                        <p class="captain">Captain: Harsh Verma</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">11</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">90</span><div class="stat-label">Min</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Matches</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Harsh Verma</div>
+                            <div class="player-item">Samrat Singh</div>
+                            <div class="player-item">Tushar Patel</div>
+                            <div class="player-item">Umesh Kumar</div>
+                            <div class="player-item">Varun Sharma</div>
+                            <div class="player-item">Waqar Ali</div>
+                            <div class="player-item">Xander Singh</div>
+                            <div class="player-item">Yashvant Joshi</div>
+                            <div class="player-item">Zetian Nair</div>
+                            <div class="player-item">Alok Sinha</div>
+                            <div class="player-item">Bhanu Kumar</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 1 - 6:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Phoenix Arsenal</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BASKETBALL -->
+        <div class="sport-section">
+            <div class="sport-header">🏀 BASKETBALL CHAMPIONSHIP (April 9–11)</div>
+            <div class="teams-grid">
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Titans Elite</h3>
+                        <p class="captain">Captain: Karthik Reddy</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">12</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">40</span><div class="stat-label">Min</div></div>
+                            <div class="stat-box"><span class="stat-value">3-4</span><div class="stat-label">Matches</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Karthik Reddy</div>
+                            <div class="player-item">Shiv Kumar</div>
+                            <div class="player-item">Saurabh Singh</div>
+                            <div class="player-item">Rohit Sharma</div>
+                            <div class="player-item">Amit Yadav</div>
+                            <div class="player-item">Manish Verma</div>
+                            <div class="player-item">Pranav Nair</div>
+                            <div class="player-item">Samir Roy</div>
+                            <div class="player-item">Tejas Patel</div>
+                            <div class="player-item">Upendra Singh</div>
+                            <div class="player-item">Vaibhav Mehta</div>
+                            <div class="player-item">Sanjay Kumar</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 9 - 10:00 AM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Dynamo Hoops</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Dynamo Hoops</h3>
+                        <p class="captain">Captain: Rishi Kumar</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">12</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">40</span><div class="stat-label">Min</div></div>
+                            <div class="stat-box"><span class="stat-value">3-4</span><div class="stat-label">Matches</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Rishi Kumar</div>
+                            <div class="player-item">Sahil Yadav</div>
+                            <div class="player-item">Tanmay Singh</div>
+                            <div class="player-item">Udit Sharma</div>
+                            <div class="player-item">Vikram Tomar</div>
+                            <div class="player-item">Wahid Khan</div>
+                            <div class="player-item">Yadav Nair</div>
+                            <div class="player-item">Zarif Ali</div>
+                            <div class="player-item">Akshay Tiwari</div>
+                            <div class="player-item">Bhanu Singh</div>
+                            <div class="player-item">Chirag Verma</div>
+                            <div class="player-item">Dilip Kumar</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 9 - 2:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Storm Breakers</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Storm Breakers</h3>
+                        <p class="captain">Captain: Dipak Sharma</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">12</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">40</span><div class="stat-label">Min</div></div>
+                            <div class="stat-box"><span class="stat-value">3-4</span><div class="stat-label">Matches</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Dipak Sharma</div>
+                            <div class="player-item">Elan Singh</div>
+                            <div class="player-item">Faisal Kumar</div>
+                            <div class="player-item">Gajendra Nair</div>
+                            <div class="player-item">Harsh Sinha</div>
+                            <div class="player-item">Iqbal Khan</div>
+                            <div class="player-item">Jaideep Roy</div>
+                            <div class="player-item">Kamal Reddy</div>
+                            <div class="player-item">Lokesh Verma</div>
+                            <div class="player-item">Manoj Patel</div>
+                            <div class="player-item">Neeraj Singh</div>
+                            <div class="player-item">Omkar Sharma</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 9 - 4:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Titans Elite</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TENNIS -->
+        <div class="sport-section">
+            <div class="sport-header">🎾 TENNIS CHAMPIONSHIP (April 9–11)</div>
+            <div class="teams-grid">
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Ace Warriors</h3>
+                        <p class="captain">Captain: Ashok Kumar</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">6</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Sets</div></div>
+                            <div class="stat-box"><span class="stat-value">8</span><div class="stat-label">Matches</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Ashok Kumar</div>
+                            <div class="player-item">Sidharth Mehta</div>
+                            <div class="player-item">Bhupesh Nair</div>
+                            <div class="player-item">Chetan Singh</div>
+                            <div class="player-item">Devendra Reddy</div>
+                            <div class="player-item">Ekansh Tiwari</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 9 - 9:00 AM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Racket Legends</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Racket Legends</h3>
+                        <p class="captain">Captain: Farun Sharma</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">6</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Sets</div></div>
+                            <div class="stat-box"><span class="stat-value">8</span><div class="stat-label">Matches</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Farun Sharma</div>
+                            <div class="player-item">Gaurav Singh</div>
+                            <div class="player-item">Harendra Kumar</div>
+                            <div class="player-item">Ishwar Reddy</div>
+                            <div class="player-item">Jagesh Patel</div>
+                            <div class="player-item">Kailash Verma</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 9 - 11:00 AM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Golden Shots</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Golden Shots</h3>
+                        <p class="captain">Captain: Kapil Sinha</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">6</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Sets</div></div>
+                            <div class="stat-box"><span class="stat-value">8</span><div class="stat-label">Matches</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Kapil Sinha</div>
+                            <div class="player-item">Lalith Nair</div>
+                            <div class="player-item">Manish Yadav</div>
+                            <div class="player-item">Nikhil Kumar</div>
+                            <div class="player-item">Omkar Singh</div>
+                            <div class="player-item">Priyesh Rao</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 9 - 3:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Ace Warriors</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABLE TENNIS -->
+        <div class="sport-section">
+            <div class="sport-header">🏓 TABLE TENNIS CHAMPIONSHIP (April 17–19)</div>
+            <div class="teams-grid">
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Spin Masters</h3>
+                        <p class="captain">Captain: Pavan Singh</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">8</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">5</span><div class="stat-label">Games</div></div>
+                            <div class="stat-box"><span class="stat-value">11+</span><div class="stat-label">Points</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Pavan Singh</div>
+                            <div class="player-item">Ziyan Qadar</div>
+                            <div class="player-item">Qamar Khan</div>
+                            <div class="player-item">Ramesh Nair</div>
+                            <div class="player-item">Sanath Kumar</div>
+                            <div class="player-item">Teja Reddy</div>
+                            <div class="player-item">Uday Sharma</div>
+                            <div class="player-item">Vikram Singh</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 17 - 10:00 AM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Paddle Strikers</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Paddle Strikers</h3>
+                        <p class="captain">Captain: Waqar Verma</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">8</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">5</span><div class="stat-label">Games</div></div>
+                            <div class="stat-box"><span class="stat-value">11+</span><div class="stat-label">Points</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Waqar Verma</div>
+                            <div class="player-item">Xander Kumar</div>
+                            <div class="player-item">Yogesh Singh</div>
+                            <div class="player-item">Zanth Nair</div>
+                            <div class="player-item">Arjun Sinha</div>
+                            <div class="player-item">Bhavesh Rao</div>
+                            <div class="player-item">Chirayu Patel</div>
+                            <div class="player-item">Damjan Roy</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 17 - 12:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Rapid Fire</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Rapid Fire</h3>
+                        <p class="captain">Captain: Dharmendra Roy</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">8</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">5</span><div class="stat-label">Games</div></div>
+                            <div class="stat-box"><span class="stat-value">11+</span><div class="stat-label">Points</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Dharmendra Roy</div>
+                            <div class="player-item">Ekansh Verma</div>
+                            <div class="player-item">Farhan Singh</div>
+                            <div class="player-item">Gaurab Kumar</div>
+                            <div class="player-item">Haroon Nair</div>
+                            <div class="player-item">Irshad Khan</div>
+                            <div class="player-item">Jamal Reddy</div>
+                            <div class="player-item">Karun Singh</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 17 - 2:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Spin Masters</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BADMINTON (ROHAN ADDED) -->
+        <div class="sport-section">
+            <div class="sport-header">🏸 BADMINTON CHAMPIONSHIP (April 25 - May 2)</div>
+            <div class="teams-grid">
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Falcon's Edge</h3>
+                        <p class="captain">Captain: Karan Sharma</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="rohan-tag">⭐ ROHAN IN THIS TEAM</div>
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">8</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Sets</div></div>
+                            <div class="stat-box"><span class="stat-value">21</span><div class="stat-label">Points</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Karan Sharma</div>
+                            <div class="player-item">Rohan Kumar C.</div>
+                            <div class="player-item">Laxman Nair</div>
+                            <div class="player-item">Mandar Verma</div>
+                            <div class="player-item">Naveen Kumar</div>
+                            <div class="player-item">Omi Reddy</div>
+                            <div class="player-item">Prashant Singh</div>
+                            <div class="player-item">Qasim Khan</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 25 - 9:00 AM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Shuttle Legends</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Shuttle Legends</h3>
+                        <p class="captain">Captain: Rahul Sharma</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">8</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Sets</div></div>
+                            <div class="stat-box"><span class="stat-value">21</span><div class="stat-label">Points</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Rahul Sharma</div>
+                            <div class="player-item">Siddharth Nair</div>
+                            <div class="player-item">Tushar Singh</div>
+                            <div class="player-item">Uman Kumar</div>
+                            <div class="player-item">Vinay Reddy</div>
+                            <div class="player-item">Rajesh Verma</div>
+                            <div class="player-item">Saurav Roy</div>
+                            <div class="player-item">Tarun Nair</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 25 - 11:00 AM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Net Blazers</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Net Blazers</h3>
+                        <p class="captain">Captain: Tamanna Singh</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">8</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Sets</div></div>
+                            <div class="stat-box"><span class="stat-value">21</span><div class="stat-label">Points</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Tamanna Singh</div>
+                            <div class="player-item">Nagesh Kale</div>
+                            <div class="player-item">Darshit Nair</div>
+                            <div class="player-item">Rajendra Kumar</div>
+                            <div class="player-item">Santosh Rao</div>
+                            <div class="player-item">Tejendra Roy</div>
+                            <div class="player-item">Shuddhartha Verma</div>
+                            <div class="player-item">Sriram Singh</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 April 25 - 1:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Falcon's Edge</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CRICKET (ROHAN ADDED) -->
+        <div class="sport-section">
+            <div class="sport-header">🏏 CRICKET CHAMPIONSHIP (May 3–8)</div>
+            <div class="teams-grid">
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Phoenix Warriors</h3>
+                        <p class="captain">Captain: Priyam Srivastava</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="rohan-tag">⭐ ROHAN IN THIS TEAM</div>
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">11</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">20</span><div class="stat-label">Overs</div></div>
+                            <div class="stat-box"><span class="stat-value">T20</span><div class="stat-label">Format</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Priyam Srivastava</div>
+                            <div class="player-item">Rohan Kumar C.</div>
+                            <div class="player-item">Arjun Verma</div>
+                            <div class="player-item">Sanjay Mishra</div>
+                            <div class="player-item">Ankit Desai</div>
+                            <div class="player-item">Rahul Sharma</div>
+                            <div class="player-item">Karan Patel</div>
+                            <div class="player-item">Ishaan Nair</div>
+                            <div class="player-item">Vivek Reddy</div>
+                            <div class="player-item">Avinash Roy</div>
+                            <div class="player-item">Bjorn Singh</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 May 3 - 10:00 AM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Thunder Strike</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Thunder Strike</h3>
+                        <p class="captain">Captain: Chirag Verma</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">11</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">20</span><div class="stat-label">Overs</div></div>
+                            <div class="stat-box"><span class="stat-value">T20</span><div class="stat-label">Format</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Chirag Verma</div>
+                            <div class="player-item">Deepanshu Yadav</div>
+                            <div class="player-item">Diwakar Singh</div>
+                            <div class="player-item">Ekansh Kumar</div>
+                            <div class="player-item">Fardeen Nair</div>
+                            <div class="player-item">Gajendra Roy</div>
+                            <div class="player-item">Harsh Tiwari</div>
+                            <div class="player-item">Iqbal Rao</div>
+                            <div class="player-item">Jatin Sharma</div>
+                            <div class="player-item">Karun Desai</div>
+                            <div class="player-item">Lavesh Kumar</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 May 3 - 2:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Dragon's Fury</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Dragon's Fury</h3>
+                        <p class="captain">Captain: Manish Yadav</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">11</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">20</span><div class="stat-label">Overs</div></div>
+                            <div class="stat-box"><span class="stat-value">T20</span><div class="stat-label">Format</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Manish Yadav</div>
+                            <div class="player-item">Nilesh Singh</div>
+                            <div class="player-item">Omkar Verma</div>
+                            <div class="player-item">Pawan Kumar</div>
+                            <div class="player-item">Qasim Verma</div>
+                            <div class="player-item">Roshan Nair</div>
+                            <div class="player-item">Saurab Roy</div>
+                            <div class="player-item">Tejendra Singh</div>
+                            <div class="player-item">Umesh Yadav</div>
+                            <div class="player-item">Vimal Rao</div>
+                            <div class="player-item">Vikram Nair</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 May 3 - 4:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Mighty Tigers</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Mighty Tigers</h3>
+                        <p class="captain">Captain: Vikram Reddy</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">11</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">20</span><div class="stat-label">Overs</div></div>
+                            <div class="stat-box"><span class="stat-value">T20</span><div class="stat-label">Format</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Vikram Reddy</div>
+                            <div class="player-item">Waqar Singh</div>
+                            <div class="player-item">Xander Kumar</div>
+                            <div class="player-item">Yashvant Nair</div>
+                            <div class="player-item">Zamane Roy</div>
+                            <div class="player-item">Ajay Verma</div>
+                            <div class="player-item">Bhuvanendra Singh</div>
+                            <div class="player-item">Chyaman Kumar</div>
+                            <div class="player-item">Dushyant Rao</div>
+                            <div class="player-item">Ekansh Tiwari</div>
+                            <div class="player-item">Farooq Verma</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 May 3 - 6:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Phoenix Warriors</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VOLLEYBALL (ROHAN ADDED) -->
+        <div class="sport-section">
+            <div class="sport-header">🏐 VOLLEYBALL CHAMPIONSHIP (May 9–10)</div>
+            <div class="teams-grid">
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Lightning Strikers</h3>
+                        <p class="captain">Captain: Vikram Sinha</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="rohan-tag">⭐ ROHAN IN THIS TEAM</div>
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">12</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">25</span><div class="stat-label">Points</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Sets</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Vikram Sinha</div>
+                            <div class="player-item">Rohan Kumar C.</div>
+                            <div class="player-item">Aditya Kumar</div>
+                            <div class="player-item">Rajesh Gupta</div>
+                            <div class="player-item">Suresh Bansal</div>
+                            <div class="player-item">Nikhil Desai</div>
+                            <div class="player-item">Mrinal Sharma</div>
+                            <div class="player-item">Pranav Joshi</div>
+                            <div class="player-item">Sameer Malik</div>
+                            <div class="player-item">Kartik Pandey</div>
+                            <div class="player-item">Sarvesh Roy</div>
+                            <div class="player-item">Tejas Singh</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 May 9 - 9:00 AM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Storm Chasers</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Storm Chasers</h3>
+                        <p class="captain">Captain: Umann Nair</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">12</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">25</span><div class="stat-label">Points</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Sets</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Umann Nair</div>
+                            <div class="player-item">Deepanshu Yadav</div>
+                            <div class="player-item">Vansh Kumar</div>
+                            <div class="player-item">Warun Singh</div>
+                            <div class="player-item">Xander Verma</div>
+                            <div class="player-item">Yashesh Reddy</div>
+                            <div class="player-item">Zaman Roy</div>
+                            <div class="player-item">Akarsh Tiwari</div>
+                            <div class="player-item">Bhanth Kumar</div>
+                            <div class="player-item">Chiranth Singh</div>
+                            <div class="player-item">Dhravya Sharma</div>
+                            <div class="player-item">Eshan Verma</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 May 9 - 11:00 AM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Inferno Squad</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Inferno Squad</h3>
+                        <p class="captain">Captain: Farhanth Nair</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">12</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">25</span><div class="stat-label">Points</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Sets</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Farhanth Nair</div>
+                            <div class="player-item">Nagesh Kale</div>
+                            <div class="player-item">Garanth Kumar</div>
+                            <div class="player-item">Haranth Singh</div>
+                            <div class="player-item">Iranth Verma</div>
+                            <div class="player-item">Jaranth Reddy</div>
+                            <div class="player-item">Karanth Roy</div>
+                            <div class="player-item">Laranth Rao</div>
+                            <div class="player-item">Maranth Tiwari</div>
+                            <div class="player-item">Naranth Singh</div>
+                            <div class="player-item">Oranth Kumar</div>
+                            <div class="player-item">Paranth Sharma</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 May 9 - 1:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Victory Blaze</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-card-header">
+                        <h3>Victory Blaze</h3>
+                        <p class="captain">Captain: Saurav Singh</p>
+                    </div>
+                    <div class="team-card-body">
+                        <div class="stats-row">
+                            <div class="stat-box"><span class="stat-value">12</span><div class="stat-label">Players</div></div>
+                            <div class="stat-box"><span class="stat-value">25</span><div class="stat-label">Points</div></div>
+                            <div class="stat-box"><span class="stat-value">3</span><div class="stat-label">Sets</div></div>
+                        </div>
+                        <div class="info-label">Squad</div>
+                        <div class="players-list">
+                            <div class="player-item">Saurav Singh</div>
+                            <div class="player-item">Quranth Verma</div>
+                            <div class="player-item">Ranth Kumar</div>
+                            <div class="player-item">Santh Nair</div>
+                            <div class="player-item">Tanth Singh</div>
+                            <div class="player-item">Umanth Reddy</div>
+                            <div class="player-item">Vanth Roy</div>
+                            <div class="player-item">Wanth Rao</div>
+                            <div class="player-item">Xanth Tiwari</div>
+                            <div class="player-item">Yanth Kumar</div>
+                            <div class="player-item">Zanth Singh</div>
+                            <div class="player-item">Aranth Sharma</div>
+                        </div>
+                        <div class="match-section">
+                            <div class="match-date">📅 May 9 - 3:00 PM</div>
+                            <div class="match-opponent"><span class="vs-badge">VS</span>Lightning Strikers</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- 🏃 ATHLETICS -->
+<div class="sport-section">
+    <div class="sport-header">🏃 ATHLETICS CHAMPIONSHIP (May 11–12)</div>
+
+    <div class="teams-grid">
+
+        <!-- TEAM 1 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Speed Titans</h3>
+                <p class="captain">Captain: Rahul Verma</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <div class="info-label">Sprinters Squad</div>
+                <div class="players-list">
+                    <div class="player-item">Rahul Verma</div>
+                    <div class="player-item">Amit Singh</div>
+                    <div class="player-item">Deepak Roy</div>
+                    <div class="player-item">Karan Mehta</div>
+                    <div class="player-item">Rohit Yadav</div>
+                    <div class="player-item">Sahil Khan</div>
+                    <div class="player-item">Vikas Sharma</div>
+                    <div class="player-item">Nitin Kumar</div>
+                    <div class="player-item">Ajay Mishra</div>
+                    <div class="player-item">Tarun Singh</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 11 - 8:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">EVENT</span> 100m Sprint
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 11 - 10:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">EVENT</span> 200m Race
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- TEAM 2 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Velocity Racers</h3>
+                <p class="captain">Captain: Arjun Mehta</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <div class="info-label">Track Squad</div>
+                <div class="players-list">
+                    <div class="player-item">Arjun Mehta</div>
+                    <div class="player-item">Bhavesh Patel</div>
+                    <div class="player-item">Chetan Singh</div>
+                    <div class="player-item">Dev Sharma</div>
+                    <div class="player-item">Eshan Roy</div>
+                    <div class="player-item">Farhan Khan</div>
+                    <div class="player-item">Gaurav Jain</div>
+                    <div class="player-item">Harish Kumar</div>
+                    <div class="player-item">Imran Ali</div>
+                    <div class="player-item">Jatin Verma</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 11 - 9:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">EVENT</span> 400m Race
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 12 - 8:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">EVENT</span> Relay Race
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- TEAM 3 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Endurance Kings</h3>
+                <p class="captain">Captain: Vivek Reddy</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <div class="info-label">Long Distance Squad</div>
+                <div class="players-list">
+                    <div class="player-item">Vivek Reddy</div>
+                    <div class="player-item">Naveen Kumar</div>
+                    <div class="player-item">Omkar Singh</div>
+                    <div class="player-item">Prashant Yadav</div>
+                    <div class="player-item">Ravi Patel</div>
+                    <div class="player-item">Saurav Roy</div>
+                    <div class="player-item">Tejas Mehta</div>
+                    <div class="player-item">Uday Sharma</div>
+                    <div class="player-item">Varun Singh</div>
+                    <div class="player-item">Yash Gupta</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 12 - 7:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">EVENT</span> 1500m Race
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 12 - 9:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">EVENT</span> Marathon
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 🏋️ WEIGHTLIFTING -->
+<div class="sport-section">
+    <div class="sport-header">🏋️ WEIGHTLIFTING CHAMPIONSHIP (May 13)</div>
+
+    <div class="teams-grid">
+
+        <!-- TEAM 1 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Iron Warriors</h3>
+                <p class="captain">Captain: Kunal Sharma</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <div class="info-label">Lightweight Category</div>
+                <div class="players-list">
+                    <div class="player-item">Kunal Sharma</div>
+                    <div class="player-item">Rohit Yadav</div>
+                    <div class="player-item">Sandeep Kumar</div>
+                    <div class="player-item">Ajit Singh</div>
+                    <div class="player-item">Manish Verma</div>
+                    <div class="player-item">Sunil Yadav</div>
+                </div>
+
+                <div class="info-label">Middleweight Category</div>
+                <div class="players-list">
+                    <div class="player-item">Rakesh Kumar</div>
+                    <div class="player-item">Vikram Singh</div>
+                    <div class="player-item">Tarun Mehta</div>
+                    <div class="player-item">Aakash Jain</div>
+                    <div class="player-item">Deepanshu Roy</div>
+                    <div class="player-item">Naveen Reddy</div>
+                </div>
+
+                <div class="info-label">Heavyweight Category</div>
+                <div class="players-list">
+                    <div class="player-item">Pranav Nair</div>
+                    <div class="player-item">Harshit Gupta</div>
+                    <div class="player-item">Lokesh Sharma</div>
+                    <div class="player-item">Anurag Mishra</div>
+                    <div class="player-item">Bhavesh Patel</div>
+                    <div class="player-item">Farhan Ali</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 13 - 10:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">FINAL</span> Lightweight
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 13 - 1:00 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">FINAL</span> Middleweight
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 13 - 4:00 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">FINAL</span> Heavyweight
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- TEAM 2 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Power Lifters</h3>
+                <p class="captain">Captain: Arjun Mehta</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <div class="info-label">Lightweight Category</div>
+                <div class="players-list">
+                    <div class="player-item">Arjun Mehta</div>
+                    <div class="player-item">Bhanu Pratap</div>
+                    <div class="player-item">Chetan Yadav</div>
+                    <div class="player-item">Dev Sharma</div>
+                    <div class="player-item">Eshan Roy</div>
+                    <div class="player-item">Farooq Khan</div>
+                </div>
+
+                <div class="info-label">Middleweight Category</div>
+                <div class="players-list">
+                    <div class="player-item">Gaurav Singh</div>
+                    <div class="player-item">Harish Kumar</div>
+                    <div class="player-item">Imran Ali</div>
+                    <div class="player-item">Jatin Verma</div>
+                    <div class="player-item">Kunal Gupta</div>
+                    <div class="player-item">Lokesh Jain</div>
+                </div>
+
+                <div class="info-label">Heavyweight Category</div>
+                <div class="players-list">
+                    <div class="player-item">Manoj Sharma</div>
+                    <div class="player-item">Nitin Yadav</div>
+                    <div class="player-item">Omkar Singh</div>
+                    <div class="player-item">Prashant Roy</div>
+                    <div class="player-item">Ravi Patel</div>
+                    <div class="player-item">Saurav Jain</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 13 - 11:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">FINAL</span> Lightweight
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 13 - 2:00 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">FINAL</span> Middleweight
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 13 - 5:00 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">FINAL</span> Heavyweight
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 🎯 CARROM -->
+<!-- 🎯 CARROM -->
+<div class="sport-section">
+    <div class="sport-header">🎯 CARROM CHAMPIONSHIP (May 14)</div>
+
+    <div class="teams-grid">
+
+        <!-- TEAM 1 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Strike Masters</h3>
+                <p class="captain">Captain: Ankit Verma</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <!-- SINGLES -->
+                <div class="info-label">Singles Players</div>
+                <div class="players-list">
+                    <div class="player-item">Ankit Verma</div>
+                    <div class="player-item">Vishal Singh</div>
+                    <div class="player-item">Rohit Sharma</div>
+                    <div class="player-item">Ajay Kumar</div>
+                    <div class="player-item">Nitin Gupta</div>
+                    <div class="player-item">Saurabh Singh</div>
+                </div>
+
+                <!-- DOUBLES -->
+                <div class="info-label">Doubles Teams</div>
+                <div class="players-list">
+                    <div class="player-item">Tarun Verma & Yash Jain</div>
+                    <div class="player-item">Vikas Roy & Ravi Patel</div>
+                    <div class="player-item">Kunal Sinha & Deepak Yadav</div>
+                    <div class="player-item">Manav Sharma & Rakesh Mehta</div>
+                </div>
+
+                <!-- RESERVES -->
+                <div class="info-label">Reserve Players</div>
+                <div class="players-list">
+                    <div class="player-item">Arvind Kumar</div>
+                    <div class="player-item">Bhupesh Singh</div>
+                    <div class="player-item">Chandan Roy</div>
+                    <div class="player-item">Dheeraj Verma</div>
+                    <div class="player-item">Eklavya Nair</div>
+                    <div class="player-item">Farhan Khan</div>
+                </div>
+
+                <!-- MATCHES -->
+                <div class="match-section">
+                    <div class="match-date">May 14 - 10:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">SINGLES</span> Round 1
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 14 - 12:00 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">DOUBLES</span> Semi Final
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 14 - 3:00 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">FINAL</span> VS Pocket Kings
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- TEAM 2 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Pocket Kings</h3>
+                <p class="captain">Captain: Rahul Mehta</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <!-- SINGLES -->
+                <div class="info-label">Singles Players</div>
+                <div class="players-list">
+                    <div class="player-item">Rahul Mehta</div>
+                    <div class="player-item">Sanjay Kumar</div>
+                    <div class="player-item">Karan Patel</div>
+                    <div class="player-item">Deepak Sharma</div>
+                    <div class="player-item">Naveen Roy</div>
+                    <div class="player-item">Omkar Singh</div>
+                </div>
+
+                <!-- DOUBLES -->
+                <div class="info-label">Doubles Teams</div>
+                <div class="players-list">
+                    <div class="player-item">Prashant Yadav & Ravi Singh</div>
+                    <div class="player-item">Saurav Jain & Tarun Kumar</div>
+                    <div class="player-item">Uday Sharma & Varun Mehta</div>
+                    <div class="player-item">Yash Gupta & Zaid Khan</div>
+                </div>
+
+                <!-- RESERVES -->
+                <div class="info-label">Reserve Players</div>
+                <div class="players-list">
+                    <div class="player-item">Aman Verma</div>
+                    <div class="player-item">Bhavesh Roy</div>
+                    <div class="player-item">Chetan Kumar</div>
+                    <div class="player-item">Dev Patel</div>
+                    <div class="player-item">Eshan Singh</div>
+                    <div class="player-item">Farhan Ali</div>
+                </div>
+
+                <!-- MATCHES -->
+                <div class="match-section">
+                    <div class="match-date">May 14 - 10:30 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">SINGLES</span> Round 1
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 14 - 1:00 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">DOUBLES</span> Semi Final
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 14 - 3:00 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">FINAL</span> VS Strike Masters
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ♟️ CHESS -->
+<div class="sport-section">
+    <div class="sport-header">♟️ CHESS CHAMPIONSHIP (May 15–16)</div>
+
+    <div class="teams-grid">
+
+        <!-- TEAM 1 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Mind Masters</h3>
+                <p class="captain">Captain: Shubham Mishra</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <!-- TOP BOARDS -->
+                <div class="info-label">Top Boards</div>
+                <div class="players-list">
+                    <div class="player-item">Shubham Mishra</div>
+                    <div class="player-item">Aditya Jain</div>
+                    <div class="player-item">Rohit Verma</div>
+                    <div class="player-item">Karan Gupta</div>
+                </div>
+
+                <!-- MAIN PLAYERS -->
+                <div class="info-label">Main Squad</div>
+                <div class="players-list">
+                    <div class="player-item">Nikhil Sharma</div>
+                    <div class="player-item">Sahil Mehta</div>
+                    <div class="player-item">Tarun Singh</div>
+                    <div class="player-item">Vikas Kumar</div>
+                    <div class="player-item">Yash Roy</div>
+                    <div class="player-item">Aman Patel</div>
+                    <div class="player-item">Bhavesh Nair</div>
+                    <div class="player-item">Chetan Yadav</div>
+                </div>
+
+                <!-- RESERVES -->
+                <div class="info-label">Reserve Players</div>
+                <div class="players-list">
+                    <div class="player-item">Dev Sharma</div>
+                    <div class="player-item">Eshan Gupta</div>
+                    <div class="player-item">Farhan Ali</div>
+                    <div class="player-item">Gaurav Singh</div>
+                    <div class="player-item">Harshit Jain</div>
+                    <div class="player-item">Ishan Kumar</div>
+                    <div class="player-item">Jatin Roy</div>
+                    <div class="player-item">Kunal Verma</div>
+                </div>
+
+                <!-- MATCHES -->
+                <div class="match-section">
+                    <div class="match-date">May 15 - 9:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">ROUND 1</span> VS Brain Kings
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 15 - 1:00 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">QUARTER</span> Board Matches
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 16 - 10:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">FINAL</span> Championship Match
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- TEAM 2 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Brain Kings</h3>
+                <p class="captain">Captain: Rahul Sharma</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <!-- TOP BOARDS -->
+                <div class="info-label">Top Boards</div>
+                <div class="players-list">
+                    <div class="player-item">Rahul Sharma</div>
+                    <div class="player-item">Saurabh Jain</div>
+                    <div class="player-item">Deepak Verma</div>
+                    <div class="player-item">Kunal Gupta</div>
+                </div>
+
+                <!-- MAIN -->
+                <div class="info-label">Main Squad</div>
+                <div class="players-list">
+                    <div class="player-item">Naveen Yadav</div>
+                    <div class="player-item">Omkar Singh</div>
+                    <div class="player-item">Prashant Roy</div>
+                    <div class="player-item">Ravi Patel</div>
+                    <div class="player-item">Saurav Mehta</div>
+                    <div class="player-item">Tarun Kumar</div>
+                    <div class="player-item">Uday Sharma</div>
+                    <div class="player-item">Varun Singh</div>
+                </div>
+
+                <!-- RESERVE -->
+                <div class="info-label">Reserve Players</div>
+                <div class="players-list">
+                    <div class="player-item">Yash Gupta</div>
+                    <div class="player-item">Zaid Khan</div>
+                    <div class="player-item">Aman Verma</div>
+                    <div class="player-item">Bhavesh Roy</div>
+                    <div class="player-item">Chetan Kumar</div>
+                    <div class="player-item">Dev Patel</div>
+                    <div class="player-item">Eshan Singh</div>
+                    <div class="player-item">Farhan Ali</div>
+                </div>
+
+                <!-- MATCHES -->
+                <div class="match-section">
+                    <div class="match-date">May 15 - 9:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">ROUND 1</span> VS Mind Masters
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 15 - 2:00 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">QUARTER</span> Board Matches
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 16 - 10:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">FINAL</span> Championship Match
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- 👩 WOMEN ATHLETICS -->
+<div class="sport-section">
+    <div class="sport-header">👩 WOMEN ATHLETICS CHAMPIONSHIP (May 12)</div>
+
+    <div class="teams-grid">
+
+        <!-- TEAM 1 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Speed Queens</h3>
+                <p class="captain">Captain: Neha Singh</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <!-- SPRINT EVENTS -->
+                <div class="info-label">Sprint Squad</div>
+                <div class="players-list">
+                    <div class="player-item">Neha Singh</div>
+                    <div class="player-item">Pooja Kumari</div>
+                    <div class="player-item">Anjali Verma</div>
+                    <div class="player-item">Kavya Reddy</div>
+                    <div class="player-item">Simran Kaur</div>
+                    <div class="player-item">Riya Sharma</div>
+                </div>
+
+                <!-- MID DISTANCE -->
+                <div class="info-label">Mid Distance</div>
+                <div class="players-list">
+                    <div class="player-item">Megha Jain</div>
+                    <div class="player-item">Sneha Patel</div>
+                    <div class="player-item">Priya Singh</div>
+                    <div class="player-item">Tanya Roy</div>
+                    <div class="player-item">Urvashi Gupta</div>
+                </div>
+
+                <!-- FIELD EVENTS -->
+                <div class="info-label">Field Events</div>
+                <div class="players-list">
+                    <div class="player-item">Varsha Nair</div>
+                    <div class="player-item">Yamini Sharma</div>
+                    <div class="player-item">Zoya Khan</div>
+                    <div class="player-item">Aditi Verma</div>
+                    <div class="player-item">Bhavna Singh</div>
+                    <div class="player-item">Charu Mehta</div>
+                    <div class="player-item">Divya Reddy</div>
+                    <div class="player-item">Esha Roy</div>
+                    <div class="player-item">Falguni Patel</div>
+                </div>
+
+                <!-- EVENTS -->
+                <div class="match-section">
+                    <div class="match-date">May 12 - 8:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">EVENT</span> 200m Sprint Final
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 12 - 10:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">EVENT</span> 4x100 Relay
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 12 - 1:00 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">EVENT</span> Long Jump Finals
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- TEAM 2 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Velocity Queens</h3>
+                <p class="captain">Captain: Riya Verma</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <!-- SPRINT -->
+                <div class="info-label">Sprint Squad</div>
+                <div class="players-list">
+                    <div class="player-item">Riya Verma</div>
+                    <div class="player-item">Sanya Gupta</div>
+                    <div class="player-item">Tina Sharma</div>
+                    <div class="player-item">Urvashi Mehta</div>
+                    <div class="player-item">Vandana Singh</div>
+                    <div class="player-item">Yashika Roy</div>
+                </div>
+
+                <!-- MID -->
+                <div class="info-label">Mid Distance</div>
+                <div class="players-list">
+                    <div class="player-item">Ankita Jain</div>
+                    <div class="player-item">Bharti Patel</div>
+                    <div class="player-item">Chhavi Singh</div>
+                    <div class="player-item">Divya Sharma</div>
+                    <div class="player-item">Ekta Nair</div>
+                </div>
+
+                <!-- FIELD -->
+                <div class="info-label">Field Events</div>
+                <div class="players-list">
+                    <div class="player-item">Garima Roy</div>
+                    <div class="player-item">Hina Khan</div>
+                    <div class="player-item">Ishita Verma</div>
+                    <div class="player-item">Juhi Singh</div>
+                    <div class="player-item">Komal Patel</div>
+                    <div class="player-item">Lavanya Reddy</div>
+                    <div class="player-item">Mansi Gupta</div>
+                    <div class="player-item">Nikita Sharma</div>
+                </div>
+
+                <!-- EVENTS -->
+                <div class="match-section">
+                    <div class="match-date">May 12 - 8:30 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">EVENT</span> 200m Sprint Final
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 12 - 10:30 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">EVENT</span> Relay Race
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 12 - 1:30 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">EVENT</span> High Jump Finals
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- 🏑 HOCKEY -->
+<!-- 🏑 HOCKEY -->
+<div class="sport-section">
+    <div class="sport-header">🏑 HOCKEY CHAMPIONSHIP (May 21–23)</div>
+
+    <div class="teams-grid">
+
+        <!-- TEAM 1 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Blazing Sticks</h3>
+                <p class="captain">Captain: Arjun Singh</p>
+            </div>
+            <div class="team-card-body">
+
+                <div class="players-list">
+                    <div class="player-item">Arjun Singh</div>
+                    <div class="player-item">Rohit Kumar</div>
+                    <div class="player-item">Vikram Yadav</div>
+                    <div class="player-item">Sandeep Roy</div>
+                
+                    <div class="player-item">Tarun Sharma</div>
+                    <div class="player-item">Amit Verma</div>
+                    <div class="player-item">Nikhil Mehta</div>
+                    <div class="player-item">Deepak Singh</div>
+        
+                    <div class="player-item">Karan Patel</div>
+                    <div class="player-item">Manish Yadav</div>
+                    <div class="player-item">Ajay Kumar</div>
+                    <div class="player-item">Saurabh Jain</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 21 - 10 AM</div>
+                    <div class="match-opponent"><span class="vs-badge">VS</span> Ice Warriors</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEAM 2 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Ice Warriors</h3>
+                <p class="captain">Captain: Rahul Nair</p>
+            </div>
+            <div class="team-card-body">
+
+                <div class="players-list">
+                    <div class="player-item">Rahul Nair</div>
+                    <div class="player-item">Chetan Sharma</div>
+                    <div class="player-item">Bhavesh Patel</div>
+                    <div class="player-item">Dev Mehta</div>
+                    <div class="player-item">Farhan Ali</div>
+                    <div class="player-item">Gaurav Singh</div>
+                    <div class="player-item">Harish Gupta</div>
+                    <div class="player-item">Lokesh Roy</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 21 - 12 PM</div>
+                    <div class="match-opponent"><span class="vs-badge">VS</span> Thunder Blades</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEAM 3 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Thunder Blades</h3>
+                <p class="captain">Captain: Kunal Verma</p>
+            </div>
+            <div class="team-card-body">
+                <div class="players-list">
+                    <div class="player-item">Kunal Verma</div>
+                    <div class="player-item">Naveen Kumar</div>
+                    <div class="player-item">Omkar Singh</div>
+                    <div class="player-item">Prashant Yadav</div>
+                    <div class="player-item">Ravi Patel</div>
+                    <div class="player-item">Saurav Roy</div>
+                    <div class="player-item">Tejas Mehta</div>
+                    <div class="player-item">Uday Sharma</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 21 - 2 PM</div>
+                    <div class="match-opponent"><span class="vs-badge">VS</span> FireFlyers</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEAM 4 (IMPORTANT) -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>FireFlyers</h3>
+                <p class="captain">Captain: Nagesh Kale</p>
+            </div>
+            <div class="team-card-body">
+
+
+                <div class="players-list">
+                    <div class="player-item">Nagesh Kale</div>
+                    <div class="player-item">Aditya Kumar</div>
+                    <div class="player-item">Rajesh Gupta</div>
+                    <div class="player-item">Suresh Bansal</div>
+                    <div class="player-item">Nikhil Desai</div>
+                    <div class="player-item">Mrinal Sharma</div>
+                    <div class="player-item">Pranav Joshi</div>
+                    <div class="player-item">Sameer Malik</div>
+                    <div class="player-item">Kartik Pandey</div>
+                    <div class="player-item">Sarvesh Roy</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 21 - 2 PM</div>
+                    <div class="match-opponent"><span class="vs-badge">VS</span> Thunder Blades</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEAM 5 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Golden Dribblers</h3>
+                <p class="captain">Captain: Vikram Sinha</p>
+            </div>
+            <div class="team-card-body">
+                <div class="players-list">
+                    <div class="player-item">Vikram Sinha</div>
+                    <div class="player-item">Deepanshu Yadav</div>
+                    <div class="player-item">Vansh Kumar</div>
+                    <div class="player-item">Warun Singh</div>
+                    <div class="player-item">Xander Verma</div>
+                    <div class="player-item">Yashesh Reddy</div>
+                    <div class="player-item">Zaman Roy</div>
+                    <div class="player-item">Akarsh Tiwari</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 22 - 10 AM</div>
+                    <div class="match-opponent"><span class="vs-badge">VS</span> Night Raiders</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEAM 6 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Night Raiders</h3>
+                <p class="captain">Captain: Farhan Khan</p>
+            </div>
+            <div class="team-card-body">
+                <div class="players-list">
+                    <div class="player-item">Farhan Khan</div>
+                    <div class="player-item">Nagesh Kale</div>
+                    <div class="player-item">Garanth Kumar</div>
+                    <div class="player-item">Haranth Singh</div>
+                    <div class="player-item">Iranth Verma</div>
+                    <div class="player-item">Jaranth Reddy</div>
+                    <div class="player-item">Karanth Roy</div>
+                    <div class="player-item">Laranth Rao</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 22 - 10 AM</div>
+                    <div class="match-opponent"><span class="vs-badge">VS</span> Golden Dribblers</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- 🥅 HANDBALL -->
+<div class="sport-section">
+    <div class="sport-header">🥅 HANDBALL CHAMPIONSHIP (May 24–25)</div>
+
+    <div class="teams-grid">
+
+        <!-- TEAM 1 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Goal Crushers</h3>
+                <p class="captain">Captain: Nitin Sharma</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <div class="info-label">Attackers</div>
+                <div class="players-list">
+                    <div class="player-item">Nitin Sharma</div>
+                    <div class="player-item">Ajit Singh</div>
+                    <div class="player-item">Rakesh Kumar</div>
+                    <div class="player-item">Deepanshu Roy</div>
+                </div>
+
+                <div class="info-label">Midfield</div>
+                <div class="players-list">
+                    <div class="player-item">Tarun Mehta</div>
+                    <div class="player-item">Vivek Gupta</div>
+                    <div class="player-item">Sahil Khan</div>
+                    <div class="player-item">Manoj Patel</div>
+                </div>
+
+                <div class="info-label">Defense & GK</div>
+                <div class="players-list">
+                    <div class="player-item">Kunal Verma</div>
+                    <div class="player-item">Yash Jain</div>
+                    <div class="player-item">Aman Sinha</div>
+                    <div class="player-item">Bhanu Pratap</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 24 - 11:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">VS</span> Power Throws
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 25 - 10:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">VS</span> Rapid Hands
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- TEAM 2 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Power Throws</h3>
+                <p class="captain">Captain: Rahul Verma</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <div class="info-label">Attackers</div>
+                <div class="players-list">
+                    <div class="player-item">Rahul Verma</div>
+                    <div class="player-item">Saurabh Jain</div>
+                    <div class="player-item">Deepak Sharma</div>
+                    <div class="player-item">Karan Patel</div>
+                </div>
+
+                <div class="info-label">Midfield</div>
+                <div class="players-list">
+                    <div class="player-item">Naveen Kumar</div>
+                    <div class="player-item">Omkar Singh</div>
+                    <div class="player-item">Prashant Roy</div>
+                    <div class="player-item">Ravi Patel</div>
+                </div>
+
+                <div class="info-label">Defense & GK</div>
+                <div class="players-list">
+                    <div class="player-item">Saurav Mehta</div>
+                    <div class="player-item">Tarun Kumar</div>
+                    <div class="player-item">Uday Sharma</div>
+                    <div class="player-item">Varun Singh</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 24 - 11:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">VS</span> Goal Crushers
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 25 - 12:00 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">VS</span> Rapid Hands
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- TEAM 3 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Rapid Hands</h3>
+                <p class="captain">Captain: Arjun Mehta</p>
+            </div>
+
+            <div class="team-card-body">
+
+                <div class="info-label">Attackers</div>
+                <div class="players-list">
+                    <div class="player-item">Arjun Mehta</div>
+                    <div class="player-item">Bhavesh Patel</div>
+                    <div class="player-item">Chetan Singh</div>
+                    <div class="player-item">Dev Sharma</div>
+                </div>
+
+                <div class="info-label">Midfield</div>
+                <div class="players-list">
+                    <div class="player-item">Eshan Roy</div>
+                    <div class="player-item">Farhan Khan</div>
+                    <div class="player-item">Gaurav Singh</div>
+                    <div class="player-item">Harish Kumar</div>
+                </div>
+
+                <div class="info-label">Defense & GK</div>
+                <div class="players-list">
+                    <div class="player-item">Imran Ali</div>
+                    <div class="player-item">Jatin Kumar</div>
+                    <div class="player-item">Kunal Gupta</div>
+                    <div class="player-item">Lokesh Jain</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 25 - 10:00 AM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">VS</span> Goal Crushers
+                    </div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 25 - 12:00 PM</div>
+                    <div class="match-opponent">
+                        <span class="vs-badge">VS</span> Power Throws
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- 🏹 ARCHERY -->
+<div class="sport-section">
+    <div class="sport-header">🏹 ARCHERY (May 26)</div>
+    <div class="teams-grid">
+
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Target Kings</h3>
+                <p class="captain">Captain: Pranav Reddy</p>
+            </div>
+            <div class="team-card-body">
+
+                <div class="players-list">
+                    <div class="player-item">Pranav Reddy</div>
+                    <div class="player-item">Rohit Verma</div>
+                    <div class="player-item">Aakash Singh</div>
+                    <div class="player-item">Saurabh Jain</div>
+                    <div class="player-item">Deepak Kumar</div>
+                    <div class="player-item">Tarun Sharma</div>
+                    <div class="player-item">Vikram Singh</div>
+                    <div class="player-item">Nitin Yadav</div>
+                    <div class="player-item">Ajay Patel</div>
+                    <div class="player-item">Kunal Mehta</div>
+                    <div class="player-item">Manish Roy</div>
+                    <div class="player-item">Yash Gupta</div>
+                    <div class="player-item">Arvind Kumar</div>
+                    <div class="player-item">Bhavesh Singh</div>
+                    <div class="player-item">Chetan Jain</div>
+                    <div class="player-item">Devendra Sharma</div>
+                    <div class="player-item">Eshan Nair</div>
+                    <div class="player-item">Farhan Khan</div>
+                    <div class="player-item">Gaurav Roy</div>
+                    <div class="player-item">Harish Patel</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 26 - 9 AM</div>
+                    <div class="match-opponent">Precision Finals</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- 🧗 CLIMBING -->
+<div class="sport-section">
+    <div class="sport-header">🧗 ROCK CLIMBING (May 27–28)</div>
+    <div class="teams-grid">
+
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Peak Performers</h3>
+                <p class="captain">Captain: Varun Mehta</p>
+            </div>
+            <div class="team-card-body">
+
+                <div class="players-list">
+                    <div class="player-item">Varun Mehta</div>
+                    <div class="player-item">Rohit Sharma</div>
+                    <div class="player-item">Deepak Yadav</div>
+                    <div class="player-item">Amit Singh</div>
+                    <div class="player-item">Sahil Verma</div>
+                    <div class="player-item">Kunal Jain</div>
+                    <div class="player-item">Tarun Roy</div>
+                    <div class="player-item">Vikram Nair</div>
+                    <div class="player-item">Nitin Patel</div>
+                    <div class="player-item">Ajay Kumar</div>
+                    <div class="player-item">Manoj Sharma</div>
+                    <div class="player-item">Yash Singh</div>
+                    <div class="player-item">Arjun Mehta</div>
+                    <div class="player-item">Bhanu Gupta</div>
+                    <div class="player-item">Chetan Roy</div>
+                    <div class="player-item">Dev Patel</div>
+                    <div class="player-item">Eshan Kumar</div>
+                    <div class="player-item">Farhan Ali</div>
+                    <div class="player-item">Gaurav Sharma</div>
+                    <div class="player-item">Harish Singh</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 27 - 8 AM</div>
+                    <div class="match-opponent">Speed Climb Finals</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 👩 WOMEN KABADDI -->
+<div class="sport-section">
+    <div class="sport-header">👩 WOMEN KABADDI CHAMPIONSHIP (May 29–30)</div>
+
+    <div class="teams-grid">
+
+        <!-- TEAM 1 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Raid Queens</h3>
+                <p class="captain">Captain: Pooja Yadav</p>
+            </div>
+            <div class="team-card-body">
+
+                <div class="info-label">Raiders</div>
+                <div class="players-list">
+                    <div class="player-item">Pooja Yadav</div>
+                    <div class="player-item">Neha Sharma</div>
+                    <div class="player-item">Anjali Singh</div>
+                </div>
+
+                <div class="info-label">Defenders</div>
+                <div class="players-list">
+                    <div class="player-item">Kavya Reddy</div>
+                    <div class="player-item">Simran Kaur</div>
+                    <div class="player-item">Riya Verma</div>
+                </div>
+
+                <div class="info-label">All Rounders</div>
+                <div class="players-list">
+                    <div class="player-item">Megha Jain</div>
+                    <div class="player-item">Sneha Patel</div>
+                    <div class="player-item">Priya Roy</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 29 - 3:00 PM</div>
+                    <div class="match-opponent"><span class="vs-badge">VS</span> Mat Queens</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEAM 2 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Mat Queens</h3>
+                <p class="captain">Captain: Riya Sharma</p>
+            </div>
+            <div class="team-card-body">
+                <div class="players-list">
+                    <div class="player-item">Riya Sharma</div>
+                    <div class="player-item">Tanya Gupta</div>
+                    <div class="player-item">Urvashi Singh</div>
+                    <div class="player-item">Varsha Nair</div>
+                    <div class="player-item">Yamini Sharma</div>
+                    <div class="player-item">Zoya Khan</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 29 - 3:00 PM</div>
+                    <div class="match-opponent"><span class="vs-badge">VS</span> Raid Queens</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEAM 3 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Power Raiders</h3>
+                <p class="captain">Captain: Aditi Mehta</p>
+            </div>
+            <div class="team-card-body">
+                <div class="players-list">
+                    <div class="player-item">Aditi Mehta</div>
+                    <div class="player-item">Bhavna Verma</div>
+                    <div class="player-item">Charu Singh</div>
+                    <div class="player-item">Divya Reddy</div>
+                    <div class="player-item">Esha Roy</div>
+                    <div class="player-item">Falguni Patel</div>
+                </div>
+
+                <div class="match-section">
+                    <div class="match-date">May 29 - 4:00 PM</div>
+                    <div class="match-opponent"><span class="vs-badge">VS</span> Thunder Queens</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEAM 4 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Thunder Queens</h3>
+                <p class="captain">Captain: Sneha Jain</p>
+            </div>
+            <div class="team-card-body">
+                <div class="players-list">
+                    <div class="player-item">Sneha Jain</div>
+                    <div class="player-item">Komal Gupta</div>
+                    <div class="player-item">Pallavi Sharma</div>
+                    <div class="player-item">Ruchi Verma</div>
+                    <div class="player-item">Sakshi Singh</div>
+                    <div class="player-item">Tanvi Roy</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEAM 5 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Warrior Divas</h3>
+                <p class="captain">Captain: Kavita Singh</p>
+            </div>
+            <div class="team-card-body">
+                <div class="players-list">
+                    <div class="player-item">Kavita Singh</div>
+                    <div class="player-item">Neelam Yadav</div>
+                    <div class="player-item">Payal Roy</div>
+                    <div class="player-item">Rashmi Sharma</div>
+                    <div class="player-item">Sonal Gupta</div>
+                    <div class="player-item">Tina Mehta</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEAM 6 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Defender Queens</h3>
+                <p class="captain">Captain: Poonam Verma</p>
+            </div>
+            <div class="team-card-body">
+                <div class="players-list">
+                    <div class="player-item">Poonam Verma</div>
+                    <div class="player-item">Radha Singh</div>
+                    <div class="player-item">Seema Roy</div>
+                    <div class="player-item">Trisha Sharma</div>
+                    <div class="player-item">Usha Patel</div>
+                    <div class="player-item">Vandana Gupta</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEAM 7 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Raid Storm</h3>
+                <p class="captain">Captain: Anu Kumari</p>
+            </div>
+            <div class="team-card-body">
+                <div class="players-list">
+                    <div class="player-item">Anu Kumari</div>
+                    <div class="player-item">Bindiya Singh</div>
+                    <div class="player-item">Chandni Roy</div>
+                    <div class="player-item">Diksha Sharma</div>
+                    <div class="player-item">Ekta Patel</div>
+                    <div class="player-item">Farha Khan</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEAM 8 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Mat Warriors</h3>
+                <p class="captain">Captain: Jyoti Verma</p>
+            </div>
+            <div class="team-card-body">
+                <div class="players-list">
+                    <div class="player-item">Jyoti Verma</div>
+                    <div class="player-item">Kiran Singh</div>
+                    <div class="player-item">Lata Sharma</div>
+                    <div class="player-item">Meena Roy</div>
+                    <div class="player-item">Nisha Gupta</div>
+                    <div class="player-item">Priti Patel</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEAM 9 -->
+        <div class="team-card">
+            <div class="team-card-header">
+                <h3>Victory Raiders</h3>
+                <p class="captain">Captain: Suman Yadav</p>
+            </div>
+            <div class="team-card-body">
+                <div class="players-list">
+                    <div class="player-item">Suman Yadav</div>
+                    <div class="player-item">Tanushree Roy</div>
+                    <div class="player-item">Urvashi Sharma</div>
+                    <div class="player-item">Varsha Singh</div>
+                    <div class="player-item">Yamini Gupta</div>
+                    <div class="player-item">Zeenat Khan</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- TEAM 6 -->
+<div class="team-card">
+    <div class="team-card-header">
+        <h3>Victory Stars</h3>
+        <p class="captain">Captain: Meena Roy</p>
+        <p class="captain">Coach: Ajay Singh</p>
+    </div>
+    <div class="team-card-body">
+        <div class="players-list">
+            <div class="player-item">Meena Roy</div>
+            <div class="player-item">Aarti Singh</div>
+            <div class="player-item">Bhavna Roy</div>
+            <div class="player-item">Chitra Sharma</div>
+            <div class="player-item">Deepika Verma</div>
+            <div class="player-item">Esha Gupta</div>
+            <div class="player-item">Farah Khan</div>
+            <div class="player-item">Gauri Patel</div>
+            <div class="player-item">Hema Singh</div>
+            <div class="player-item">Ishika Roy</div>
+            <div class="player-item">Juhi Verma</div>
+        </div>
+
+        <div class="match-section">
+            <div class="match-date">June 2 - 9:00 AM</div>
+            <div class="match-opponent"><span class="vs-badge">VS</span> Fire Blazers</div>
+        </div>
+    </div>
+</div>
+
+<!-- TEAM 7 -->
+<div class="team-card">
+    <div class="team-card-header">
+        <h3>Fire Blazers</h3>
+        <p class="captain">Captain: Sneha Gupta</p>
+        <p class="captain">Coach: Kunal Mehta</p>
+    </div>
+    <div class="team-card-body">
+        <div class="players-list">
+            <div class="player-item">Sneha Gupta</div>
+            <div class="player-item">Ritika Sharma</div>
+            <div class="player-item">Sonal Singh</div>
+            <div class="player-item">Tanya Roy</div>
+            <div class="player-item">Usha Mehta</div>
+            <div class="player-item">Varsha Patel</div>
+            <div class="player-item">Wahida Khan</div>
+            <div class="player-item">Xena Verma</div>
+            <div class="player-item">Yamini Roy</div>
+            <div class="player-item">Zoya Khan</div>
+            <div class="player-item">Ankita Singh</div>
+        </div>
+    </div>
+</div>
+
+<!-- TEAM 8 -->
+<div class="team-card">
+    <div class="team-card-header">
+        <h3>Golden Queens</h3>
+        <p class="captain">Captain: Ritu Sharma</p>
+        <p class="captain">Coach: Deepak Roy</p>
+    </div>
+    <div class="team-card-body">
+        <div class="players-list">
+            <div class="player-item">Ritu Sharma</div>
+            <div class="player-item">Alka Verma</div>
+            <div class="player-item">Bharti Roy</div>
+            <div class="player-item">Chandni Singh</div>
+            <div class="player-item">Divya Patel</div>
+            <div class="player-item">Ekta Sharma</div>
+            <div class="player-item">Fiza Khan</div>
+            <div class="player-item">Gitanjali Roy</div>
+            <div class="player-item">Hina Verma</div>
+            <div class="player-item">Ira Singh</div>
+            <div class="player-item">Jaya Roy</div>
+        </div>
+
+        <div class="match-section">
+            <div class="match-date">June 3 - 9:00 AM</div>
+            <div class="match-opponent"><span class="vs-badge">VS</span> Cricket Divas</div>
+        </div>
+    </div>
+</div>
+
+<!-- TEAM 9 -->
+<div class="team-card">
+    <div class="team-card-header">
+        <h3>Cricket Divas</h3>
+        <p class="captain">Captain: Anjali Mehta</p>
+        <p class="captain">Coach: Manoj Kumar</p>
+    </div>
+    <div class="team-card-body">
+        <div class="players-list">
+            <div class="player-item">Anjali Mehta</div>
+            <div class="player-item">Pooja Singh</div>
+            <div class="player-item">Reena Roy</div>
+            <div class="player-item">Sakshi Sharma</div>
+            <div class="player-item">Tina Verma</div>
+            <div class="player-item">Uma Patel</div>
+            <div class="player-item">Vandana Roy</div>
+            <div class="player-item">Wahida Khan</div>
+            <div class="player-item">Xena Gupta</div>
+            <div class="player-item">Yashika Sharma</div>
+            <div class="player-item">Zeenat Khan</div>
+        </div>
+    </div>
+</div>
+
+<!-- TEAM 10 -->
+<div class="team-card">
+    <div class="team-card-header">
+        <h3>Sky Warriors</h3>
+        <p class="captain">Captain: Kavita Singh</p>
+        <p class="captain">Coach: Ravi Patel</p>
+    </div>
+    <div class="team-card-body">
+        <div class="players-list">
+            <div class="player-item">Kavita Singh</div>
+            <div class="player-item">Asha Roy</div>
+            <div class="player-item">Bina Sharma</div>
+            <div class="player-item">Charu Verma</div>
+            <div class="player-item">Dimple Singh</div>
+            <div class="player-item">Esha Roy</div>
+            <div class="player-item">Farida Khan</div>
+            <div class="player-item">Geeta Sharma</div>
+            <div class="player-item">Himani Patel</div>
+            <div class="player-item">Ishita Roy</div>
+            <div class="player-item">Juhi Sharma</div>
+        </div>
+
+        <div class="match-section">
+            <div class="match-date">June 4 - 9:00 AM</div>
+            <div class="match-opponent"><span class="vs-badge">VS</span> Thunder Girls</div>
+        </div>
+    </div>
+</div>
+
+<!-- TEAM 11 -->
+<div class="team-card">
+    <div class="team-card-header">
+        <h3>Thunder Girls</h3>
+        <p class="captain">Captain: Jyoti Verma</p>
+        <p class="captain">Coach: Harish Gupta</p>
+    </div>
+    <div class="team-card-body">
+        <div class="players-list">
+            <div class="player-item">Jyoti Verma</div>
+            <div class="player-item">Neha Roy</div>
+            <div class="player-item">Pallavi Singh</div>
+            <div class="player-item">Rashmi Sharma</div>
+            <div class="player-item">Sonal Verma</div>
+            <div class="player-item">Tanvi Roy</div>
+            <div class="player-item">Urvashi Singh</div>
+            <div class="player-item">Varsha Roy</div>
+            <div class="player-item">Wahida Khan</div>
+            <div class="player-item">Xena Sharma</div>
+            <div class="player-item">Yamini Gupta</div>
+        </div>
+    </div>
+</div>
+
+<!-- TEAM 12 -->
+<div class="team-card">
+    <div class="team-card-header">
+        <h3>Elite Strikers</h3>
+        <p class="captain">Captain: Rashi Roy</p>
+        <p class="captain">Coach: Saurabh Jain</p>
+    </div>
+    <div class="team-card-body">
+        <div class="players-list">
+            <div class="player-item">Rashi Roy</div>
+            <div class="player-item">Aarti Singh</div>
+            <div class="player-item">Bhavna Sharma</div>
+            <div class="player-item">Chitra Roy</div>
+            <div class="player-item">Deepika Singh</div>
+            <div class="player-item">Esha Verma</div>
+            <div class="player-item">Farah Khan</div>
+            <div class="player-item">Gauri Sharma</div>
+            <div class="player-item">Hema Roy</div>
+            <div class="player-item">Ishika Singh</div>
+            <div class="player-item">Juhi Verma</div>
+        </div>
+
+        <div class="match-section">
+            <div class="match-date">June 5 - 9:00 AM</div>
+            <div class="match-opponent"><span class="vs-badge">VS</span> Power Smashers</div>
+        </div>
+    </div>
+</div>
+
+<!-- TEAM 13 -->
+<div class="team-card">
+    <div class="team-card-header">
+        <h3>Power Smashers</h3>
+        <p class="captain">Captain: Priya Singh</p>
+        <p class="captain">Coach: Tarun Sharma</p>
+    </div>
+    <div class="team-card-body">
+        <div class="players-list">
+            <div class="player-item">Priya Singh</div>
+            <div class="player-item">Ritika Roy</div>
+            <div class="player-item">Sakshi Verma</div>
+            <div class="player-item">Tanu Sharma</div>
+            <div class="player-item">Usha Roy</div>
+            <div class="player-item">Varsha Singh</div>
+            <div class="player-item">Wahida Khan</div>
+            <div class="player-item">Xena Roy</div>
+            <div class="player-item">Yashika Sharma</div>
+            <div class="player-item">Zoya Khan</div>
+            <div class="player-item">Anita Verma</div>
+        </div>
+    </div>
+</div>
+
+<!-- TEAM 14 -->
+<div class="team-card">
+    <div class="team-card-header">
+        <h3>Ultimate XI</h3>
+        <p class="captain">Captain: Tanya Verma</p>
+        <p class="captain">Coach: Vivek Gupta</p>
+    </div>
+    <div class="team-card-body">
+        <div class="players-list">
+            <div class="player-item">Tanya Verma</div>
+            <div class="player-item">Aarti Roy</div>
+            <div class="player-item">Bhavna Singh</div>
+            <div class="player-item">Chitra Sharma</div>
+            <div class="player-item">Deepika Roy</div>
+            <div class="player-item">Esha Singh</div>
+            <div class="player-item">Farida Khan</div>
+            <div class="player-item">Gauri Roy</div>
+            <div class="player-item">Hema Sharma</div>
+            <div class="player-item">Ishita Verma</div>
+            <div class="player-item">Juhi Singh</div>
+        </div>
+
+        <div class="match-section">
+            <div class="match-date">June 6 - 9:00 AM</div>
+            <div class="match-opponent"><span class="vs-badge">VS</span> Champion Girls</div>
+        </div>
+    </div>
+</div>
+
+<!-- TEAM 15 -->
+<div class="team-card">
+    <div class="team-card-header">
+        <h3>Champion Girls</h3>
+        <p class="captain">Captain: Simran Kaur</p>
+        <p class="captain">Coach: Nitin Sharma</p>
+    </div>
+    <div class="team-card-body">
+        <div class="players-list">
+            <div class="player-item">Simran Kaur</div>
+            <div class="player-item">Neha Sharma</div>
+            <div class="player-item">Pooja Roy</div>
+            <div class="player-item">Riya Singh</div>
+            <div class="player-item">Sonal Verma</div>
+            <div class="player-item">Tanya Roy</div>
+            <div class="player-item">Urvashi Sharma</div>
+            <div class="player-item">Varsha Roy</div>
+            <div class="player-item">Wahida Khan</div>
+            <div class="player-item">Xena Verma</div>
+            <div class="player-item">Yamini Singh</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
