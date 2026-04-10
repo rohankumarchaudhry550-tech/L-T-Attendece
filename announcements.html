@@ -717,12 +717,137 @@ footer{
 </header>
 
 <main class="container">
- 
-
   <h2 class="page-title">📢 Official Announcements</h2>
   <p class="page-subtitle">
     All announcements published here are mandatory and governed by internal compliance policies.
   </p>
+  <!-- POPUP -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-card">
+    
+    <span class="close-btn" onclick="hidePopup()">✖</span>
+
+    <h3>📢 Assignment Tomorrow</h3>
+
+    <p>
+      <strong>Time:</strong> 2 PM – 5 PM <br>
+      Assignment will be available on the <strong>Company App at 2 PM</strong>.
+    </p>
+
+    <p>
+      Includes <strong>Basic + Advanced Coding Round</strong>.  
+      Be present and attempt on time.
+    </p>
+
+    <button class="action-btn" onclick="hidePopup()">Got it</button>
+
+  </div>
+</div>
+
+<style>
+/* ===== FLOATING POPUP ===== */
+.popup-overlay {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* CARD */
+.popup-card {
+  width: 320px;
+  max-width: 90vw;
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+  padding: 20px;
+  position: relative;
+  animation: slideUp 0.5s ease;
+  font-family: Arial, sans-serif;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+/* TEXT */
+.popup-card h3 {
+  margin-bottom: 10px;
+}
+
+.popup-card p {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+/* BUTTON */
+.action-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.action-btn:hover {
+  background: #1d4ed8;
+}
+
+/* ANIMATION */
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* HIDE ANIMATION */
+.hide {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
+</style>
+
+<script>
+function hidePopup() {
+  const popup = document.getElementById("popup");
+  popup.classList.add("hide");
+
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 400);
+}
+
+// Auto-hide after 8 seconds
+setTimeout(() => {
+  hidePopup();
+}, 8000);
+</script>
   <section class="card latest">
   <div class="card-header">
     <h2>📢 Best in the World AI Developer Course — Comprehensive Training Program</h2>
@@ -774,9 +899,6 @@ footer{
   </p>
 
   <div class="cta" style="flex-wrap:wrap; gap:12px;">
-    <button class="btn" style="background:#94a3b8; cursor:not-allowed;" disabled>
-      🚫 Registration Closed
-    </button>
     <a href="syllabus.html" class="btn" style="background: linear-gradient(135deg, #0ea5e9, #2563eb);">
       📧 View Course Syllabus
     </a>
