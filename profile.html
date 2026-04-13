@@ -147,8 +147,24 @@ body::before{
 .logout:hover{
   background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15));
   color: #fff;
+}.mail-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:22px;
+  padding:16px 24px;
+  background:var(--gradient-primary);
+  color:#fff;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 18px 40px rgba(15,23,42,.14);
+  transition:transform .2s ease, box-shadow .2s ease;
 }
-
+.mail-link:hover{
+  transform:translateY(-2px);
+  box-shadow:0 22px 48px rgba(15,23,42,.2);
+}
 /* ================= HAMBURGER ================= */
 .hamburger{
   display:none;
@@ -651,6 +667,7 @@ iframe{
     <a href="project.html">Projects</a>
     <a href="reports.html">Reports</a>
     <a href="announcements.html">Announcements</a>
+    <a href="companymail.html">Company Mail</a>
     <a href="index.html" class="logout">Logout</a>
   </nav>
 </header>
@@ -706,6 +723,8 @@ iframe{
       </div>
 
     </div>
+
+    <a href="companymail.html" class="mail-link"><i class="fa-solid fa-envelope"></i> Open Company Mail</a>
 
   </div>
 </section>

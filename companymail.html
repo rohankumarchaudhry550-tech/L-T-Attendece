@@ -1,0 +1,805 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Mail | L&T Mailbox</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+:root{
+  --primary:#0a2b5f;
+  --primary-dark:#081f45;
+  --accent:#2563eb;
+  --bg:#f4f6fb;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --border:#e5e7eb;
+  --radius:18px;
+  --shadow:0 18px 40px rgba(15,23,42,.10);
+  --shadow-hover:0 24px 48px rgba(15,23,42,.12);
+  --gradient-primary:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  --glass-bg:rgba(255,255,255,0.95);
+  --glass-border:rgba(255,255,255,0.2);
+  scrollbar-width:thin;
+  scrollbar-color:rgba(15,23,42,0.1) transparent;
+}
+
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,"Segoe UI",system-ui,sans-serif;
+}
+html{
+  scroll-behavior:smooth;
+}
+body{
+  background:linear-gradient(135deg,#f0f4f8 0%,#f8fafc 50%,#f1f5f9 100%);
+  color:var(--text);
+  overflow-x:hidden;
+  font-feature-settings:"kern" 1,"liga" 1;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  position:relative;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  top:-50%;
+  right:-20%;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle,rgba(37,99,235,0.08) 0%,transparent 70%);
+  border-radius:50%;
+  z-index:-1;
+  animation:float 15s ease-in-out infinite;
+}
+
+@media(max-width:768px){
+  html{
+    overflow-x:hidden;
+  }
+  body{
+    width:100vw;
+    overflow-x:hidden;
+    position:relative;
+  }
+}
+
+/* ================= HEADER (PREMIUM STYLE) ================= */
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:linear-gradient(135deg, #0a2b5f 0%, #1e3a8a 100%);
+  padding:16px 28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 8px 32px rgba(10,43,95,.2);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+.logo{
+  height:60px;
+  background:linear-gradient(135deg,#fff,#f8fafc);
+  padding:8px;
+  border-radius:12px;
+  box-shadow:0 4px 16px rgba(10,43,95,0.2);
+  transition:transform 0.3s ease;
+}
+.logo:hover{
+  transform:scale(1.08);
+  box-shadow:0 8px 24px rgba(10,43,95,0.3);
+}
+
+/* ================= NAV ================= */
+.nav{
+  display:flex;
+  gap:20px;
+  align-items: center;
+}
+.nav a{
+  color:#dbeafe;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  position:relative;
+  padding:10px 18px;
+  border-radius:12px;
+  transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+  background: transparent;
+}
+.nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:2px;
+  transition:.3s;
+}
+.nav a:hover{
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15));
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.4);
+  color: #fff;
+}
+.nav a:hover::after,
+.nav a.active::after{
+  width:100%;
+}
+.nav a.active{
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15));
+  box-shadow:0 12px 30px rgba(0,0,0,0.4);
+  color: #fff;
+}
+.logout{
+  color:#ffd1d1;
+  background:rgba(255,255,255,0.1);
+}
+.logout:hover{
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15));
+  color: #fff;
+}.mail-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:22px;
+  padding:16px 24px;
+  background:var(--gradient-primary);
+  color:#fff;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 18px 40px rgba(15,23,42,.14);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.mail-link:hover{
+  transform:translateY(-2px);
+  box-shadow:0 22px 48px rgba(15,23,42,.2);
+}
+/* ================= HAMBURGER ================= */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+  padding:8px;
+  border-radius:8px;
+  transition:background 0.3s ease;
+}
+.hamburger:hover{
+  background:rgba(255,255,255,0.1);
+}
+.hamburger span{
+  width:24px;
+  height:3px;
+  background:#fff;
+  border-radius:2px;
+  transition:all 0.3s ease;
+  transform-origin:center;
+}
+.hamburger.open span:nth-child(1){
+  transform:rotate(45deg) translate(6px,6px);
+}
+.hamburger.open span:nth-child(2){
+  opacity:0;
+}
+.hamburger.open span:nth-child(3){
+  transform:rotate(-45deg) translate(6px,-6px);
+}
+
+/* ================= HEADER MOBILE FIX ================= */
+@media(max-width:768px){
+  .header{
+    box-shadow:none !important;
+    backdrop-filter:none !important;
+    border-bottom:1px solid rgba(255,255,255,0.05) !important;
+    padding:12px 16px;
+  }
+}
+
+/* ================= MOBILE NAV ================= */
+@media(max-width:768px){
+  .hamburger{display:flex;}
+  .nav{
+    position:fixed;
+    top:0;
+    left:-300px;
+    height:100vh;
+    width:300px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+    flex-direction:column;
+    padding-top:100px;
+    transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+    box-shadow:none;
+    backdrop-filter:blur(10px);
+  }
+  body.nav-open::before{
+    content:'';
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    z-index:999;
+  }
+  .nav.open{
+    left:0;
+  }
+  .nav a{
+    padding:16px 24px;
+    margin:4px 16px;
+    border-radius:12px;
+    border-bottom:none;
+    transition:all 0.3s ease;
+  }
+  .nav a:hover{
+    background:rgba(255,255,255,0.15);
+    transform:translateX(8px);
+  }
+}
+.page-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px 0 12px;
+}
+
+.page-head h1 {
+  margin: 0;
+  font-size: clamp(2rem, 2.4vw, 2.4rem);
+}
+
+.page-head p {
+  margin: 8px 0 0;
+  max-width: 760px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.mail-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
+  gap: 24px;
+  margin-top: 18px;
+}
+
+.mail-list {
+  background: var(--card-bg);
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  box-shadow: 0 18px 50px rgba(15,23,42,.06);
+  overflow: hidden;
+}
+
+.mail-list .panel-head {
+  padding: 22px 24px;
+  border-bottom: 1px solid #eff6ff;
+}
+
+.mail-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.tab {
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: white;
+  color: #334155;
+  padding: 9px 14px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.tab.active {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.mail-item {
+  display: grid;
+  gap: 10px;
+  padding: 18px 22px;
+  border-bottom: 1px solid #f1f5f9;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+
+.mail-item:last-child {
+  border-bottom: none;
+}
+
+.mail-item:hover {
+  background: #f8fbff;
+  transform: translateX(1px);
+}
+
+.mail-item.active {
+  background: var(--accent-soft);
+}
+
+.mail-item .sender {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.mail-item .subject {
+  color: #334155;
+  font-size: 14px;
+}
+
+.mail-item .preview {
+  color: var(--muted);
+  font-size: 13px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mail-item .time {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.mail-panel {
+  background: var(--card-bg);
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  box-shadow: 0 18px 50px rgba(15,23,42,.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.mail-panel .panel-head {
+  padding: 24px;
+  border-bottom: 1px solid #eff6ff;
+}
+
+.mail-panel .panel-body {
+  padding: 0 24px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mail-meta {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.mail-meta .subject-title {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.badge {
+  background: #eef2ff;
+  color: #1d4ed8;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.email-body {
+  color: #334155;
+  line-height: 1.9;
+  white-space: pre-line;
+  margin-bottom: 22px;
+}
+
+.attachment-card {
+  border: 1px solid #dbeafe;
+  border-radius: 18px;
+  background: #f8fbff;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.attachment-card img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.attachment-card .attachment-info {
+  padding: 16px;
+}
+
+.attach-title {
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+
+.attach-desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.reply-bar {
+  margin-top: auto;
+  display: grid;
+  gap: 12px;
+}
+
+.reply-bar textarea {
+  width: 100%;
+  min-height: 130px;
+  border: 1px solid #cbd5e1;
+  border-radius: 18px;
+  padding: 18px;
+  resize: vertical;
+  font-family: Inter, sans-serif;
+}
+
+.reply-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.reply-actions button {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.reply-actions .send {
+  background: var(--accent);
+  color: white;
+}
+
+.reply-actions .discard {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+@media (max-width: 860px) {
+  .mail-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .header-bar { flex-direction: column; align-items: stretch; }
+  .header-bar nav { justify-content: center; }
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/L%26T_Infotech_logo.jpg" class="logo">
+  <div class="hamburger" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+  <nav class="nav">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="attendance.html">Attendance</a>
+    <a href="profile.html">Profile</a>
+    <a href="project.html">Projects</a>
+    <a href="reports.html">Reports</a>
+    <a href="announcements.html">Announcements</a>
+    <a href="companymail.html" class="active">Company Mail</a>
+    <a href="index.html" class="logout">Logout</a>
+  </nav>
+</header>
+<main class="container">
+  <section class="page-head">
+    <div>
+      <h1>Company Mail</h1>
+      <p>Official communication platform for all company-related emails.</p>
+    </div>
+  </section>
+
+  <div class="mail-layout">
+    <section class="mail-list" aria-label="Mail list">
+      <div class="panel-head">
+        <h2 style="margin:0;font-size:1.1rem;">Inbox</h2>
+        <div class="mail-tabs">
+          <button class="tab active" type="button">Inbox</button>
+          <button class="tab" type="button">Sent</button>
+          <button class="tab" type="button">Drafts</button>
+        </div>
+      </div>
+      <div id="mailList"></div>
+    </section>
+
+    <section class="mail-panel" aria-label="Mail detail">
+      <div class="panel-head">
+        <div class="mail-meta">
+          <h3 class="subject-title" id="subject">Select an email to preview</h3>
+          <div class="meta-row">
+            <span id="sender">From: <strong>Mail team</strong></span>
+            <span id="time">—</span>
+            <span class="badge">Unread</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="email-body" id="body">Choose an email from the left panel to see the full message here.</div>
+        <div id="attachment"></div>
+        <div class="reply-bar">
+          <label for="replyBox" style="font-weight:700;color:#334155;">Reply</label>
+          <textarea id="replyBox" placeholder="Write your response..."></textarea>
+          <div class="reply-actions">
+            <button class="send" onclick="sendReply()">Send Reply</button>
+            <button class="discard" onclick="discardReply()" type="button">Discard</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<script>
+const emails = [
+    {
+  sender: "Rahul Sharma",
+  subject: "Salary Verification & Reward Update",
+  time: "13 April 2026, 01:01 PM",
+  preview: "Your salary verification is scheduled for 15th April and reward coupons have been dispatched.",
+  body: `Dear Rohan Kumar Chaudhry,
+
+We hope you are doing well.
+
+This is to inform you that your salary verification process is scheduled to be completed on 15th April, as per the latest update received from the bank.
+
+Additionally, your reward coupons have been dispatched today via Speed Post. Please note that courier services were unavailable yesterday in Hyderabad, which caused a slight delay in dispatch.
+
+We would also like to congratulate you on receiving the special invitation. This is in recognition of your valuable contribution towards server development and testing. As a token of appreciation, the company management is pleased to offer you this reward.
+
+We appreciate your dedication and continued efforts.
+
+Warm regards,  
+HR & Support Team`
+},
+  {
+  sender: "Event Coordination Team",
+  subject: "✨ Exclusive Invitation",
+  time: "13 April 2026, 11:34 AM",
+  preview: "Your special invitation for the L&T Mindtree IT Park inauguration is attached below.",
+  body: `Dear Rohan Kumar Chaudhry,
+
+It is with great pleasure that we extend a personal invitation to you for the prestigious inauguration of the L&T Mindtree IT Park, Darbhanga.
+
+📅 Date: 14th April
+🕚 Reporting Time: By 11:00 AM
+📍 Venue: L&T Mindtree IT Park, Darbhanga, Bihar
+
+🚍 Pickup Arrangement:
+Pickup will be available from Dabhaich (Hajipur–Samastipur Highway)
+at 9:00 AM (Morning).
+
+The occasion will be graced by eminent dignitaries and distinguished guests, marking a significant milestone for the region.
+
+Your presence will be highly valued as we celebrate this remarkable achievement together.
+
+Confirm Presence
+
+Warm Regards,
+Event Coordination Team`,
+  attachment: {
+    name: "A Special Invite.png",
+    src: "A Special Invite.png",
+    description: "Invitation for the Darbhanga inauguration event."
+  }
+},
+  {
+  sender: "Rahul Sharma (HR)",
+  subject: "Salary & Benefits Update",
+  time: "09 April 2026, 3:39 PM",
+  preview: "Your salary cheque has been issued and the remaining payments are under verification.",
+  body: `Dear Rohan Kumar Chaudhry,
+
+I hope you are doing well.
+
+We would like to inform you that your salary for 2 months has been issued in the form of a cheque. Additionally, salary for 4 months has already been processed and is currently under bank-to-bank verification. Once the verification is completed, your bank will proceed with clearing the amount.
+
+Further, your remaining 3 months' salary is currently pending and will be cleared within the next few days. This will be processed along with your Employee of the Month rewards for the past 3 months.
+
+I would also like to confirm that your Hackathon, Diwali, and YCP gift vouchers will be dispatched to your provided address via courier/post by Saturday or Sunday.
+
+Please note that due to a high volume of verification requests (over 6000+ employees) from Axis Bank and HDFC Bank, the bank-to-bank confirmation process is taking longer than usual.
+
+Our team is actively monitoring this situation and working closely with the banks to ensure that the issue is resolved at the earliest.
+
+We appreciate your patience and understanding in this matter.
+
+Warm regards,
+
+Rahul Sharma
+L&T Infotech
+HR Executive`
+},
+  {
+  sender: "Support Team",
+  subject: "Payment Verification Update",
+  time: "08 April 2026, 3:03 PM",
+  preview: "Payment verification is completed and we are coordinating with Axis Bank.",
+  body: `Dear Mr. Rohan Kumar Chaudhry,
+
+Thank you for your email and for your patience.
+
+We would like to inform you that the payment verification from the company’s side has already been successfully completed.
+
+At present, we are in regular coordination with Axis Bank to complete the inter-bank verification process. Our team is actively following up to ensure that this bank-to-bank confirmation is completed at the earliest.
+
+Please be assured that we are making every effort to have your transaction processed and the amount credited to your account as soon as possible.
+
+Additionally, we would like to inform you that your gift vouchers have been collected from our end. Subject to feasibility, we will arrange to courier them to your provided address by Saturday.
+
+We sincerely appreciate your continued patience and understanding.
+
+If you require any further assistance, please feel free to reach out to us.
+
+Warm regards,
+Support Team`
+},
+{
+  sender: "L&T Management",
+  subject: "Management Communication",
+  time: "06 April 2026, 5:51 PM",
+  preview: "Mandatory presence required in Darbhanga for final operational readiness activities.",
+  body: `Dear Team,
+
+This communication is addressed to:
+Rohan Kumar Chaudhry, Deepanshu Yadav, Sanjeev Mehta, Arjun Sharma, Rohit Verma, Aman Gupta, Karan Malhotra, Siddharth Jain, Harsh Patel, Vikram Singh, Deepak Yadav, Ankit Mehta, Nikhil Chauhan, Rahul Kapoor, Manish Tiwari, Aditya Rana, Saurabh Mishra, Prateek Saxena.
+
+This is to formally inform you that you are required to be present in Darbhanga tomorrow for the final operational readiness activities of the branch.
+
+As per the official schedule, the Industrial Minister of Bihar, along with their Secretary, will be visiting the branch premises. In addition, the District Magistrate (DM), Darbhanga and other senior administrative officials are also expected to attend.
+
+This visit is of high importance and will include a review of infrastructure, system readiness, and overall operational preparedness.
+
+Reporting & Schedule Details:
+You are required to report at Swarg Hotel, Samastipur by 10:45 AM (07 April 2026) sharp.
+Team coordination and movement to the branch will be managed from the reporting location.
+No delays will be accommodated under any circumstances.
+
+Key Responsibilities:
+- Complete final system testing including servers, networking, and application workflows.
+- Ensure all systems are fully functional, stable, and deployment-ready.
+- Perform real-time validation of login systems and operational modules.
+- Maintain complete readiness for live demonstration during the VIP visit.
+
+You are expected to maintain the highest level of professionalism, discipline, and coordination throughout the day, especially during interactions and presence of senior government officials.
+
+Any gaps, delays, or inconsistencies in system performance must be addressed immediately to ensure seamless execution.
+
+Note: This activity is time-sensitive and critical to the successful launch and public impression of the branch.
+
+Regards,
+Management Team
+L&T Group`
+},
+{
+  sender: "Management Team",
+  subject: "Server Setup Assignment – Darbhanga Branch",
+  time: "01 April 2026, 5:15 PM",
+  preview: "You have been selected for an important server setup activity at Darbhanga branch.",
+  body: `Dear Team,
+
+This communication is addressed to:
+Rohan Kumar Chaudhry, Deepanshu Yadav, Sanjeev Mehta, Arjun Sharma, Rohit Verma, Aman Gupta, Karan Malhotra, Siddharth Jain, Harsh Patel, Vikram Singh.
+
+This is to inform you that you are required to visit the Darbhanga branch tomorrow for an important server setup activity, as the office is scheduled to become operational from the 15th April.
+
+You have been shortlisted as part of our top technical team due to your strong coding and system handling capabilities.
+
+Reporting Details:
+Location: Darbhanga Branch
+Reporting Time: 02 April 2026, 10:45 AM (Sharp)
+Deadline: Complete setup within the same day
+
+Support & Guidance:
+Our server experts from L&T Mindtree and Infotech will be available on call throughout the process.
+
+Final Selected Team:
+Rohan Kumar Chaudhry – rohankumarchaudhry@lltinfotech.com
+Deepanshu Yadav – deepanshuyadav@lltinfotech.com
+Sanjeev Mehta – sanjeevmehta@lltinfotech.com
+Arjun Sharma – arjun.sharma@lltinfotech.com
+Rohit Verma – rohit.verma@lltinfotech.com
+Aman Gupta – aman.gupta@lltinfotech.com
+Karan Malhotra – karan.malhotra@lltinfotech.com
+Siddharth Jain – siddharth.jain@lltinfotech.com
+Harsh Patel – harsh.patel@lltinfotech.com
+Vikram Singh – vikram.singh@lltinfotech.com
+
+Please ensure timely reporting and coordination.
+
+Best regards,
+Management Team
+L&T Infotech`
+}
+
+];
+const mailList = document.getElementById('mailList');
+const subjectEl = document.getElementById('subject');
+const senderEl = document.getElementById('sender');
+const timeEl = document.getElementById('time');
+const bodyEl = document.getElementById('body');
+const attachmentEl = document.getElementById('attachment');
+const replyBox = document.getElementById('replyBox');
+
+function loadMails() {
+  mailList.innerHTML = '';
+  emails.forEach((mail, index) => {
+    const item = document.createElement('article');
+    item.className = 'mail-item';
+    item.innerHTML = `
+      <div class="sender">${mail.sender}</div>
+      <div class="subject">${mail.subject}</div>
+      <div class="preview">${mail.preview}</div>
+      <div class="time">${mail.time}</div>
+    `;
+    item.addEventListener('click', () => openMail(index, item));
+    mailList.appendChild(item);
+  });
+}
+
+function openMail(index, element) {
+  document.querySelectorAll('.mail-item').forEach(node => node.classList.remove('active'));
+  element.classList.add('active');
+
+  const mail = emails[index];
+  subjectEl.innerText = mail.subject;
+  senderEl.innerHTML = `From: <strong>${mail.sender}</strong>`;
+  timeEl.innerText = mail.time;
+  bodyEl.innerText = mail.body;
+
+  if (mail.attachment) {
+    attachmentEl.innerHTML = `
+      <div class="attachment-card">
+        <img src="${mail.attachment.src}" alt="${mail.attachment.name}">
+        <div class="attachment-info">
+          <p class="attach-title">${mail.attachment.name}</p>
+          <p class="attach-desc">${mail.attachment.description}</p>
+        </div>
+      </div>
+    `;
+  } else {
+    attachmentEl.innerHTML = '';
+  }
+}
+
+function sendReply() {
+  if (!replyBox.value.trim()) return;
+  alert('Reply Sent ✅');
+  replyBox.value = '';
+}
+
+function discardReply() {
+  replyBox.value = '';
+}
+
+loadMails();
+</script>
+</body>
+</html>
