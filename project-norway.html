@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norway Bank Project - Premium</title>
+
+<style>
+:root{
+  --primary:#2563eb;
+  --bg:#f1f5ff;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,system-ui;
+}
+
+body{
+  background:linear-gradient(180deg,#eef2ff,#f8fafc);
+  color:var(--text);
+}
+
+/* 🔥 Back Button Premium */
+.back-btn{
+  position:sticky;
+  top:15px;
+  margin:20px;
+  display:inline-block;
+  padding:12px 20px;
+  background:linear-gradient(135deg,#2563eb,#4f46e5);
+  color:#fff;
+  text-decoration:none;
+  border-radius:12px;
+  font-weight:600;
+  letter-spacing:.3px;
+  box-shadow:0 10px 25px rgba(37,99,235,0.25);
+  transition:all .3s ease;
+}
+
+.back-btn:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 15px 35px rgba(37,99,235,0.35);
+}
+
+/* Layout */
+.container{
+  max-width:1250px;
+  margin:10px auto 40px;
+  padding:0 20px;
+  display:grid;
+  gap:26px;
+}
+
+/* Cards */
+.card{
+  background:var(--card);
+  padding:28px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+  animation:fade .6s ease;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(25px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+h1{font-size:30px;margin-bottom:10px;color:#1e3a8a}
+h2{font-size:22px;margin-bottom:14px;color:#1e3a8a}
+
+.description{
+  color:var(--muted);
+  line-height:1.9;
+}
+
+/* Tags */
+.tag-list{
+  margin-top:14px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.tag{
+  background:#e0e7ff;
+  padding:7px 14px;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:600;
+}
+
+/* Info */
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+
+.info-box{
+  background:#f1f5ff;
+  padding:16px;
+  border-radius:14px;
+  transition:.3s;
+}
+
+.info-box:hover{
+  transform:translateY(-4px);
+  background:#e0e7ff;
+}
+
+/* Progress */
+.progress{
+  height:16px;
+  background:#e5e7eb;
+  border-radius:30px;
+  margin-top:14px;
+  overflow:hidden;
+}
+
+.progress span{
+  display:block;
+  height:100%;
+  width:58%;
+  background:linear-gradient(90deg,#2563eb,#60a5fa);
+}
+
+/* Table */
+.table-wrapper{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+}
+
+th,td{
+  padding:14px;
+  text-align:left;
+}
+
+th{
+  background:#f1f5ff;
+  color:#475569;
+  font-weight:600;
+}
+
+tr{
+  border-bottom:1px solid #eee;
+  transition:.2s;
+}
+
+tr:nth-child(even){
+  background:#fafafa;
+}
+
+tr:hover{
+  background:#e0e7ff;
+}
+
+/* Removed */
+.removed{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+}
+
+.removed div{
+  background:#fee2e2;
+  padding:12px;
+  border-radius:10px;
+  color:#b91c1c;
+  font-weight:500;
+}
+
+/* Footer */
+.footer{
+  text-align:center;
+  padding:25px;
+  color:#6b7280;
+}
+</style>
+</head>
+
+<body>
+
+<a href="project.html" class="back-btn">⬅ Back to Project Page</a>
+
+<main class="container">
+<section class="card">
+<h1>Norway Bank Digital Attendance & Workforce Tracking Platform</h1>
+
+<p class="description">
+This project is a large-scale enterprise workforce governance platform designed specifically for a European banking client. 
+The system replaces traditional attendance mechanisms with a fully digital, AI-powered validation system that ensures accuracy, transparency, 
+and compliance with strict BFSI and GDPR regulations.
+
+<br><br>
+
+The platform integrates real-time attendance capture, geo-fencing validation, AI-driven anomaly detection, and automated audit reporting 
+into a unified system. It enables organizations to monitor workforce productivity, prevent fraudulent attendance practices, 
+and generate audit-ready compliance reports.
+
+<br><br>
+
+From a technical standpoint, the system follows a microservices architecture built using Spring Boot, with event-driven communication via Kafka. 
+The AI layer is powered by Python-based machine learning models that identify suspicious attendance patterns and behavioral anomalies.
+
+<br><br>
+
+The solution is deployed in a hybrid cloud environment (AWS & Azure), ensuring scalability, high availability, and secure data handling aligned 
+with European compliance standards such as GDPR and ISO 27001.
+</p>
+
+<div class="tag-list">
+<span class="tag">BFSI</span>
+<span class="tag">AI</span>
+<span class="tag">Compliance</span>
+<span class="tag">Microservices</span>
+</div>
+
+<div class="info-grid">
+<div class="info-box"><strong>Client</strong><br>Norway Bank (Confidential)</div>
+<div class="info-box"><strong>Project Code</strong><br>LTI-NB-BFSI-2025</div>
+<div class="info-box"><strong>Role</strong><br>AI Lead</div>
+<div class="info-box"><strong>Status</strong><br>Active</div>
+<div class="info-box"><strong>Region</strong><br>Europe (GDPR)</div>
+<div class="info-box"><strong>Engagement</strong><br>Enterprise Managed Services</div>
+</div>
+</section>
+<section class="card">
+<h2>Project Progress</h2>
+<div class="progress"><span></span></div>
+</section>
+
+<section class="card">
+<h2>Technology Stack</h2>
+<div class="info-grid">
+<div class="info-box">Java (Spring Boot)</div>
+<div class="info-box">Python ML</div>
+<div class="info-box">Kafka</div>
+<div class="info-box">PostgreSQL</div>
+<div class="info-box">JWT</div>
+<div class="info-box">AWS / Azure</div>
+</div>
+</section>
+
+<!-- ✅ FULL TEAM RESTORED -->
+<section class="card">
+<h2>Full Project Team</h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Email</th><th>Role</th></tr>
+</thead>
+<tbody>
+
+<tr><td>Sanjeevi</td><td>sanjeevani@lltinfotech.com</td><td>Tech Lead</td></tr>
+<tr><td>Rohan Kumar Chaudhry</td><td>rohankumarchaudhry@lltinfotech.com</td><td>Project Lead & AI Lead</td></tr>
+<tr><td>Nagesh Kale</td><td>nageshkale@lltinfotech.com</td><td>Senior Backend Developer</td></tr>
+<tr><td>Sameer Khanna</td><td>sameerkhanna@lltinfotech.com</td><td>Technical Architect</td></tr>
+<tr><td>Meenal Patil</td><td>meenalpatil@lltinfotech.com</td><td>Frontend Developer</td></tr>
+<tr><td>Arjun Rao</td><td>arjunrao@lltinfotech.com</td><td>Backend Developer</td></tr>
+<tr><td>Kavita Joshi</td><td>kavitajoshi@lltinfotech.com</td><td>UI Engineer</td></tr>
+<tr><td>Rajeev Gupta</td><td>rajeevgupta@lltinfotech.com</td><td>DevOps Engineer</td></tr>
+<tr><td>Manish Iyer</td><td>manishiyer@lltinfotech.com</td><td>Security Engineer</td></tr>
+<tr><td>Aparna Deshmukh</td><td>aparnadeshmukh@lltinfotech.com</td><td>QA Automation Engineer</td></tr>
+<tr><td>Sneha Sharma</td><td>snehasharma@lltinfotech.com</td><td>HR Operations</td></tr>
+<tr><td>Ankit Verma</td><td>ankitverma@lltinfotech.com</td><td>Software Engineer</td></tr>
+<tr><td>Priya Mehta</td><td>priyamehta@lltinfotech.com</td><td>Business Analyst</td></tr>
+<tr><td>Deepanshu Yadav</td><td>deepanshuyadav@lltinfotech.com</td><td>Full Stack Developer</td></tr>
+<tr><td>Vijaya Laxmi Sandupatla</td><td>vijayalaxmisandupatla@lltinfotech.com</td><td>Delivery Manager</td></tr>
+<tr><td>Sanjeev Tripathi</td><td>sanjeevtripathi@lltinfotech.com</td><td>Program Manager</td></tr>
+<tr><td>Kunal Sinha</td><td>kunalsinha@lltinfotech.com</td><td>Cloud Engineer</td></tr>
+<tr><td>Asnaka Kash</td><td>asnakakash@lltinfotech.com</td><td>Support Engineer</td></tr>
+<tr><td>Ritesh Kumar</td><td>ritesh@lltinfotech.com</td><td>Application Support Analyst</td></tr>
+
+</tbody>
+</table>
+</div>
+</section>
+
+<section class="card">
+<h2>Removed Members</h2>
+<div class="removed">
+<div>Simran Kaur</div>
+<div>Ritika Verma</div>
+<div>Ananya Sharma</div>
+<div>Raghav Malhotra</div>
+<div>Ayesha Khan</div>
+<div>Tanvi Desai</div>
+<div>Mohit Bansal</div>
+<div>Jyoti Pund</div>
+</div>
+</section>
+
+</main>
+
+<footer class="footer">© 2023 L&T Infotech • Internal</footer>
+
+</body>
+</html>

@@ -1059,7 +1059,7 @@ iframe:hover{
     <div class="profile-header">
       <h2>Rohan Kumar Chaudhry</h2>
       <span class="profile-role">
-        👨‍💼 Project Lead & AI Lead — Information Technology
+        👨‍💼 AI Developer & AI Lead — Information Technology
       </span>
     </div>
 
@@ -1106,76 +1106,106 @@ iframe:hover{
 <!-- Employee of the Month -->
 <section class="eom-card">
 
+  <!-- HEADER -->
   <div class="eom-header">
 
-    <div class="eom-left">
-
-      <span class="eom-badge">
-        <i class="fa-solid fa-award"></i>
-        Employee of the Month
-      </span>
-
-      <div class="eom-title-block">
-        <div class="eom-title">March 2026</div>
-        <div class="eom-division">
-          🏢 L&T Infotech — Information Technology Division
-        </div>
-      </div>
-
+    <div>
+      <span class="eom-badge">🏆 Employee of the Month</span>
+      <div class="eom-title">April 2026 Announcement</div>
+      <div class="eom-sub">L&T Infotech — IT Division</div>
     </div>
 
-    <div class="eom-reward">
-
-      <div class="reward-label">
-        <i class="fa-solid fa-indian-rupee-sign"></i>
-        Performance Reward
-      </div>
-
-      <div class="reward-amount">
-        ₹35,000
-      </div>
-
+    <div class="eom-status">
+      ⏳ Announcement Pending
     </div>
 
   </div>
 
+  <!-- MAIN CONTENT -->
+  <div class="eom-coming">
 
-  <div class="eom-content">
+    <h2>🚀 Winner Will Be Revealed Soon</h2>
 
-    <div class="achievement-item">
-      <i class="fa-solid fa-trophy"></i>
-      <div class="achievement-text">
-        <strong>Rohan Kumar Chaudhry</strong> has been recognized as
-        <strong>Employee of the Month – March 2026</strong> for his
-        outstanding leadership, technical expertise, and significant
-        contributions to enterprise-level technology initiatives.
-      </div>
-    </div>
+    <p>
+      The Employee of the Month for April 2026 will be officially announced after the countdown ends.
+      Stay tuned for the recognition of outstanding performance, leadership, and innovation.
+    </p>
 
-    <div class="achievement-item">
-      <i class="fa-solid fa-lightbulb"></i>
-      <div class="achievement-text">
-        His dedication to delivering scalable solutions, mentoring
-        development teams, and driving innovation across
-        <strong>AI-driven platforms and enterprise systems</strong>
-        has played a critical role in enhancing operational
-        efficiency and project success.
-      </div>
-    </div>
+  </div>
 
-    <div class="achievement-item">
-      <i class="fa-solid fa-gift"></i>
-      <div class="achievement-text">
-        In recognition of his exceptional performance and commitment
-        to organizational excellence, he has been awarded a
-        <strong>Performance Reward of ₹35,000</strong>.
-      </div>
-    </div>
-
+  <!-- COUNTDOWN -->
+  <div class="countdown-box">
+    <div class="count-label">⏱ Time Remaining</div>
+    <div id="countdown">23:00:00</div>
   </div>
 
 </section>
+<style>
+ 
+/* Coming Section */
+.eom-coming{
+  text-align:center;
+  padding:10px 20px;
+}
 
+.eom-coming h2{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+.eom-coming p{
+  color:#64748b;
+  max-width:500px;
+  margin:auto;
+  line-height:1.6;
+}
+
+/* Countdown */
+.countdown-box{
+  background:linear-gradient(135deg,#2563eb,#4f46e5);
+  color:#fff;
+  padding:18px;
+  border-radius:16px;
+  text-align:center;
+}
+
+.count-label{
+  font-size:14px;
+  opacity:.9;
+}
+
+#countdown{
+  font-size:34px;
+  font-weight:700;
+  letter-spacing:2px;
+  margin-top:6px;
+}
+</style>
+<script>
+const endTime = new Date("April 28, 2026 23:59:59").getTime();
+
+function updateCountdown(){
+  const now = new Date().getTime();
+  const distance = endTime - now;
+
+  if(distance <= 0){
+    document.getElementById("countdown").innerText = "00:00:00";
+    return;
+  }
+
+  const hours = Math.floor(distance / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("countdown").innerText =
+    String(hours).padStart(2,'0') + ":" +
+    String(minutes).padStart(2,'0') + ":" +
+    String(seconds).padStart(2,'0');
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+</script>
 
 
   <section class="location-card">

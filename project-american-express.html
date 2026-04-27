@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>L&T Infotech | American Express Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --primary:#0a2b5f;
+  --accent:#2563eb;
+  --bg:#eef2ff;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --radius:24px;
+  --shadow:0 20px 50px rgba(15,23,42,0.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui;}
+
+body{
+  background:linear-gradient(180deg,#eef2ff,#f8fafc);
+  color:var(--text);
+}
+
+/* ✅ Back Button */
+.back-btn{
+  position:sticky;
+  top:15px;
+  margin:20px;
+  display:inline-block;
+  padding:12px 20px;
+  background:linear-gradient(135deg,#2563eb,#4f46e5);
+  color:#fff;
+  text-decoration:none;
+  border-radius:12px;
+  font-weight:600;
+  box-shadow:0 10px 25px rgba(37,99,235,0.25);
+  transition:.3s;
+}
+
+.back-btn:hover{
+  transform:translateY(-3px);
+}
+
+/* Layout */
+.container{
+  max-width:1240px;
+  margin:20px auto 40px;
+  padding:0 24px;
+  display:grid;
+  gap:28px;
+}
+
+/* Cards */
+.card{
+  background:#fff;
+  border-radius:24px;
+  padding:32px;
+  box-shadow:var(--shadow);
+  animation:fadeUp .6s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+h1{font-size:32px;color:var(--primary);}
+h2{font-size:24px;color:var(--primary);}
+
+.description{
+  margin-top:16px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+/* Grid */
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+  margin-top:18px;
+}
+
+.info-grid div{
+  background:#eef2ff;
+  padding:16px;
+  border-radius:16px;
+}
+
+/* Table */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:20px;
+}
+
+th,td{
+  padding:12px;
+  border-bottom:1px solid #eee;
+}
+
+tr:hover{background:#f1f5ff}
+
+/* Removed */
+.removed ul{
+  columns:2;
+  margin-top:10px;
+}
+
+/* Footer */
+.footer{
+  text-align:center;
+  padding:20px;
+  color:#64748b;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ✅ ONLY BUTTON -->
+<a href="project.html" class="back-btn">⬅ Back to Project Page</a>
+
+<main class="container">
+
+<section class="card">
+<h1>American Express Global AI Risk & Workforce Analytics Platform</h1>
+
+<p class="description">
+This project focuses on building a large-scale AI-powered workforce intelligence and risk analytics platform for American Express. The objective of this system is to transform traditional attendance tracking into a predictive, data-driven decision engine that enables real-time workforce monitoring and risk management across global operations.
+<br><br>
+The platform integrates advanced machine learning models with high-performance backend systems to detect anomalies, prevent operational risks, and provide predictive insights into workforce behavior. It processes large volumes of attendance and activity data using event-driven architecture and real-time streaming pipelines.
+<br><br>
+A key highlight of this project is the AI risk scoring engine, which evaluates workforce patterns and identifies unusual behaviors such as proxy attendance, inconsistent activity logs, and compliance violations. These insights are used to trigger automated alerts and generate audit-ready reports.
+<br><br>
+The system is built using a microservices architecture powered by Spring Boot, with Apache Kafka enabling real-time data streaming. The AI layer is developed using Python-based ML pipelines, ensuring scalable and adaptive learning capabilities. The platform is deployed on a hybrid cloud infrastructure (AWS & Azure), ensuring high availability, security, and compliance with global financial regulations including PCI-DSS.
+</p>
+
+<div class="info-grid">
+<div><strong>Client</strong> American Express</div>
+<div><strong>Role</strong> Backend Developer & AI Lead</div>
+<div><strong>Status</strong> Active</div>
+<div><strong>Region</strong> Global</div>
+</div>
+</section>
+
+<!-- TEAM (UNCHANGED) -->
+<section class="card">
+<h2>Project Team</h2>
+
+<table>
+<thead>
+<tr><th>Name</th><th>Email</th><th>Role</th></tr>
+</thead>
+<tbody>
+
+<tr><td>Rohan Kumar Chaudhry</td><td>rohankumarchaudhry@lltinfotech.com</td><td>AI Lead</td></tr>
+<tr><td>Sanjeevni</td><td>sanjeevani@lltinfotech.com</td><td>Tech Lead</td></tr>
+<tr><td>Nagesh Kale</td><td>nageshkale@lltinfotech.com</td><td>Senior Backend Developer</td></tr>
+
+<tr><td>Aditya Sharma</td><td>adityasharma@lltinfotech.com</td><td>Backend Developer</td></tr>
+<tr><td>Ishaan Khanna</td><td>ishaankhanna@lltinfotech.com</td><td>Frontend Developer</td></tr>
+<tr><td>Ritika Mehra</td><td>ritikamehra@lltinfotech.com</td><td>UI Engineer</td></tr>
+<tr><td>Gaurav Sethi</td><td>gauravsethi@lltinfotech.com</td><td>DevOps Engineer</td></tr>
+<tr><td>Kunal Arora</td><td>kunalarora@lltinfotech.com</td><td>Cloud Engineer</td></tr>
+<tr><td>Neha Kapoor</td><td>nehakapoor@lltinfotech.com</td><td>QA Engineer</td></tr>
+<tr><td>Mohit Bansal</td><td>mohitbansal@lltinfotech.com</td><td>Software Engineer</td></tr>
+<tr><td>Yash Gupta</td><td>yashgupta@lltinfotech.com</td><td>Data Engineer</td></tr>
+<tr><td>Kritika Jain</td><td>kritikajain@lltinfotech.com</td><td>Data Analyst</td></tr>
+<tr><td>Raghav Malhotra</td><td>raghavmalhotra@lltinfotech.com</td><td>System Architect</td></tr>
+<tr><td>Pooja Verma</td><td>poojaverma@lltinfotech.com</td><td>HR Operations</td></tr>
+<tr><td>Abhishek Tiwari</td><td>abhishektiwari@lltinfotech.com</td><td>Support Engineer</td></tr>
+<tr><td>Divya Nair</td><td>divyanair@lltinfotech.com</td><td>QA Automation</td></tr>
+<tr><td>Akash Mishra</td><td>akashmishra@lltinfotech.com</td><td>Backend Engineer</td></tr>
+<tr><td>Sneha Joshi</td><td>snehajoshi@lltinfotech.com</td><td>Frontend Engineer</td></tr>
+<tr><td>Komal Shah</td><td>komalshah@lltinfotech.com</td><td>UI Designer</td></tr>
+<tr><td>Pranav Iyer</td><td>pranaviyer@lltinfotech.com</td><td>ML Engineer</td></tr>
+<tr><td>Siddharth Roy</td><td>siddharthroy@lltinfotech.com</td><td>Data Scientist</td></tr>
+<tr><td>Anushka Sharma</td><td>anushkasharma@lltinfotech.com</td><td>Product Analyst</td></tr>
+
+</tbody>
+</table>
+</section>
+
+<section class="card removed">
+<h2>Removed Members</h2>
+<ul>
+<li>Rohit Saxena</li>
+<li>Kavya Mehta</li>
+<li>Shubham Yadav</li>
+<li>Neeraj Singh</li>
+<li>Aman Khurana</li>
+<li>Pallavi Gupta</li>
+<li>Devansh Verma</li>
+<li>Ruchi Sharma</li>
+</ul>
+</section>
+
+</main>
+
+<footer class="footer">
+© 2023 L&T Infotech • Internal & Confidential
+</footer>
+
+</body>
+</html>

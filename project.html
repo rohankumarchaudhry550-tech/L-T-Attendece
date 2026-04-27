@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>L&T Infotech | Norway Bank BFSI Project</title>
+<title>L&T Infotech | Projects Overview</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="favicon.png">
 
@@ -303,6 +303,71 @@ body{
   content:"📋";
   font-size:16px;
 }
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:24px;
+  margin-top:24px;
+}
+.project-card{
+  background:linear-gradient(135deg,rgba(255,255,255,0.95),rgba(248,250,252,0.95));
+  padding:28px;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,0.55);
+  box-shadow:0 20px 40px rgba(15,23,42,0.08);
+}
+.section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:24px;
+  flex-wrap:wrap;
+  margin-bottom:24px;
+}
+.section-header h2{
+  margin:0;
+  font-size:28px;
+}
+.section-header p{
+  max-width:720px;
+  color:#475569;
+  line-height:1.7;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:14px 24px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--accent),#60a5fa);
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  transition:all 0.25s ease;
+}
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 40px rgba(37,99,235,0.18);
+}
+.back-link{
+  background:rgba(255,255,255,0.2);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.25);
+}
+.project-card h3{
+  margin-bottom:14px;
+  font-size:22px;
+}
+.project-card .description{
+  margin-top:16px;
+}
+.project-card .info-grid{
+  margin-top:18px;
+}
+.project-card .info-grid > div{
+  background:rgba(255,255,255,0.92);
+}
 
 /* ================= TEXT ================= */
 .subtitle{
@@ -546,101 +611,70 @@ tbody tr:hover td{
 </header>
 
 <div class="container">
-
 <section class="card">
-    <h2>🏗️ Norway Bank Digital Attendance & Workforce Tracking Platform</h2>
-    <p class="subtitle">🏦 Banking & Financial Services • 🌍 Europe • 🔒 Confidential Engagement</p>
 
-<section class="card">
-    <h3>📊 Project Overview</h3>
-    <div class="info-grid">
-      <div><strong>🏦 Client:</strong> Norway Bank (Confidential)</div>
-      <div><strong>🔢 Project Code:</strong> LTI-NB-BFSI-2025</div>
-      <div><strong>🏭 Industry:</strong> BFSI</div>
-      <div><strong>🌍 Geography:</strong> Europe (GDPR)</div>
-      <div><strong>🤝 Engagement:</strong> Enterprise Managed Services</div>
-      <div><strong>📈 Status:</strong> Active – Development & Integration</div>
-    </div>
-<p class="description">
-The Norway Bank Digital Attendance & Workforce Tracking Platform is a secure, cloud-native enterprise solution built to modernize workforce governance across large-scale banking operations.
-</p>
-
-<p class="description">
-The platform leverages AI-driven validation, geo-fencing, and compliance-first architecture to replace legacy attendance mechanisms while aligning with European BFSI regulatory mandates.
-</p>
-
-<h4>Key Functional Capabilities</h4>
-<ul class="description">
-<li>Location-verified attendance with configurable geo-fencing</li>
-<li>AI-based anomaly & proxy attendance detection</li>
-<li>RBAC for Employees, Managers, HR & Admins</li>
-<li>Real-time dashboards and productivity analytics</li>
-<li>Automated BFSI-aligned audit reporting</li>
-<li>Secure approval workflows for remote work</li>
-</ul>
-
-<h4>🛠️ Technology Stack</h4>
-    <div class="info-grid">
-      <div><strong>⚙️ Backend:</strong> Java (Spring Boot), Microservices</div>
-      <div><strong>🤖 AI Layer:</strong> Python, ML Pipelines, Risk Models</div>
-      <div><strong>📡 Streaming:</strong> Apache Kafka</div>
-      <div><strong>🗄️ Databases:</strong> Oracle, PostgreSQL</div>
-      <div><strong>🔐 Security:</strong> OAuth 2.0, JWT, RBAC, Encryption</div>
-      <div><strong>☁️ Cloud:</strong> AWS / Azure Hybrid</div>
-      <div><strong>🚀 DevOps:</strong> Docker, Kubernetes, CI/CD</div>
-      <div><strong>📋 Compliance:</strong> GDPR, ISO 27001, SOC 2</div>
+  <div class="section-header">
+    <div>
+      <h2>Projects Overview</h2>
+      <p class="subtitle">
+        Explore detailed enterprise projects. Each card opens a dedicated project page with full architecture, team, and technical insights.
+      </p>
     </div>
 
-<h4>Business Impact</h4>
-<ul class="description">
-<li>Significant reduction in attendance fraud</li>
-<li>Improved workforce transparency</li>
-<li>Audit-ready compliance posture</li>
-<li>AI-driven operational insights</li>
-<li>Future-ready HR automation foundation</li>
-</ul>
-</section>
+    <a href="dashboard.html" class="btn back-link">← Dashboard</a>
+  </div>
 
-<section class="card">
-    <h3>📈 Project Progress</h3>
-    <div class="progress-bar">
-      <div class="progress-fill">57.79</div>
-    </div>
-    <p class="description">
-      ⚙️ Core Platform Development • 🤖 AI Model Training • 🔗 Secure API Integration
-    </p>
-  </section>
-<section class="card">
-    <h3>👥 Active Project Team</h3>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>Name</th><th>Email</th><th>Role</th></tr>
-</thead>
-<tbody>
-<tr><td>Sanjeevi</td><td>sanjeevani@lltinfotech.com</td><td>Tech Lead</td></tr> <tr><td>Rohan Kumar Chaudhry</td><td>rohankumarchaudhry@lltinfotech.com</td><td>Project Lead & AI Lead</td></tr> <tr><td>Nagesh Kale</td><td>nageshkale@lltinfotech.com</td><td>Project Lead & Senior Backend Developer</td></tr> <tr><td>Sameer Khanna</td><td>sameerkhanna@lltinfotech.com</td><td>Technical Architect</td></tr> <tr><td>Meenal Patil</td><td>meenalpatil@lltinfotech.com</td><td>Frontend Developer</td></tr> <tr><td>Arjun Rao</td><td>arjunrao@lltinfotech.com</td><td>Backend Developer</td></tr> <tr><td>Kavita Joshi</td><td>kavitajoshi@lltinfotech.com</td><td>UI Engineer</td></tr> <tr><td>Rajeev Gupta</td><td>rajeevgupta@lltinfotech.com</td><td>DevOps Engineer</td></tr> <tr><td>Manish Iyer</td><td>manishiyer@lltinfotech.com</td><td>Security Engineer</td></tr> <tr><td>Aparna Deshmukh</td><td>aparnadeshmukh@lltinfotech.com</td><td>QA Automation Engineer</td></tr> <tr><td>Sneha Sharma</td><td>snehasharma@lltinfotech.com</td><td>HR Operations Executive</td></tr> <tr><td>Ankit Verma</td><td>ankitverma@lltinfotech.com</td><td>Software Engineer</td></tr> <tr><td>Priya Mehta</td><td>priyamehta@lltinfotech.com</td><td>Business Analyst</td></tr> <tr><td>Deepanshu Yadav</td><td>deepanshuyadav@lltinfotech.com</td><td>Full Stack Developer</td></tr> <tr><td>Vijaya Laxmi Sandupatla</td><td>vijayalaxmisandupatla@lltinfotech.com</td><td>Delivery Manager</td></tr> <tr><td>Sanjeev Tripathi</td><td>sanjeevtripathi@lltinfotech.com</td><td>Program Manager</td></tr> <tr><td>Kunal Sinha</td><td>kunalsinha@lltinfotech.com</td><td>Cloud Engineer</td></tr> <tr><td>Asnaka Kash</td><td>asnakakash@lltinfotech.com</td><td>Support Engineer</td></tr> <tr><td>Ritesh Kumar</td><td>ritesh@lltinfotech.com</td><td>Application Support Analyst</td></tr></tbody>
-</table>
-</div>
-</section>
+  <div class="project-grid">
 
-<section class="card removed">
-    <h3>🚫 Removed From Project</h3>
-<ul>
-<li>Simran Kaur</li>
-<li>Ritika Verma</li>
-<li>Ananya Sharma</li>
-<li>Raghav Malhotra</li>
-<li>Ayesha Khan</li>
-<li>Tanvi Desai</li>
-<li>Mohit Bansal</li>
-<li>Jyoti Pund</li>
-</ul>
+    <!-- Norway -->
+    <article class="project-card">
+      <div class="badge">Enterprise • Europe</div>
+
+      <h3>🏗️ Norway Bank Digital Attendance</h3>
+
+      <p class="description">
+        AI-powered workforce governance platform with geo-fencing validation, compliance tracking, and anomaly detection.
+      </p>
+
+      <div class="info-grid">
+        <div><strong>Client</strong><br>Norway Bank</div>
+        <div><strong>Role</strong><br>AI Lead</div>
+        <div><strong>Region</strong><br>GDPR (EU)</div>
+        <div><strong>Status</strong><br><span class="status active">● Active</span></div>
+      </div>
+
+      <a href="project-norway.html" class="btn primary">View Project →</a>
+    </article>
+
+
+    <!-- AMEX -->
+    <article class="project-card">
+      <div class="badge">Global • BFSI</div>
+
+      <h3>💳 American Express AI Risk Platform</h3>
+
+      <p class="description">
+        Large-scale AI risk analytics system for workforce intelligence, anomaly detection, and predictive compliance monitoring.
+      </p>
+
+      <div class="info-grid">
+        <div><strong>Client</strong><br>American Express</div>
+        <div><strong>Role</strong><br>Backend + AI Lead</div>
+        <div><strong>Region</strong><br>Global</div>
+        <div><strong>Status</strong><br><span class="status active">● Active</span></div>
+      </div>
+
+      <a href="project-american-express.html" class="btn primary">View Project →</a>
+    </article>
+
+  </div>
+
 </section>
 
 </div>
 
 <footer class="footer">
-© 2023 Larsen & Toubro Infotech Limited • Internal & Confidential
+© 2026 Larsen & Toubro Infotech Limited • Internal & Confidential
 </footer>
 
 <script>
