@@ -1102,7 +1102,6 @@ iframe:hover{
   </div>
 </section>
 
-
 <!-- Employee of the Month -->
 <section class="eom-card">
 
@@ -1115,8 +1114,8 @@ iframe:hover{
       <div class="eom-sub">L&T Infotech — IT Division</div>
     </div>
 
-    <div class="eom-status">
-      ⏳ Announcement Pending
+    <div class="eom-status winner">
+      🎉 Winner घोषित
     </div>
 
   </div>
@@ -1124,24 +1123,57 @@ iframe:hover{
   <!-- MAIN CONTENT -->
   <div class="eom-coming">
 
-    <h2>🚀 Winner Will Be Revealed Soon</h2>
+    <h2>🏆 Rohan Kumar Chaudhry</h2>
 
     <p>
-      The Employee of the Month for April 2026 will be officially announced after the countdown ends.
-      Stay tuned for the recognition of outstanding performance, leadership, and innovation.
+      We are proud to announce <strong>Rohan Kumar Chaudhry</strong> as the 
+      <strong>Employee of the Month – April 2026</strong>.
+    </p>
+
+    <p>
+      This marks an exceptional milestone — <strong>4th consecutive win</strong>, 
+      making it a rare achievement in the organization’s history.
+    </p>
+
+    <p>
+      His excellence in <strong>coding, AI project leadership, and consistent performance</strong> 
+      has set a benchmark across the team. He secured <strong>1st position in assignments</strong>, 
+      maintained <strong>100% class participation</strong>, and consistently delivered 
+      high-quality work.
+    </p>
+
+    <p>
+      His dedication, discipline, and commitment toward the company have been truly outstanding.
+    </p>
+
+    <p>
+      As a recognition of his remarkable contribution, the company is proud to 
+      <strong>fully sponsor his M.Tech program at BITS Pilani</strong>.
+    </p>
+
+    <p>
+      Additionally, his <strong>administrative promotion</strong> will be effective 
+      from the upcoming session starting <strong>August</strong>.
+    </p>
+
+    <p class="highlight">
+      🚀 This is only the <strong>3rd time in company history</strong> that an employee 
+      has achieved 4 consecutive wins.
     </p>
 
   </div>
 
-  <!-- COUNTDOWN -->
-  <div class="countdown-box">
-    <div class="count-label">⏱ Time Remaining</div>
-    <div id="countdown">23:00:00</div>
-  </div>
-
 </section>
+
 <style>
- 
+.eom-status.winner{
+  background:#dcfce7;
+  color:#166534;
+  padding:6px 12px;
+  border-radius:20px;
+  font-weight:600;
+}
+
 /* Coming Section */
 .eom-coming{
   text-align:center;
@@ -1149,64 +1181,29 @@ iframe:hover{
 }
 
 .eom-coming h2{
-  font-size:22px;
+  font-size:26px;
   margin-bottom:10px;
+  color:#111827;
 }
 
 .eom-coming p{
-  color:#64748b;
-  max-width:500px;
-  margin:auto;
-  line-height:1.6;
+  color:#121212;
+  max-width:600px;
+  margin:10px auto;
+  line-height:1.7;
 }
 
-/* Countdown */
+.highlight{
+  margin-top:15px;
+  font-weight:600;
+  color:#1e293b;
+}
+
+/* Remove countdown since announced */
 .countdown-box{
-  background:linear-gradient(135deg,#2563eb,#4f46e5);
-  color:#fff;
-  padding:18px;
-  border-radius:16px;
-  text-align:center;
-}
-
-.count-label{
-  font-size:14px;
-  opacity:.9;
-}
-
-#countdown{
-  font-size:34px;
-  font-weight:700;
-  letter-spacing:2px;
-  margin-top:6px;
+  display:none;
 }
 </style>
-<script>
-const endTime = new Date("April 29, 2026 10:59:59").getTime();
-
-function updateCountdown(){
-  const now = new Date().getTime();
-  const distance = endTime - now;
-
-  if(distance <= 0){
-    document.getElementById("countdown").innerText = "00:00:00";
-    return;
-  }
-
-  const hours = Math.floor(distance / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  document.getElementById("countdown").innerText =
-    String(hours).padStart(2,'0') + ":" +
-    String(minutes).padStart(2,'0') + ":" +
-    String(seconds).padStart(2,'0');
-}
-
-setInterval(updateCountdown,1000);
-updateCountdown();
-</script>
-
 
   <section class="location-card">
     <h3>📍 Current Work Location</h3>
