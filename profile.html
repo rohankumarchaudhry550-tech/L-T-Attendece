@@ -1351,6 +1351,228 @@ iframe{
 .countdown-box{
   display:none;
 }
+
+/* Final phone layout fix */
+@media(max-width:768px){
+  body{
+    width:100%;
+    background:linear-gradient(180deg,#f5f9ff 0%,#edf4fb 100%);
+  }
+
+  body::before,
+  body::after{
+    width:320px;
+    height:320px;
+    opacity:.45;
+    filter:blur(12px);
+  }
+
+  .header{
+    padding:10px 14px;
+  }
+
+  .logo{
+    height:48px;
+    border-radius:12px;
+    padding:6px;
+  }
+
+  .container{
+    width:100%;
+    margin:18px auto 0;
+    padding:0 12px;
+    gap:16px;
+  }
+
+  .profile-card,
+  .eom-card,
+  .location-card{
+    width:100%;
+    padding:18px 14px;
+    border-radius:20px;
+    box-shadow:0 14px 38px rgba(10,43,95,.11);
+    border:1px solid #dce8f5;
+    background:rgba(255,255,255,.94);
+    transform:none !important;
+  }
+
+  .profile-card{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+    text-align:center;
+  }
+
+  .profile-card::after,
+  .eom-card::after,
+  .location-card::after{
+    display:none;
+  }
+
+  .profile-image{
+    justify-content:center;
+  }
+
+  .profile-image img{
+    width:118px;
+    height:118px;
+    border-width:5px;
+    outline:4px solid rgba(37,99,235,.16);
+    box-shadow:0 14px 34px rgba(10,43,95,.18);
+  }
+
+  .profile-info h2{
+    font-size:24px;
+    line-height:1.15;
+    margin-bottom:10px;
+  }
+
+  .profile-role{
+    width:100%;
+    justify-content:center;
+    border-radius:14px;
+    padding:9px 10px;
+    font-size:13px;
+    line-height:1.35;
+    white-space:normal;
+  }
+
+  .info-grid{
+    margin-top:18px;
+    grid-template-columns:1fr;
+    gap:10px;
+    text-align:left;
+  }
+
+  .info-grid .info-item{
+    min-height:58px;
+    padding:12px;
+    gap:10px;
+    border-radius:14px;
+    align-items:flex-start;
+  }
+
+  .info-grid .info-item i{
+    width:22px;
+    margin-top:2px;
+    font-size:17px;
+  }
+
+  .info-grid .info-item span{
+    min-width:0;
+    font-size:13px;
+    line-height:1.45;
+    overflow-wrap:anywhere;
+  }
+
+  .mail-link{
+    width:100%;
+    min-height:46px;
+    margin-top:18px;
+    border-radius:999px;
+    font-size:14px;
+  }
+
+  .eom-header{
+    flex-direction:column;
+    align-items:stretch;
+    gap:12px;
+    padding-bottom:14px;
+    margin-bottom:16px;
+  }
+
+  .eom-badge{
+    width:100%;
+    justify-content:center;
+    padding:10px 12px;
+    font-size:13px;
+  }
+
+  .eom-title{
+    margin-top:12px;
+    font-size:22px;
+    line-height:1.2;
+    text-align:center;
+  }
+
+  .eom-sub{
+    text-align:center;
+    color:#64748b;
+    font-size:13px;
+  }
+
+  .eom-status.winner{
+    width:100%;
+    text-align:center;
+    padding:10px 12px;
+    border-radius:999px;
+    border:1px solid #bfe9cf;
+    background:#e8f8ee;
+  }
+
+  .eom-coming{
+    text-align:left;
+    padding:0;
+  }
+
+  .eom-coming h2{
+    font-size:22px;
+    line-height:1.2;
+    text-align:center;
+    margin:2px 0 14px;
+  }
+
+  .eom-coming p{
+    max-width:none;
+    margin:10px 0;
+    color:#334155;
+    font-size:14px;
+    line-height:1.65;
+  }
+
+  .highlight{
+    padding:13px;
+    border-radius:14px;
+    background:#f1f7ff;
+    border:1px solid #d6e8fb;
+  }
+
+  .location-card{
+    padding:16px 12px;
+  }
+
+  .location-card h3{
+    font-size:18px;
+    margin-bottom:14px;
+  }
+
+  iframe{
+    height:260px;
+    border-radius:14px;
+  }
+
+  .footer{
+    margin-top:24px;
+    padding:22px 14px;
+    font-size:12px;
+    line-height:1.5;
+  }
+}
+
+@media(max-width:390px){
+  .profile-info h2{
+    font-size:22px;
+  }
+
+  .eom-title,
+  .eom-coming h2{
+    font-size:20px;
+  }
+
+  .info-grid .info-item span{
+    font-size:12.5px;
+  }
+}
 </style>
 
   <section class="location-card">
